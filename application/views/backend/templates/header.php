@@ -1,346 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+
 <head>
-    <!-- Meta tags -->
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords"
-          content="Responsive, HTML5, admin theme, business, professional, jQuery, web design, CSS3, sass">
-    <!-- /meta tags -->
-    <title><?= $title ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title></title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/images/">
 
-    <!-- Site favicon -->
-    <link rel="shortcut icon" href="<?php echo base_url() ?>assets/backend/images/favicon.ico" type="image/x-icon">
-    <!-- /site favicon -->
+    <!--Chartist Chart CSS -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/chartist/css/chartist.min.css">
 
-    <!-- Font Icon Styles -->
-    <!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/node_modules/flag-icon-css/css/flag-icon.min.css">
-<link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/vendors/gaxon-icon/styles.css"> -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <!-- /font icon Styles -->
+    <!-- DataTables -->
+    <link href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="<?= base_url() ?>assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Responsive datatable examples -->
+    <link href="<?= base_url() ?>assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
 
-    <!-- Perfect Scrollbar stylesheet -->
-    <link rel="stylesheet"
-          href="<?php echo base_url() ?>assets/backend/node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- /perfect scrollbar stylesheet -->
-
-    <!-- Load Styles -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/light-style-1.min.css">
-    <link href="<?= base_url() ?>assets/backend/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css"
-          rel="stylesheet">
-    <link href="<?= base_url() ?>assets/backend/css/animated.css" rel="stylesheet">
-    <!-- /load styles -->
-
+    <link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
-<body class="dt-sidebar--fixed dt-header--fixed" style="overflow: scroll;">
 
+<body>
 
-<!-- Root -->
-<div class="dt-root">
-    <div class="dt-root__inner">
-        <!-- Header -->
-        <header class="dt-header">
+    <!-- Begin page -->
+    <div id="wrapper">
 
-            <!-- Header container -->
-            <div class="dt-header__container">
+        <!-- Top Bar Start -->
+        <div class="topbar">
 
-                <!-- Brand -->
-                <div class="dt-brand">
-
-                    <!-- Brand tool -->
-                    <div class="dt-brand__tool" data-toggle="main-sidebar">
-                        <div class="hamburger-inner"></div>
-                    </div>
-                    <!-- /brand tool -->
-
-                    <!-- Brand logo -->
-                    <span class="dt-brand__logo">
-        <a class="dt-brand__logo-link justify-content-center" href="<?= base_url('admin') ?>">
-          <i class="fa fa-balance-scale fa-2x"></i> <span style="font-size: 16px">CV. Neraca</span>
-        </a>
-      </span>
-                    <!-- /brand logo -->
-
-                </div>
-                <!-- /brand -->
-
-                <!-- Header toolbar-->
-                <div class="dt-header__toolbar">
-
-
-                    <!-- Header Menu Wrapper -->
-                    <div class="dt-nav-wrapper">
-                        <!-- Header Menu -->
-                        <ul class="dt-nav d-lg-none">
-                            <li class="dt-nav__item dt-notification-search dropdown">
-
-                                <!-- Dropdown Link -->
-                                <a href="#" class="dt-nav__link dropdown-toggle no-arrow" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false"> <i
-                                            class="icon icon-search icon-fw icon-lg"></i> </a>
-                                <!-- /dropdown link -->
-
-                                <!-- Dropdown Option -->
-                                <div class="dropdown-menu">
-
-                                    <!-- Search Box -->
-                                    <form class="search-box right-side-icon">
-                                        <input class="form-control form-control-lg" type="search"
-                                               placeholder="Search in app...">
-                                        <button type="submit" class="search-icon"><i
-                                                    class="icon icon-search icon-lg"></i></button>
-                                    </form>
-                                    <!-- /search box -->
-
-                                </div>
-                                <!-- /dropdown option -->
-
-                            </li>
-                        </ul>
-
-                        <ul class="dt-nav">
-                            <li class="dt-nav__item dt-notification dropdown">
-
-                                <!-- Dropdown Link -->
-                                <a href="#" class="dt-nav__link dropdown-toggle no-arrow" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false"> <i
-                                            class="fa fa-bell icon-fw dt-icon-alert"></i>
-                                </a>
-                                <!-- /dropdown link -->
-
-                                <!-- Dropdown Option -->
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-media">
-                                    <!-- Dropdown Menu Header -->
-                                    <div class="dropdown-menu-header">
-                                        <h4 class="title">Notifications (9)</h4>
-
-                                        <div class="ml-auto action-area">
-                                            <a href="javascript:void(0)">Mark All Read</a> <a class="ml-2"
-                                                                                              href="javascript:void(0)">
-                                                <i class="icon icon-settings icon-lg text-light-gray"></i> </a>
-                                        </div>
-                                    </div>
-                                    <!-- /dropdown menu header -->
-
-                                    <!-- Dropdown Menu Body -->
-                                    <div class="dropdown-menu-body ps-custom-scrollbar">
-
-                                        <div class="h-auto">
-                                            <!-- Media -->
-                                            <a href="javascript:void(0)" class="media">
-
-                                                <!-- Avatar -->
-                                                <img class="dt-avatar mr-3"
-                                                     src="<?= base_url() ?>assets/backend/images/user-avatar/stella-johnson.jpg"
-                                                     alt="User">
-                                                <!-- avatar -->
-
-                                                <!-- Media Body -->
-                                                <span class="media-body">
-                    <span class="message">
-                      <span class="user-name">Stella Johnson</span> and <span class="user-name">Chris Harris</span>
-                      have birthdays today. Help them celebrate!
-                    </span>
-                    <span class="meta-date">8 hours ago</span>
-                  </span>
-                                                <!-- /media body -->
-
-                                            </a>
-                                            <!-- /media -->
-
-
-                                        </div>
-
-                                    </div>
-                                    <!-- /dropdown menu body -->
-
-                                    <!-- Dropdown Menu Footer -->
-                                    <div class="dropdown-menu-footer">
-                                        <a href="javascript:void(0)" class="card-link"> See All <i
-                                                    class="icon icon-arrow-right icon-fw"></i>
-                                        </a>
-                                    </div>
-                                    <!-- /dropdown menu footer -->
-                                </div>
-                                <!-- /dropdown option -->
-
-                            </li>
-
-
-                        </ul>
-                        <!-- /header menu -->
-
-
-                        <!-- Header Menu -->
-                        <ul class="dt-nav">
-                            <li class="dt-nav__item dropdown">
-
-                                <!-- Dropdown Link -->
-                                <a href="#" class="dt-nav__link dropdown-toggle no-arrow dt-avatar-wrapper"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user-circle-o"></i>
-                                    <span class="dt-avatar-info d-none d-sm-block">
-                <span class="dt-avatar-name"><?= $this->session->userdata('session_nama') ?></span>
-              </span> </a>
-                                <!-- /dropdown link -->
-
-                                <!-- Dropdown Option -->
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <div class="dt-avatar-wrapper flex-nowrap p-6 mt--5 bg-gradient-purple text-white rounded-top">
-                                        <i class="fa fa-user-circle-o"></i>
-                                        <span class="dt-avatar-info">
-                  <span class="dt-avatar-name"><?= $this->session->userdata('session_nama') ?></span>
-                  <span class="f-12"><?= $this->session->userdata('session_level') ?></span>
-                </span>
-                                    </div>
-                                    <a class="dropdown-item" href="javascript:void(0)"> <i
-                                                class="icon icon-user icon-fw mr-2 mr-sm-1"></i>Account
-                                        <!-- </a> <a class="dropdown-item" href="javascript:void(0)">
-                                          <i class="icon icon-settings icon-fw mr-2 mr-sm-1"></i>Setting </a> -->
-                                        <a class="dropdown-item"
-                                           onclick="return confirm('yakin ingin keluar dari sistem ?')"
-                                           href="<?= base_url() ?>logout"> <i
-                                                    class="icon icon-power-off icon-fw mr-2 mr-sm-1"></i>Logout
-                                        </a>
-                                </div>
-                                <!-- /dropdown option -->
-
-                            </li>
-                        </ul>
-                        <!-- /header menu -->
-                    </div>
-                    <!-- Header Menu Wrapper -->
-
-                </div>
-                <!-- /header toolbar -->
-
+            <!-- LOGO -->
+            <div class="topbar-left" style="background-color:#F0F8FF;">
+                <a href="#" class="logo">
+                    <img src="<?= base_url() ?>assets/images/aa.png" alt="" width="70px" height="70px" style="margin-top:10px">
+                </a>
             </div>
-            <!-- /header container -->
 
-        </header>
-        <!-- /header -->
-        <!-- Site Main -->
-        <main class="dt-main">
-            <!-- Sidebar -->
-            <aside id="main-sidebar" class="dt-sidebar">
-                <div class="dt-sidebar__container">
+            <nav class="navbar-custom" style="background-color:#F0F8FF;">
+                <ul class="navbar-right list-inline float-right mb-0">
+                    <!-- full screen -->
+                    <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
+                        <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
+                            <i class="mdi mdi-fullscreen"></i>
+                        </a>
+                    </li>
 
-                    <!-- Sidebar Navigation -->
-                    <ul class="dt-side-nav">
+                    <!-- notification -->
+                    <li class="dropdown notification-list list-inline-item">
+                        <div class="dropdown notification-list nav-pro-img">
+                            <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown"
+                                href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <span style="margin-right: 15px;"
+                                    class="dt-avatar-name text-primary"><?= $this->session->userdata('session_nama') ?></span>
 
-                        <!-- Menu Header -->
-                        <li class="dt-side-nav__item dt-side-nav__header">
-                            <span class="dt-side-nav__text">main</span>
-                        </li>
-                        <!-- /menu header -->
 
-                        <!-- Menu Item -->
-
-                        <li class="dt-side-nav__item">
-                            <a href="<?= base_url() ?>admin" class="dt-side-nav__link" title="Dashboard"> <i
-                                        class="icon icon-home icon-fw icon-lg"></i> <span class="dt-side-nav__text">Dashboard</span>
                             </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+                                <!-- item-->
+                                <a class="dropdown-item text-info" href="<?= base_url() ?>"><i
+                                        class="mdi mdi-power text-danger"></i>
+                                    Logout</a>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+                <ul class="list-inline menu-left mb-0">
+                    <li class="float-left">
+                        <button class="button-menu-mobile open-left waves-effect" style="background-color:#F0F8FF;">
+                            <i class="mdi mdi-menu"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+        <!-- Top Bar End -->
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu" style="background-color:#F0F8FF;">
+            <div class="slimscroll-menu" id="remove-scroll">
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu" id="side-menu" style="margin-top:50px;">
+                        <li class="menu-title">Menu</li>
+
+                        <!-- <li>
+                            <a href="<?= base_url() ?>jenisbarang" class="waves-effect"><i
+                                    class="ti-package"></i><span>Jenis Barang</span></a>
+                        </li> -->
+                        <li>
+                            <a href="<?= base_url() ?>kendaraan" class="waves-effect"><i
+                                    class="ti-car"></i><span>Kendaraan</span></a>
                         </li>
-                        <li class="dt-side-nav__item dt-side-nav__header">
-                            <span class="dt-side-nav__text">Data </span>
+                        <li>
+                            <a href="<?= base_url() ?>konsumen" class="waves-effect"><i
+                                    class="ti-agenda"></i><span>Konsumen</span></a>
                         </li>
-                        <li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'kategori') echo 'open' ?>">
-                            <a href="<?= base_url('admin/kategori') ?>"
-                               class="dt-side-nav__link" title="Kategori"> <i class="fa fa-list icon-fw icon-lg"></i>
-                                <span class="dt-side-nav__text">Data Kategori</span> </a>
+                        <li>
+                            <a href="<?= base_url() ?>pegawai" class="waves-effect"><i
+                                    class="ti-user"></i><span>Pegawai</span></a>
                         </li>
-                        <li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'produk') echo 'open' ?>">
-                            <a href="<?= base_url('admin/produk') ?>"
-                               class="dt-side-nav__link" title="Produk"> <i
-                                        class="fa fa-balance-scale icon-fw icon-lg"></i>
-                                <span class="dt-side-nav__text">Data Produk</span> </a>
+                        <li>
+                            <a href="<?= base_url() ?>barang" class="waves-effect"><i
+                                    class="ti-package"></i><span>Barang</span></a>
                         </li>
-
-						<li class="dt-side-nav__item dt-side-nav__header">
-							<span class="dt-side-nav__text">Website</span>
-						</li>
-
-
-						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'banner') echo 'open' ?>">
-							<a href="<?= base_url('admin/banner') ?>"
-							   class="dt-side-nav__link" title="Banner"> <i
-									class="fa fa-picture-o icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Data Banner</span> </a>
-						</li>
-
-						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'pesan') echo 'open' ?>">
-							<a href="<?= base_url('admin/pesan') ?>"
-							   class="dt-side-nav__link" title="Pesan"> <i
-									class="fa fa-envelope icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Pesan</span> </a>
-						</li>
-
-                        <li class="dt-side-nav__item dt-side-nav__header">
+                        <li>
+                            <a href="<?= base_url() ?>permintaan" class="waves-effect"><i
+                                    class="ti-agenda"></i><span>Permintaan</span></a>
                         </li>
-                        <li class="dt-side-nav__item">
-                            <a href="<?= base_url() ?>logout"
-                               onclick="return confirm('yakin ingin keluar dari sistem ?')" class="dt-side-nav__link"
-                               title="Cuti"> <i class="icon icon-power-off icon-fw icon-lg"></i>
-                                <span class="dt-side-nav__text">Logout</span> </a>
+                        <li>
+                            <a href="<?= base_url() ?>distribusikosong" class="waves-effect"><i
+                                    class="ti-agenda"></i><span>Distribusi Kosong</span></a>
                         </li>
-                        <!-- /menu item -->
-
-
-                        <!-- /menu item -->
+                        <li>
+                            <a href="<?= base_url() ?>verf_distribusi" class="waves-effect"><i
+                                    class="ti-agenda"></i><span>Distribusi</span></a>
+                        </li>
 
                     </ul>
-                    <!-- /sidebar navigation -->
 
                 </div>
-            </aside>
-            <!-- /sidebar -->
-            <div class="dt-content-wrapper">
+                <!-- Sidebar -->
 
-                <!-- Site Content -->
-                <div class="dt-content">
+            </div>
+            <!-- Sidebar -left -->
 
-                    <!-- Page Header -->
-                    <div class="dt-page__header">
-                        <h1 class="dt-page__title"><i class="fa <?= $icon_title ?>"></i> <?= $page_title ?></h1>
-                    </div>
-                    <!-- /page header -->
+        </div>
+        <!-- Left Sidebar End -->
 
-                    <!-- Entry Header -->
-                    <div class="dt-entry__header">
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
 
-                        <!-- Entry Heading -->
-                        <div class="dt-entry__heading">
-                            <h3 class="dt-entry__title">List Data</h3>
-                        </div>
-                        <!-- /entry heading -->
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
 
-                    </div>
-                    <!-- /entry header -->
-
-
-                    <?php if ($this->session->flashdata('alert') == 'success_post') { ?>
-                        <div class="alert alert-success animated shake hide-it">
-                            <strong>SUKSES!!!</strong> Data berhasil ditambahkan.
-                        </div>
-                    <?php } ?>
-                    <?php if ($this->session->flashdata('alert') == 'success_delete') { ?>
-                        <div class="alert alert-warning animated shake hide-it">
-                            <strong>SUKSES!!!</strong> Data berhasil dihapus.
-                        </div>
-                    <?php } ?>
-                    <?php if ($this->session->flashdata('alert') == 'success_change') { ?>
-                        <div class="alert alert-info animated shake hide-it">
-                            <strong>SUKSES!!!</strong> Data berhasil diubah.
-                        </div>
-                    <?php } ?>
-                    <?php if ($this->session->flashdata('alert') == 'fail_edit') { ?>
-                        <div class="alert alert-danger animated shake hide-it">
-                            <strong>GAGAL!!!</strong> Terjadi kesalahan saat menyimpan.
-                        </div>
-                    <?php } ?>
-                    
+    </div>
+    <script>
+    $(document).ready(function() {
+        $('.data').DataTable();
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    </script>
+    <!-- END wrapper -->

@@ -45,7 +45,7 @@
                                                     <p class="slider-title slider-title--big-light text-light">Neraca Multiscale</p>
                                                     <p class="slider-title slider-title--big-bold text-light"><?= $ban['banner_judul'] ?></p>
                                                     <p class="slider-title slider-title--small text-light"><?= $ban['banner_deskripsi'] ?></p>
-                                                    <a class="hero-slider-button btn-light" href="shop-left-sidebar.html"> <i class="ion-ios-plus-empty"></i> Lihat</a>
+                                                    <!-- <a class="hero-slider-button btn-light" href="shop-left-sidebar.html"> <i class="ion-ios-plus-empty"></i> Lihat</a> -->
                                                 </div>
                                             </div>
                                         </div>

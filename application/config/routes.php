@@ -1,41 +1,73 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-    //backend
-	$route['admin'] = 'backend/DashboardController';
-	$route['admin/kategori'] = 'backend/KategoriController';
-	$route['admin/kategori/tambah'] = 'backend/KategoriController/tambah';
-	$route['admin/kategori/updateForm/(:any)'] = 'backend/KategoriController/updateForm/$1';
-	$route['admin/kategori/update'] = 'backend/KategoriController/update';
-	$route['admin/kategori/hapus/(:any)'] = 'backend/KategoriController/hapus/$1';
+$route['dashboard'] = 'DashboardController/index';
 
-	$route['admin/produk'] = 'backend/ProdukController';
-	$route['admin/produk/tambah'] = 'backend/ProdukController/tambah';
-	$route['admin/produk/lihat/(:any)'] = 'backend/ProdukController/lihat/$1';
-	$route['admin/produk/update/(:any)'] = 'backend/ProdukController/update/$1';
-	$route['admin/produk/hapus/(:any)'] = 'backend/ProdukController/hapus/$1';
+//barang
+$route['barang'] = 'BarangController/index';
+$route['barang/create'] = 'BarangController/create';
+$route['barang/update/(:any)'] = 'BarangController/update/$1';
+$route['barang/delete/(:any)'] = 'BarangController/delete/$1';
+$route['barang/getHargaByBarang'] = 'BarangController/getHargaByBarang';
 
-	$route['admin/pesan'] = 'backend/PesanController';
-	$route['admin/pesan/lihat/(:any)'] = 'backend/PesanController/lihat/$1';
 
-	$route['admin/banner'] = 'backend/BannerController';
-	$route['admin/banner/tambah'] = 'backend/BannerController/tambah';
-	$route['admin/banner/update/(:any)'] = 'backend/BannerController/update/$1';
-	$route['admin/banner/hapus/(:any)'] = 'backend/BannerController/hapus/$1';
+//jenisbarang
+$route['jenisbarang'] = 'JenisBarangController/index';
+$route['jenisbarang/create'] = 'JenisBarangController/create';
+$route['jenisbarang/update/(:any)'] = 'JenisBarangController/update/$1';
+$route['jenisbarang/delete/(:any)'] = 'JenisBarangController/delete/$1';
 
-	//frontend
-			$route['contact'] = 'frontend/ContactController/index';
-			$route['contact/send'] = 'frontend/ContactController/send_pesan';
+//konsumen
+$route['konsumen'] = 'KonsumenController/index';
+$route['konsumen/create'] = 'KonsumenController/create';
+$route['konsumen/update/(:any)'] = 'KonsumenController/update/$1';
+$route['konsumen/delete/(:any)'] = 'KonsumenController/delete/$1';
 
-			//produk
-			$route['produk/(:any)'] = 'frontend/ProductController/produk/$1';
+//pegawai
+$route['pegawai'] = 'PegawaiController/index';
+$route['pegawai/create'] = 'PegawaiController/create';
+$route['pegawai/update/(:any)'] = 'PegawaiController/update/$1';
+$route['pegawai/delete/(:any)'] = 'PegawaiController/delete/$1';
 
-  	
-  	//default
+//permintaan
+$route['permintaan'] = 'PermintaanController/index';
+$route['permintaan/create'] = 'PermintaanController/create';
+$route['permintaan/update/(:any)'] = 'PermintaanController/update/$1';
+$route['permintaan/view/(:any)'] = 'PermintaanController/view/$1';
+$route['permintaan/delete/(:any)'] = 'PermintaanController/delete/$1';
 
-  	$route['login'] = 'AuthController/index';
-  	$route['default_controller'] = 'Welcome';
-	$route['404_override'] = '';
-	$route['translate_uri_dashes'] = FALSE;
+//distribusikosong
+$route['distribusikosong'] = 'DistribusiKosongController/index';
+$route['distribusikosong/create'] = 'DistribusiKosongController/create';
+$route['distribusikosong/update/(:any)'] = 'DistribusiKosongController/update/$1';
+$route['distribusikosong/view/(:any)'] = 'DistribusiKosongController/view/$1';
+$route['distribusikosong/delete/(:any)'] = 'DistribusiKosongController/delete/$1';
+
+//verf distribusi
+$route['verf_distribusi'] = 'VerfDistribusiController/index';
+$route['verf_distribusi/create'] = 'VerfDistribusiController/create';
+$route['verf_distribusi/distribusi'] = 'VerfDistribusiController/distribusi';
+$route['verf_distribusi/distribusi/(:any)'] = 'VerfDistribusiController/distribusi/$1';
+$route['verf_distribusi/verifikasi/(:any)'] = 'VerfDistribusiController/verifikasi/$1';
+$route['verf_distribusi/invoice/(:any)'] = 'VerfDistribusiController/invoice/$1';
+$route['verf_distribusi/kwitansi/(:any)'] = 'VerfDistribusiController/kwitansi/$1';
+$route['verf_distribusi/view/(:any)'] = 'VerfDistribusiController/view/$1';
+$route['verf_distribusi/delete/(:any)'] = 'VerfDistribusiController/delete/$1';
+
+//Kendaraan
+$route['kendaraan'] = 'KendaraanController/index';
+$route['kendaraan/create'] = 'KendaraanController/create';
+$route['kendaraan/update/(:any)'] = 'KendaraanController/update/$1';
+$route['kendaraan/view/(:any)'] = 'KendaraanController/view/$1';
+$route['kendaraan/delete/(:any)'] = 'KendaraanController/delete/$1';
+$route['kendaraan/getSupirByKendaraan'] = 'KendaraanController/getSupirByKendaraan';
+
+$route['login'] = 'AuthController/index';
+$route['auth/login'] = 'AuthController/login';
+$route['auth/logout'] = 'AuthController/logout';
+$route['default_controller'] = 'AuthController/index';
+
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
 

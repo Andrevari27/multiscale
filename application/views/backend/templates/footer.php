@@ -1,64 +1,58 @@
-</div>
-<footer class="dt-footer">
-  Copyright  - <a href="http://wikidevia.digtive.id/" target="_blank"> Digtive</a>-  © 2019
+<footer class="footer">
+    © 2024 <span class="d-none d-sm-inline-block"></span>.
 </footer>
-<!-- /footer -->
-            </div>
-            <!-- /site content wrapper -->
-
-            
-
-
-        </main>
-    </div>
-</div>
-<!-- /root -->
-
-<!-- Optional JavaScript -->
-<script src="<?php echo base_url() ?>assets/backend/node_modules/jquery/dist/jquery.min.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/moment/moment.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Perfect Scrollbar jQuery -->
-<script src="<?php echo base_url() ?>assets/backend/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
-<!-- /perfect scrollbar jQuery -->
-
-<!-- masonry script -->
-<script src="<?php echo base_url() ?>assets/backend/node_modules/masonry-layout/dist/masonry.pkgd.min.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/sweetalert2/dist/sweetalert2.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/js/functions.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/js/customizer.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/chart.js/dist/Chart.min.js"></script>
-
-<!-- Resources -->
-<script src="<?php echo base_url() ?>assets/backend/node_modules/ammap3/ammap/ammap.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/ammap3/ammap/maps/js/continentsLow.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/ammap3/ammap/themes/light.js"></script>
-
-<script src="<?php echo base_url() ?>assets/backend/node_modules/amcharts3/amcharts/amcharts.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/amcharts3/amcharts/gauge.js"></script>
-
-<script src="<?php echo base_url() ?>assets/backend/js/script.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/js/custom/charts/dashboard-default.js"></script>
-<!-- Custom JavaScript -->
-<script src="<?php echo base_url() ?>assets/backend/node_modules/datatables.net/js/jquery.dataTables.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/js/custom/data-table.js"></script>
-
-<script src="<?php echo base_url() ?>assets/backend/node_modules/sweetalert2/dist/sweetalert2.js"></script>
-<script src="<?php echo base_url() ?>assets/backend/js/custom/sweet-alert.js"></script>
-
-<script src="<?php echo base_url() ?>assets/backend/js/custom/apps/multiscale.js"></script>
-
 
 <script>
-$(function() {
-var timeout = 5000; // in miliseconds (3*1000)
-
-$('.hide-it').delay(timeout).fadeOut(200);
+$(document).ready(function() {
+    $('.data').DataTable();
 });
-
 </script>
+<script>
+$(document).ready(function() {
+    $('.select2').select2();
+});
+</script>
+<!-- jQuery  -->
+<script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
+<script src="<?= base_url() ?>assets/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url() ?>assets/js/metisMenu.min.js"></script>
+<script src="<?= base_url() ?>assets/js/jquery.slimscroll.js"></script>
+<script src="<?= base_url() ?>assets/js/waves.min.js"></script>
 
+<!-- Required datatable js -->
+<script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!--Chartist Chart-->
+<script src="<?= base_url() ?>assets/plugins/chartist/js/chartist.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/chartist/js/chartist-plugin-tooltip.min.js"></script>
+
+<!-- Buttons examples -->
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/jszip.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/pdfmake.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/vfs_fonts.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.html5.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.print.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/buttons.colVis.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="<?= base_url() ?>assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="<?= base_url() ?>assets/pages/datatables.init.js"></script>
+
+
+
+<!-- peity JS -->
+<script src="<?= base_url() ?>assets/plugins/peity-chart/jquery.peity.min.js"></script>
+
+<script src="<?= base_url() ?>assets/pages/dashboard.js"></script>
+
+<!-- App js -->
+<script src="<?= base_url() ?>assets/js/app.js"></script>
 
 </body>
 
