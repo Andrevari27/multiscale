@@ -40,7 +40,7 @@
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
-                                <td><?= $val['nama_konsumen'] ?></td>
+                                <td><?= $val['nama_konsumen']." - ".$val['lokasi_bongkar'] ?></td>
                                 <td><?= date_indo($val['tanggal']) ?></td>
                                 <td><?= date_indo($val['tgl_deadline']) ?></td>
                                 <td><?= $val['cabang_distribusi'] ?></td>

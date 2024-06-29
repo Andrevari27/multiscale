@@ -45,7 +45,7 @@
         </div>
         <div class="container-fluid">
             <div class="page-title-box">
-                <form action="<?= base_url() ?>permintaan/update/<?= $permintaan['no_pemesanan'] ?>" method="POST"
+                <form action="<?= base_url() ?>permintaan/approve/<?= $permintaan['no_pemesanan'] ?>" method="POST"
                     enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-12">

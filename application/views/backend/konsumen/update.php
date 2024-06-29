@@ -22,50 +22,57 @@
 						<div class="col-12">
 							<div class="form-group row">
 								<label for="" class="col-sm-2 col-form-label">Kode Konsumen</label>
-								<div class="col-sm-10">
+								<div class="col-sm-4">
 									<input class="form-control" type="text" placeholder="Kode Konsumen"
 										   name="kode_konsumen" value="<?= $konsumen['kode_konsumen'] ?>" required>
 								</div>
 							</div>
                             <div class="form-group row">
 								<label for="" class="col-sm-2 col-form-label">Nama Konsumen</label>
-								<div class="col-sm-10">
+								<div class="col-sm-4">
 									<input class="form-control" type="text" placeholder="Nama Konsumen"
 										   name="nama_konsumen" value="<?= $konsumen['nama_konsumen'] ?>" required>
 								</div>
 							</div>
                             <div class="form-group row">
 								<label for="" class="col-sm-2 col-form-label">Alamat</label>
-								<div class="col-sm-10">
+								<div class="col-sm-4">
 									<input class="form-control" type="text" placeholder="Alamat"
 										   name="alamat" value="<?= $konsumen['alamat'] ?>" required>
 								</div>
 							</div>
                             <div class="form-group row">
 								<label for="" class="col-sm-2 col-form-label">Lokasi Bongkar</label>
-								<div class="col-sm-10">
+								<div class="col-sm-4">
 									<input class="form-control" type="text" placeholder="Lokasi Bongkar"
 										   name="lokasi_bongkar" value="<?= $konsumen['lokasi_bongkar'] ?>" required>
 								</div>
 							</div>
                             <div class="form-group row">
 								<label for="" class="col-sm-2 col-form-label">Nomor Telpon</label>
-								<div class="col-sm-10">
+								<div class="col-sm-4">
 									<input class="form-control" type="number" placeholder="Nomor Telpon"
 										   name="no_telp" value="<?= $konsumen['no_telp'] ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="" class="col-sm-2 col-form-label">Penanggung Jawab</label>
-								<div class="col-sm-10">
+								<div class="col-sm-4">
 									<input class="form-control" type="text" placeholder="Penanggung Jawab"
 										   name="penjab" value="<?= $konsumen['penjab'] ?>" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="" class="col-sm-2 col-form-label">Photo</label>
+								<div class="col-sm-4">
+									<input class="form-control" type="file" placeholder=""
+										   name="foto" value="<?= $konsumen['foto'] ?>" >
 								</div>
 							</div>
 						</div> <!-- end col -->
 					</div>
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-6">
 							<button name="simpan" type="submit" class="btn btn-info float-right ml-2">Simpan</button>
 							<a onclick="history.back()" class="btn btn-light float-right">Cancel</a>
 						</div>

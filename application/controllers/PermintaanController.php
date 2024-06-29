@@ -105,7 +105,7 @@ class PermintaanController extends CI_Controller{
 		}
 	}
 	
-	public function update($id){
+	public function approve($id){
 		if (isset($_POST['simpan'])) {
 
             $data = array(
@@ -143,7 +143,7 @@ class PermintaanController extends CI_Controller{
 				'permintaan' => $this->Permintaan->getPermintaanById($id),
 			);
 			$this->load->view('backend/templates/header', $data);
-			$this->load->view('backend/permintaan/update', $data);
+			$this->load->view('backend/permintaan/approve', $data);
 			$this->load->view('backend/templates/footer');
 		}
 	}

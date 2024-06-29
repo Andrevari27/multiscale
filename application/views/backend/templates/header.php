@@ -34,6 +34,17 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
+<style>
+        /* CSS untuk full screen */
+        .fullscreen {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+    </style>
 
 <body>
 
@@ -153,14 +164,18 @@
         <!-- ============================================================== -->
 
     </div>
+   
     <script>
-    $(document).ready(function() {
-        $('.data').DataTable();
-    });
-    </script>
-    <script>
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
+        $(document).ready(function() {
+            $('.data').DataTable();
+            $('.select2').select2();
+
+            // Handle fullscreen button click
+            $('#btn-fullscreen').on('click', function(e) {
+                e.preventDefault();
+                $('#wrapper').toggleClass('fullscreen');
+                $('body').toggleClass('fullscreen-body');
+            });
+        });
     </script>
     <!-- END wrapper -->

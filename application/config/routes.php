@@ -33,7 +33,7 @@ $route['pegawai/delete/(:any)'] = 'PegawaiController/delete/$1';
 //permintaan
 $route['permintaan'] = 'PermintaanController/index';
 $route['permintaan/create'] = 'PermintaanController/create';
-$route['permintaan/update/(:any)'] = 'PermintaanController/update/$1';
+$route['permintaan/approve/(:any)'] = 'PermintaanController/approve/$1';
 $route['permintaan/view/(:any)'] = 'PermintaanController/view/$1';
 $route['permintaan/delete/(:any)'] = 'PermintaanController/delete/$1';
 

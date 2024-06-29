@@ -46,20 +46,20 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <label for="" class="col-form-label">No Pemesanan</label>
                                     <input class="form-control" type="text" placeholder="No Pemesanan"
                                         name="no_pemesanan" value="<?= generate_spm_number() ?>" readonly>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Pemesanan</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Pemesanan"
                                         name="tanggal" id="tanggalPemesanan" required>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Deadline</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Deadline"
-                                        name="tgl_deadline" id="tanggalDeadline" required>
+                                        name="tgl_deadline"  >
                                 </div>
                                 <script>
                                 // JavaScript to set the default date to today
@@ -91,7 +91,7 @@
                                 <?php
 								$permintaan = $this->Konsumen->getKonsumen();
 								?>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <label for="kode_konsumen" class="col-form-label">Konsumen</label>
                                     <select name="kode_konsumen" id="kode_konsumen" class="select2 form-control"
                                         required>
@@ -114,7 +114,7 @@
                                 <?php
 								$permintaan_b = $this->Barang->getBarang();
 								?>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <label for="" class="col-form-label">Barang</label>
                                     <select name="kode_brng" id="kode_brng" class="form-control" required>
                                         <option value="">Pilih Barang</option>
@@ -123,7 +123,7 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Volume</label>
                                     <input class="form-control" type="text" placeholder="Volume" name="jumlah"
                                         oninput="formatCurrency(this)" required>
@@ -142,11 +142,7 @@
                                         <option value="Ls">Ls</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Harga Satuan</label>
-                                    <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
-                                        oninput="formatCurrency(this)" required>
-                                </div>
+                              
                                 <!-- <script>
                                 document.addEventListener('DOMContentLoaded', function() {
                                     document.getElementById('kode_brng').addEventListener('change',
@@ -182,16 +178,22 @@
                                 </script> -->
                             </div>
                             <div class="form-group row">
-
-                                <div class="col-sm-4">
-                                    <label for="" class="col-form-label">Diskon (%)</label>
-                                    <input class="form-control" type="text" placeholder="%" name="potongan">
+                            <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Harga Satuan</label>
+                                    <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
+                                        oninput="formatCurrency(this)" required>
                                 </div>
-                                <div class="col-sm-4">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Ppn (%)</label>
                                     <input class="form-control" type="text" placeholder="%" name="ppn">
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Diskon (%)</label>
+                                    <input class="form-control" type="text" placeholder="%" name="potongan">
+                                </div>
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Pph (%)</label>
                                     <input class="form-control" type="text" placeholder="%" name="pph">
                                 </div>

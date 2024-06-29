@@ -51,7 +51,7 @@
                                 <?php if ($this->session->userdata('session_dep') == 'Arengka'): ?>
                                 <td>
                                     <?php if ($val['status_approval'] !== 'Disetujui'): ?>
-                                    <a href="permintaan/update/<?= $val['no_pemesanan'] ?>" class="btn btn-warning"><i
+                                    <a href="permintaan/approve/<?= $val['no_pemesanan'] ?>" class="btn btn-warning"><i
                                             class="fa fa-check"></i> Approval</a>
                                     <?php else: ?>
                                         Sudah di Approve
