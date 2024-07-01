@@ -21,12 +21,13 @@ class Permintaan extends CI_Model{
     function getPermintaanById($id)
     {
         $this->db->select('*');
-        $this->db->where('no_pemesanan', $id);
         $this->db->from('pemesanan');
         $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
+        $this->db->join('distribusi', 'distribusi.no_pemesanan = pemesanan.no_pemesanan');
+        $this->db->where('pemesanan.no_pemesanan', $id); // specify the table for no_pemesanan
         return $this->db->get()->row_array();
     }
-
+    
     function create($data)
     {
         return $this->db->insert('pemesanan',$data);

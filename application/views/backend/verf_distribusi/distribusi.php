@@ -98,7 +98,7 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Sisa Permintaan</label>
                                     <input class="form-control" type="text" placeholder="Sisa Permintaan"
-                                        name="sisa_permintaan" value="<?= $permintaan['jumlah']?>" readonly>
+                                        name="sisa_permintaan" value="<?= $permintaan['jumlah']-$permintaan['tim_muat']?>" readonly>
                                 </div>
                                 <script>
                                 document.addEventListener('DOMContentLoaded', function() {

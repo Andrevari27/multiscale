@@ -128,27 +128,34 @@
                 </div>
                 <div class="row">
                     <div class="col-12 float-left">
-                        <p style="margin-top: 15px;font-size: 12pt;">No. Pembayaran <span style="margin-left: 18px;">:</span>
+                        <p style="margin-top: 15px;font-size: 12pt;">No. Pembayaran <span
+                                style="margin-left: 18px;">:</span>
                             <?= $distribusiA['no_pemesanan'] ?>
                         </p>
-                        <p style="margin-top: -20px;font-size: 12pt;">Sudah Terima Dari <span style="margin-left: 5px;">:</span>
+                        <p style="margin-top: -20px;font-size: 12pt;">Sudah Terima Dari <span
+                                style="margin-left: 5px;">:</span>
                             <?= $distribusiA['no_pemesanan'] ?>
                         </p>
-                        <p style="margin-top: -20px;font-size: 12pt;">Untuk Pembayaran <span style="margin-left: 0px;">:</span>
+                        <p style="margin-top: -20px;font-size: 12pt;">Untuk Pembayaran <span
+                                style="margin-left: 0px;">:</span>
                             Pembayaran Pelunasan Tagihan
                         </p>
-                        <p style="margin-top: -20px;font-size: 12pt;">Total Penagihan <span style="margin-left: 22px;">:</span>
+                        <p style="margin-top: -20px;font-size: 12pt;">Total Penagihan <span
+                                style="margin-left: 22px;">:</span>
                             Rp. <?= number_format($total_tagihan) ?>
                         </p>
-                        <p style="margin-top: -20px;font-size: 12pt;">Terbilang <span style="margin-left: 69px;">:</span>
+                        <p style="margin-top: -20px;font-size: 12pt;">Terbilang <span
+                                style="margin-left: 69px;">:</span>
                             <?= $total_tagihan_terbilang ?> Rupiah
                         </p>
                         <p style="margin-top: 10px;font-size: 12pt;">CATATAN <span style="margin-left: 0px;">:</span>
                         </p>
                         <p style="margin-top: -15px;font-size: 12pt;margin-left: 20px;">
-                        Jatuh tempo null hari setelah tanggal kwitansi dan cantumkan nomor invoice pada bukti transfer. Setelah melakukan pembayaran,
-                        bukti transfer dan rincian pembayaran harap di fax ke Hp: 08562675039, 085296559963. Demikian permohonan ini kami ajukan,
-                        mohon untuk ditindaklanjuti. Atas perhatian dan kerjasamanya, kami ucapkan terima kasih
+                            Jatuh tempo null hari setelah tanggal kwitansi dan cantumkan nomor invoice pada bukti
+                            transfer. Setelah melakukan pembayaran,
+                            bukti transfer dan rincian pembayaran harap di fax ke Hp: 08562675039, 085296559963.
+                            Demikian permohonan ini kami ajukan,
+                            mohon untuk ditindaklanjuti. Atas perhatian dan kerjasamanya, kami ucapkan terima kasih
                         </p>
                     </div>
                 </div>
@@ -157,7 +164,17 @@
 
                     </div>
                     <div class="col-4 text-center">
-                    <p style="margin-top: 30px;font-size: 12pt;">Pekanbaru, <?= date_indo($distribusiA['tgl_sampai']) ?></p>
+                        <p id="tanggal" style="margin-top: 30px;font-size: 12pt;">Pekanbaru, <span id="tanggal-hari-ini"><?= date('d F Y') ?></span></p>
+                        <script>
+                        var now = new Date();
+                        var options = {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        };
+                        document.getElementById('tanggal-hari-ini').textContent = now.toLocaleDateString('id-ID',
+                            options);
+                        </script>
                         <p style="margin-top: -20px;font-size: 12pt;">Mengetahui,</p>
                         <p style="margin-top: 80px;font-size: 12pt;">ANDRE VARI ANTONI</p>
                         <p style="margin-top: -30px;font-size: 12pt;">--------------------------------------</p>
