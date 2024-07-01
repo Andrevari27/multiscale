@@ -81,7 +81,7 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Satuan</label>
                                     <input class="form-control" type="text" placeholder="Satuan" name="satuan"
-                                    value="<?= $permintaan['satuan'] ?>" readonly>
+                                        value="<?= $permintaan['satuan'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Timbangan Muat</label>
@@ -98,9 +98,41 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Sisa Permintaan</label>
                                     <input class="form-control" type="text" placeholder="Sisa Permintaan"
-                                        name="sisa_permintaan"
-                                        value="<?= $permintaan['jumlah']?>" readonly>
+                                        name="sisa_permintaan" value="<?= $permintaan['jumlah']?>" readonly>
                                 </div>
+                                <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Mendapatkan elemen input tim_muat
+                                    var timMuatInput = document.querySelector('input[name="tim_muat"]');
+                                    var sisaPermintaanInput = document.querySelector(
+                                        'input[name="sisa_permintaan"]');
+                                    var jumlahPermintaan =
+                                    <?= $permintaan['jumlah'] ?>; // Ambil jumlah permintaan dari PHP
+
+                                    // Event listener untuk perubahan nilai pada input tim_muat
+                                    timMuatInput.addEventListener('input', function() {
+                                        // Ambil nilai tim_muat yang diinput pengguna
+                                        var timMuatValue = parseFloat(this.value.replace(/\D/g, ''));
+
+                                        // Validasi jika input bukan angka atau kosong, set nilai sisa_permintaan menjadi jumlah permintaan awal
+                                        if (isNaN(timMuatValue) || timMuatValue === 0) {
+                                            sisaPermintaanInput.value = jumlahPermintaan;
+                                        } else {
+                                            // Hitung sisa permintaan
+                                            var sisaPermintaan = jumlahPermintaan - timMuatValue;
+
+                                            // Pastikan sisa permintaan tidak kurang dari 0
+                                            if (sisaPermintaan < 0) {
+                                                sisaPermintaan = 0;
+                                            }
+
+                                            // Set nilai sisa_permintaan
+                                            sisaPermintaanInput.value = sisaPermintaan;
+                                        }
+                                    });
+                                });
+                                </script>
+
                                 <?php
                                 $permintaan_f = $this->Kendaraan->getKendaraan();
                                 ?>
@@ -122,7 +154,7 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Berangkat</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Berangkat"
-                                        name="tgl_berangkat" required>
+                                        name="tgl_berangkat" id="tgl_berangkat" required>
                                 </div>
                             </div>
                             <script>
@@ -162,8 +194,42 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Jam Berangkat</label>
                                     <input class="form-control" type="time" placeholder="Jam Berangkat"
-                                        name="jam_berangkat" required>
+                                        name="jam_berangkat" id="jam_berangkat" required>
                                 </div>
+                                <script>
+                                // JavaScript to set the default date to today
+                                document.addEventListener('DOMContentLoaded', (event) => {
+                                    const today = new Date();
+                                    const year = today.getFullYear();
+                                    const month = String(today.getMonth() + 1).padStart(2,
+                                        '0'); // Add leading zero if needed
+                                    const day = String(today.getDate()).padStart(2,
+                                        '0'); // Add leading zero if needed
+                                    const dateString = `${year}-${month}-${day}`;
+
+                                    document.getElementById('tgl_berangkat').value = dateString;
+                                });
+                                // Ambil elemen input time
+                                var jamBerangkatInput = document.getElementById('jam_berangkat');
+
+                                // Fungsi untuk mendapatkan waktu saat ini dalam format HH:mm
+                                function setJamSekarang() {
+                                    var now = new Date();
+                                    var hours = now.getHours().toString().padStart(2,
+                                        '0'); // Ambil jam dengan format 2 digit
+                                    var minutes = now.getMinutes().toString().padStart(2,
+                                        '0'); // Ambil menit dengan format 2 digit
+                                    var currentTime = hours + ':' + minutes;
+
+                                    // Set nilai input time dengan waktu saat ini
+                                    jamBerangkatInput.value = currentTime;
+                                }
+
+                                // Panggil fungsi setJamSekarang untuk mengatur waktu saat halaman dimuat
+                                setJamSekarang();
+                                </script>
+
+                                </script>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Uang Jalan Pokok</label>
                                     <input class="form-control" type="text" placeholder="Uang Jalan Pokok"

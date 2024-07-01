@@ -48,7 +48,7 @@ class PermintaanController extends CI_Controller{
 				'cabang_permintaan' => $this->input->post('cabang_permintaan'),
 				'satuan' => $this->input->post('satuan'),
 				'jumlah' => $jumlah,
-				'subtotal' => $jumlah*$harga,
+				// 'subtotal' => $jumlah*$harga,
 				'total' => $total,
 				'harga' => $harga,
 				'potongan' => $potongan,
@@ -115,13 +115,11 @@ class PermintaanController extends CI_Controller{
 					'tanggal' => $this->input->post('tanggal'),
 					'tgl_deadline' => $this->input->post('tgl_deadline'),
 					'cabang_permintaan' => $this->input->post('cabang_permintaan'),
-					'status_permintaan' => 'Proses Distribusi',
+					'status' => 'Approval',
 					'cabang_approval' => $this->input->post('cabang_approval'),
 					// 'satuan' => $this->input->post('satuan'),
-					'status_approval' => 'Disetujui',
 					'cabang_distribusi' => 'Rimbo Panjang',
-					'status_distribusi' => 'Proses Pengajuan',
-					'subtotal' => str_replace(',', '', $this->input->post('subtotal')),
+					// 'subtotal' => str_replace(',', '', $this->input->post('subtotal')),
 					'potongan' => str_replace(',', '', $this->input->post('potongan')),
 					'total' => str_replace(',', '', $this->input->post('total')),
 					'ppn' => str_replace(',', '', $this->input->post('ppn')),
@@ -148,6 +146,15 @@ class PermintaanController extends CI_Controller{
 		}
 	}
 	
+	public function view($id){
+		$data = array(
+			'judul' => 'Lihat Data Permintaan',
+			'permintaan' => $this->Permintaan->getPermintaanById($id),
+		);
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/permintaan/view', $data);
+		$this->load->view('backend/templates/footer');
+	}
 
 	public function delete($id){
         $this->Permintaan->delete($id);

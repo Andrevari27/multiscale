@@ -25,9 +25,7 @@
                                 <th>No</th>
                                 <th>No. Pemesanan</th>
                                 <th>Konsumen</th>
-                                <th>Tgl Pemesanan</th>
-                                <th>Tgl Deadline</th>
-                                <th>Cabang Distribusi</th>
+                                <th>Tanggal Pemesanan</th>
                                 <th>Cabang Permintaan</th>
                                 <th>Aksi</th>
                             </tr>
@@ -36,14 +34,12 @@
                             <?php
 						$no = 1;
 						foreach ($permintaan as $val): ?>
-                            <?php if ($val['status_approval'] == 'Disetujui'): ?>
+                            <?php if ($val['status'] == 'Approval'): ?>
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
                                 <td><?= $val['nama_konsumen']." - ".$val['lokasi_bongkar'] ?></td>
                                 <td><?= date_indo($val['tanggal']) ?></td>
-                                <td><?= date_indo($val['tgl_deadline']) ?></td>
-                                <td><?= $val['cabang_distribusi'] ?></td>
                                 <td><?= $val['cabang_permintaan'] ?></td>
                                 <td>
                                     <a href="verf_distribusi/distribusi/<?= $val['no_pemesanan'] ?>"

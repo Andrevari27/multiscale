@@ -25,14 +25,14 @@
                                 <th>No</th>
                                 <th>No. Pemesanan</th>
                                 <th>Konsumen</th>
-                                <th>Tgl Pemesanan</th>
-                                <th>Tgl Deadline</th>
-                                <th>Status Permintaan</th>
-                                <th>Status Approval</th>
-                                <th>Status Distribusi</th>
+                                <th>Tanggal Pemesanan</th>
+                                <th>Barang</th>
+                                <th>Volume</th>
+                                <th>Status Pemesanan</th>
                                 <?php if ($this->session->userdata('session_dep') == 'Arengka'): ?>
-                                <th>Aksi</th>
+                                <th>Proses</th>
                                 <?php endif ?>
+                                <th>Lihat</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,20 +44,21 @@
                                 <td><?= $val['no_pemesanan'] ?></td>
                                 <td><?= $val['nama_konsumen']." - ".$val['lokasi_bongkar'] ?></td>
                                 <td><?= date_indo($val['tanggal']) ?></td>
-                                <td><?= date_indo($val['tgl_deadline']) ?></td>
-                                <td><?= $val['status_approval'] ?></td>
-                                <td><?= $val['status_permintaan'] ?></td>
-                                <td><?= $val['status_distribusi'] ?></td>
+                                <td><?= $val['nama_brng'] ?></td>
+                                <td><?= $val['jumlah']." ".$val['satuan'] ?></td>
+                                <td><?= $val['status'] ?></td>
                                 <?php if ($this->session->userdata('session_dep') == 'Arengka'): ?>
                                 <td>
-                                    <?php if ($val['status_approval'] !== 'Disetujui'): ?>
+                                    <?php if ($val['status'] !== 'Approval'): ?>
                                     <a href="permintaan/approve/<?= $val['no_pemesanan'] ?>" class="btn btn-warning"><i
                                             class="fa fa-check"></i> Approval</a>
                                     <?php else: ?>
-                                        Sudah di Approve
+                                         Approved
                                     <?php endif; ?>
                                 </td>
                                 <?php endif ?>
+                                <td><a href="permintaan/view/<?= $val['no_pemesanan'] ?>" class="btn btn-info"><i
+                                            class="fa fa-eye"></i></a></td>
                             </tr>
                             <?php
 							$no++;

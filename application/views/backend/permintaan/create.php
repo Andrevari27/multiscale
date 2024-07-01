@@ -190,12 +190,18 @@
                                     <input class="form-control" type="text" placeholder="%" name="ppn">
                                 </div>
                                 <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Diskon (%)</label>
-                                    <input class="form-control" type="text" placeholder="%" name="potongan">
+                                    <label for="" class="col-form-label">Potongan</label>
+                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan" oninput="formatCurrency(this)">
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Pph (%)</label>
                                     <input class="form-control" type="text" placeholder="%" name="pph">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Upload Foto PO</label>
+                                    <input class="form-control" type="file" name="foto_po_konsumen">
                                 </div>
                             </div>
                             <input class="form-control" type="hidden" placeholder="Cabang Permintaan"
@@ -203,7 +209,7 @@
                         </div> <!-- end col -->
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-9">
                             <button name="simpan" type="submit" class="btn btn-info float-right ml-2">Simpan</button>
                             <a onclick="history.back()" class="btn btn-light float-right">Cancel</a>
                         </div>

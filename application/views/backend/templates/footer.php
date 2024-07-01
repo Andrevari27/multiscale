@@ -7,10 +7,6 @@ $(document).ready(function() {
     $('.data').DataTable();
 });
 </script>
-<script>
-$(document).ready(function() {
-    $('.select2').select2();
-});
 </script>
 <!-- jQuery  -->
 <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
