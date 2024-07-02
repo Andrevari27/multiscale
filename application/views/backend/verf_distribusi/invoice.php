@@ -221,15 +221,15 @@
                 <div class="row">
                     <div class="col-6 text-center float-left">
                         <p style="margin-top: 30px;font-size: 12pt;">Dengan Hormat,</p>
-                        <p style="margin-top: 80px;font-size: 12pt;">ANDRE VARI ANTONI</p>
+                        <p style="margin-top: 80px;font-size: 12pt;"><?= $this->session->userdata('session_nama') ?></p>
                         <p style="margin-top: -20px;font-size: 12pt;">---------------------------------------</p>
                         <p style="margin-top: -20px;font-size: 12pt;">Bagian Penagihan</p>
                     </div>
                     <div class="col-6 text-center float-right">
-                        <p style="margin-top: 30px;font-size: 12pt;">Kepala Bagian Keuangan</p>
-                        <p style="margin-top: 80px;font-size: 12pt;">ANDRE VARI ANTONI</p>
+                        <p style="margin-top: 30px;font-size: 12pt;">Konsumen</p>
+                        <p style="margin-top: 80px;font-size: 12pt;"><?= $distribusiA['nama_konsumen'] ?></p>
                         <p style="margin-top: -20px;font-size: 12pt;">---------------------------------------</p>
-                        <p style="margin-top: -20px;font-size: 12pt;">Wakil Keu & Akuntansi</p>
+                        <p style="margin-top: -20px;font-size: 12pt;">Bagian Keuangan</p>
                     </div>
                 </div>
             </div>

@@ -85,6 +85,26 @@ class KonsumenController extends CI_Controller{
 		}
 	}
 
+	public function search()
+    {
+        $searchTerm = $this->input->get('term'); // Ambil nilai pencarian dari parameter GET 'term'
+
+        // Panggil method getKonsumen dari model Konsumen_model untuk mendapatkan data konsumen
+        $results = $this->Konsumen->getKonsumenByName($searchTerm);
+
+        // Format data untuk format JSON yang diharapkan oleh Select2
+        $data = array();
+        foreach ($results as $row) {
+            $data[] = array(
+                'id' => $row['kode_konsumen'],
+                'text' => $row['nama_konsumen'] . ' - ' . $row['lokasi_bongkar']
+            );
+        }
+
+        // Keluarkan data dalam format JSON
+        echo json_encode($data);
+    }
+
 	public function delete($id){
         $this->Konsumen->delete($id);
         $this->session->set_flashdata('alert', 'success_delete');

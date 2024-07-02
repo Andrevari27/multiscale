@@ -140,9 +140,9 @@
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
-                                <td><?= $val['dep_asal'] ?></td>
-                                <td><?= $val['dep_transit'] ?></td>
-                                <td><?= $val['dep_tujuan'] ?></td>
+                                <td><?= $val['asal_distribusi'] ?></td>
+                                <td><?= $val['tujuan_distribusi'] ?></td>
+                                <td><?= $val['nama_konsumen'] ?></td>
                                 <td><?= $val['kode_brng'] ?></td>
                                 <td><?= number_format($val['tim_muat'])." ".$val['satuan']  ?></td>
                                 <td><?= $val['no_kendaraan'] ?></td>

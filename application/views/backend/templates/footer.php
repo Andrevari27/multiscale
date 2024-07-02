@@ -32,6 +32,8 @@ $(document).ready(function() {
 <!-- Responsive examples -->
 <script src="<?= base_url() ?>assets/plugins/datatables/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/select2/js/select2.min.js"></script>
+
 
 <!-- Datatable init js -->
 <script src="<?= base_url() ?>assets/pages/datatables.init.js"></script>

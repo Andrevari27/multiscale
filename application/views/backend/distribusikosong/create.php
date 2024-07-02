@@ -71,7 +71,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="" class="col-form-label">Asal Distribusi</label>
-                                    <select name="dep_asal" id="dep_asal" class="form-control" required>
+                                    <select name="dep_asal" id="dep_asal" class="form-control select2" required>
                                         <option>Pilih Asal Distribusi</option>
                                         <option value="Duri">Duri</option>
                                         <option value="Arengka">Arengka</option>
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="" class="col-form-label">Tujuan Distribusi</label>
-                                    <select name="dep_tujuan" id="dep_tujuan" class="form-control" required>
+                                    <select name="dep_tujuan" id="dep_tujuan" class="form-control select2" required>
                                         <option>Pilih Tujuan Distribusi</option>
                                         <option value="Duri">Duri</option>
                                         <option value="Arengka">Arengka</option>

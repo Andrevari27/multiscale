@@ -41,9 +41,6 @@ class Distribusi extends CI_Model{
     function getDistribusiById($id)
     {
         $this->db->select('*');
-        $this->db->join('kendaraan', 'kendaraan.no_kendaraan = distribusi.no_kendaraan');
-        $this->db->join('konsumen', 'konsumen.kode_konsumen = distribusi.kode_konsumen');
-        $this->db->join('distribusikosong', 'distribusikosong.no_distribusi = distribusi.no_distribusi');
         $this->db->where('no_kendaraan', $id);
         $this->db->from('distribusi');
         return $this->db->get()->row_array();

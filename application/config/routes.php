@@ -23,6 +23,8 @@ $route['konsumen'] = 'KonsumenController/index';
 $route['konsumen/create'] = 'KonsumenController/create';
 $route['konsumen/update/(:any)'] = 'KonsumenController/update/$1';
 $route['konsumen/delete/(:any)'] = 'KonsumenController/delete/$1';
+$route['konsumen/search'] = 'KonsumenController/search';
+
 
 //pegawai
 $route['pegawai'] = 'PegawaiController/index';

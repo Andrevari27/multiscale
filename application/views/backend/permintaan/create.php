@@ -93,7 +93,7 @@
 								?>
                                 <div class="col-sm-3">
                                     <label for="kode_konsumen" class="col-form-label">Konsumen</label>
-                                    <select name="kode_konsumen" id="kode_konsumen" class="select2 form-control"
+                                    <select name="kode_konsumen" id="kode_konsumen" class="form-control select2"
                                         required>
                                         <?php foreach ($permintaan as $a): ?>
                                         <option value="<?= $a['kode_konsumen'] ?>"><?= $a['nama_konsumen'] ?> -
@@ -103,13 +103,6 @@
                                 </div>
 
                             </div>
-                            <script>
-                            $(document).ready(function() {
-                                $('.select2').select2();
-                                $('#kode_konsumen')
-                                    .select2(); // Ensure select2 is applied to the Konsumen select element
-                            });
-                            </script>
                             <div class="form-group row">
                                 <?php
 								$permintaan_b = $this->Barang->getBarang();

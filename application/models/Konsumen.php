@@ -24,6 +24,15 @@ class Konsumen extends CI_Model{
         return $this->db->get()->row_array();
     }
 
+    public function getKonsumenByName($searchTerm = "")
+    {
+        if (!empty($searchTerm)) {
+            $this->db->like('nama_konsumen', $searchTerm); // Menambahkan kondisi LIKE untuk pencarian berdasarkan nama konsumen
+        }
+        $query = $this->db->get('konsumen');
+        return $query->result_array(); // Mengembalikan hasil query dalam bentuk array
+    }
+
     function create($data)
     {
         return $this->db->insert('konsumen',$data);
