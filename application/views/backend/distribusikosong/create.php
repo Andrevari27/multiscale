@@ -71,7 +71,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="" class="col-form-label">Asal Distribusi</label>
-                                    <select name="dep_asal" id="dep_asal" class="form-control select2" required>
+                                    <select name="dep_asal" id="dep_asal" class="form-control select2-single" required>
                                         <option>Pilih Asal Distribusi</option>
                                         <option value="Duri">Duri</option>
                                         <option value="Arengka">Arengka</option>
