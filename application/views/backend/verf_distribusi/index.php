@@ -57,30 +57,79 @@
                     </table>
                 </div>
             </div>
-            <div class="container-fluid">
-                <div class="page-title-box">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6">
-                            <h4 class="page-title">Data Distribusi</h4>
-                            <ol class="breadcrumb">
-                            </ol>
-                        </div>
+            <div class="page-title-box">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <h4 class="page-title">Data Distribusi Kosong</h4>
+                        <ol class="breadcrumb">
+                        </ol>
                     </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="datatable" class="table table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <th>No</th>
+                                <th>Pegawai</th>
+                                <th>Asal</th>
+                                <th>Tujuan</th>
+                                <th>No Kendaraan</th>
+                                <th>Supir</th>
+                                <th>Tanggal Berangkat</th>
+                                <th>Jam Berangkat</th>
+                                <th>Uang Jalan Pokok</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+						$no = 1;
+						foreach ($distribusikosong as $val): ?>
+                            <tr class="text-center">
+                                <td><?= $no ?></td>
+                                <td><?= $val['nip_penginputan'] ?></td>
+                                <td><?= $val['dep_asal'] ?></td>
+                                <td><?= $val['dep_tujuan'] ?></td>
+                                <td><?= $val['no_kendaraan'] ?></td>
+                                <td><?= $val['supir'] ?></td>
+                                <td><?= date_indo($val['tgl_berangkat']) ?></td>
+                                <td><?= $val['jam_berangkat'] ?></td>
+                                <td><?= number_format($val['uang_JP']) ?></td>
+                                <td>
+                                    <a href="verf_distribusi/distribusiKosong/<?= $val['no_distribusi'] ?>"
+                                        class="btn btn-warning">Distribusikan</a>
+                                </td>
+                            </tr>
+                            <?php
+							$no++;
+						 endforeach ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="page-title-box">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <h4 class="page-title">Data Distribusi</h4>
+                        <ol class="breadcrumb">
+                        </ol>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>No. Pemesanan</th>
-                                <th>Departemen Asal</th>
+                                <th>Asal</th>
+                                <th>Transit</th>
+                                <th>Tujuan</th>
                                 <th>Nama Barang</th>
                                 <th>Timbangan Muat</th>
                                 <th>No Kendaraan</th>
                                 <th>Supir</th>
                                 <th>Uang Jalan Pokok</th>
+                                <th>Uang Jalan Tambahan</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -92,15 +141,18 @@
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
                                 <td><?= $val['dep_asal'] ?></td>
+                                <td><?= $val['dep_transit'] ?></td>
+                                <td><?= $val['dep_tujuan'] ?></td>
                                 <td><?= $val['kode_brng'] ?></td>
                                 <td><?= number_format($val['tim_muat'])." ".$val['satuan']  ?></td>
                                 <td><?= $val['no_kendaraan'] ?></td>
                                 <td><?= $val['supir'] ?></td>
                                 <td><?= number_format($val['uang_JP']) ?></td>
+                                <td><?= number_format($val['uang_JT']) ?></td>
                                 <td>
                                     <?php if ($val['status'] != 'Sudah Datang'){?>
-                                        <a href="verf_distribusi/verifikasi/<?= $val['no_kendaraan'] ?>"
-                                    class="btn btn-warning">Verifikasi Distribusi</a>
+                                    <a href="verf_distribusi/verifikasi/<?= $val['no_kendaraan'] ?>"
+                                        class="btn btn-warning">Verifikasi Distribusi</a>
                                     <?php }else{ ?>
                                     <span>Sudah Verifikasi</span>
                                     <?php } ?>

@@ -69,17 +69,10 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <?php
-								$permintaan_e = $this->Konsumen->getKonsumen();
-								?>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Konsumen</label>
-                                    <select name="kode_konsumen" id="" class="form-control" required>
-                                        <?php foreach ($permintaan_e as $a): ?>
-                                        <option value="<?= $a['kode_konsumen'] ?>">
-                                            <?= $a['nama_konsumen']." - ".$a['lokasi_bongkar'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
+                                    <input type="hidden" name="kode_konsumen" value="<?= htmlspecialchars($permintaan['kode_konsumen']) ?>">
+                                    <input type="text" class="form-control" name="nama_konsumen" value="<?= htmlspecialchars($permintaan['nama_konsumen'] . " - " . $permintaan['lokasi_bongkar']) ?>" readonly>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Pemesanan</label>
@@ -89,7 +82,7 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Deadline</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Deadline"
-                                        name="tgl_deadline" value="<?= $permintaan['tgl_deadline'] ?>" required>
+                                        name="tgl_deadline" value="<?= $permintaan['tgl_deadline'] ?>" >
                                 </div>
                             </div>
                             <div class="form-group row">

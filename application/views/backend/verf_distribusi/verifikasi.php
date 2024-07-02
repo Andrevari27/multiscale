@@ -13,7 +13,7 @@
 
     function loadFormattedValue() {
         let inputs = document.querySelectorAll(
-            'input[name="harga"],input[name="tim_muat"],input[name="uang_JP"],input[name="tim_bongkar"]');
+            'input[name="harga"],input[name="tim_muat"],input[name="uang_JP"],input[name="tim_bongkar"],input[name="uang_JT"]');
         inputs.forEach(input => {
             let value = input.value.replace(/,/g, '');
             if (!isNaN(value) && value !== '') {
@@ -140,13 +140,45 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Sampai</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Sampai"
-                                        name="tgl_sampai" value="<?= $distribusi['tgl_sampai'] ?>" required>
+                                        name="tgl_sampai" id="tgl_sampai" value="<?= $distribusi['tgl_sampai'] ?>" required>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Jam Sampai</label>
-                                    <input class="form-control" type="time" placeholder="Jam Sampai" name="jam_sampai"
+                                    <input class="form-control" type="time" placeholder="Jam Sampai" id="jam_sampai" name="jam_sampai"
                                         value="<?= $distribusi['jam_sampai'] ?>" required>
                                 </div>
+                                <script>
+                                // JavaScript to set the default date to today
+                                document.addEventListener('DOMContentLoaded', (event) => {
+                                    const today = new Date();
+                                    const year = today.getFullYear();
+                                    const month = String(today.getMonth() + 1).padStart(2,
+                                        '0'); // Add leading zero if needed
+                                    const day = String(today.getDate()).padStart(2,
+                                        '0'); // Add leading zero if needed
+                                    const dateString = `${year}-${month}-${day}`;
+
+                                    document.getElementById('tgl_sampai').value = dateString;
+                                });
+                                // Ambil elemen input time
+                                var jamBerangkatInput = document.getElementById('jam_sampai');
+
+                                // Fungsi untuk mendapatkan waktu saat ini dalam format HH:mm
+                                function setJamSekarang() {
+                                    var now = new Date();
+                                    var hours = now.getHours().toString().padStart(2,
+                                        '0'); // Ambil jam dengan format 2 digit
+                                    var minutes = now.getMinutes().toString().padStart(2,
+                                        '0'); // Ambil menit dengan format 2 digit
+                                    var currentTime = hours + ':' + minutes;
+
+                                    // Set nilai input time dengan waktu saat ini
+                                    jamBerangkatInput.value = currentTime;
+                                }
+
+                                // Panggil fungsi setJamSekarang untuk mengatur waktu saat halaman dimuat
+                                setJamSekarang();
+                                </script>
                             </div>
                         </div> <!-- end col -->
                     </div>

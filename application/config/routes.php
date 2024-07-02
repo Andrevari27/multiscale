@@ -43,6 +43,7 @@ $route['distribusikosong/create'] = 'DistribusiKosongController/create';
 $route['distribusikosong/update/(:any)'] = 'DistribusiKosongController/update/$1';
 $route['distribusikosong/view/(:any)'] = 'DistribusiKosongController/view/$1';
 $route['distribusikosong/delete/(:any)'] = 'DistribusiKosongController/delete/$1';
+$route['distribusikosong/kwitansi/(:any)'] = 'DistribusiKosongController/kwitansi/$1';
 
 //verf distribusi
 $route['verf_distribusi'] = 'VerfDistribusiController/index';
@@ -54,6 +55,9 @@ $route['verf_distribusi/invoice/(:any)'] = 'VerfDistribusiController/invoice/$1'
 $route['verf_distribusi/kwitansi/(:any)'] = 'VerfDistribusiController/kwitansi/$1';
 $route['verf_distribusi/view/(:any)'] = 'VerfDistribusiController/view/$1';
 $route['verf_distribusi/delete/(:any)'] = 'VerfDistribusiController/delete/$1';
+$route['verf_distribusi/distribusiKosong/(:any)'] = 'VerfDistribusiController/distribusiKosong/$1';
+$route['verf_distribusi/getDataByNoPemesanan'] = 'VerfDistribusiController/getDataByNoPemesanan';
+
 
 //Kendaraan
 $route['kendaraan'] = 'KendaraanController/index';

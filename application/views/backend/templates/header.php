@@ -12,6 +12,10 @@
 
     <!--Chartist Chart CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/chartist/css/chartist.min.css">
+    <link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- DataTables -->
     <link href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"
@@ -22,23 +26,40 @@
     <link href="<?= base_url() ?>assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet"
         type="text/css" />
 
-    <link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="<?= base_url() ?>assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
-    <link href="<?= base_url() ?>assets/css/icons.css" rel="stylesheet" type="text/css">
-    <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
-<style>
+<!-- <style>
 /* CSS untuk sidebar dan konten responsif */
 @media (max-width: 992px) {
     #wrapper {
         padding-left: 0;
+    }
+
+    .button-menu-mobile {
+        display: block;
+        cursor: pointer;
+    }
+
+    .button-menu-mobile i {
+        font-size: 24px;
+    }
+
+    .button-menu-mobile.active+.side-menu {
+        left: 0;
+    }
+
+    .button-menu-mobile.active+.content-page {
+        margin-left: 250px;
+    }
+
+    .content-page {
+        transition: margin-left 0.3s;
     }
 
     .topbar {
@@ -64,7 +85,7 @@
         /* Tampilkan sidebar saat menu mobile diklik */
     }
 }
-</style>
+</style> -->
 
 <body>
 
@@ -174,31 +195,19 @@
             <!-- Sidebar -left -->
 
         </div>
-        <!-- Left Sidebar End -->
+
+
+        <footer class="footer">
+            © 2024 <span class="d-none d-sm-inline-block"> <i class=""></i> </span>
+        </footer>
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
 
-        <!-- ============================================================== -->
+        <!--==============================================================-->
         <!-- End Right content here -->
         <!-- ============================================================== -->
 
-    </div>
 
-    <script>
-    $(document).ready(function() {
-        // Toggle menu sidebar saat tombol diklik
-        $('.button-menu-mobile').on('click', function() {
-            $('body').toggleClass('sidebar-enable');
-        });
-
-        // Handle fullscreen button click
-        $('#btn-fullscreen').on('click', function(e) {
-            e.preventDefault();
-            $('#wrapper').toggleClass('fullscreen');
-            $('body').toggleClass('fullscreen-body');
-        });
-    });
-    </script>
-    <!-- END wrapper -->
+        <!-- END wrapper -->

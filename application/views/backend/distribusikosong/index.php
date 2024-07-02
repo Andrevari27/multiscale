@@ -32,6 +32,7 @@
                                 <th>Jam Berangkat</th>
                                 <th>Uang Jalan Pokok</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,7 +50,9 @@
 								<td><?= $val['jam_berangkat'] ?></td>
                                 <td><?= number_format($val['uang_JP']) ?></td>
                                 <td><?= $val['status'] ?></td>
-                                
+                                <td>
+                                    <?= anchor('distribusikosong/kwitansi/'.$val['no_distribusi'], '<i class="fa fa-print"> Kwitansi</i>', array('class' => 'btn btn-info btn-sm')) ?>
+                                </td>
                             </tr>
                             <?php
 							$no++;

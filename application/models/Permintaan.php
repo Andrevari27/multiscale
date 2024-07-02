@@ -24,8 +24,30 @@ class Permintaan extends CI_Model{
         $this->db->from('pemesanan');
         $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
         $this->db->join('distribusi', 'distribusi.no_pemesanan = pemesanan.no_pemesanan');
+        $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
         $this->db->where('pemesanan.no_pemesanan', $id); // specify the table for no_pemesanan
         return $this->db->get()->row_array();
+    }
+
+    function getPermintaanByAId($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pemesanan');
+        $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
+        $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
+        $this->db->where('pemesanan.no_pemesanan', $id); // specify the table for no_pemesanan
+        return $this->db->get()->row_array();
+    }
+
+    public function getDataByNoPemesanan($no_pemesanan)
+    {
+    $this->db->select('*');
+    $this->db->from('pemesanan'); 
+    $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
+    $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
+    $this->db->where('no_pemesanan', $no_pemesanan);
+    $query = $this->db->get();
+    return $query->row_array();
     }
     
     function create($data)
@@ -44,5 +66,3 @@ class Permintaan extends CI_Model{
     }
 
 }
-
-

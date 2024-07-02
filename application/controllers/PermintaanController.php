@@ -138,7 +138,7 @@ class PermintaanController extends CI_Controller{
 		} else {
 			$data = array(
 				'judul' => 'Approve Data Permintaan',
-				'permintaan' => $this->Permintaan->getPermintaanById($id),
+				'permintaan' => $this->Permintaan->getPermintaanByAId($id),
 			);
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/permintaan/approve', $data);
@@ -149,7 +149,7 @@ class PermintaanController extends CI_Controller{
 	public function view($id){
 		$data = array(
 			'judul' => 'Lihat Data Permintaan',
-			'permintaan' => $this->Permintaan->getPermintaanById($id),
+			'permintaan' => $this->Permintaan->getPermintaanByAId($id),
 		);
 		$this->load->view('backend/templates/header', $data);
 		$this->load->view('backend/permintaan/view', $data);

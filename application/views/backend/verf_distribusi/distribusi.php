@@ -66,10 +66,39 @@
                                     <input class="form-control" type="text" placeholder="" name="dep_asal"
                                         value="<?= $this->session->userdata('session_dep') ?>" readonly>
                                 </div>
-                                <div class="col-sm-3">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Konsumen</label>
+                                    <input type="text" name="nama_konsumen" class="form-control"
+                                        value="<?= $permintaan['nama_konsumen']." - ".$permintaan['lokasi_bongkar'] ?>"
+                                        readonly>
+                                </div>
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Barang</label>
                                     <input type="text" name="kode_brng" class="form-control"
                                         value="<?= $permintaan['nama_brng'] ?>" readonly>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Jumlah Permintaan</label>
+                                    <input class="form-control" type="text" placeholder="Jumlah Permintaan" name=""
+                                        oninput="formatCurrency(this)" value="<?= $permintaan['jumlah'] ?>" readonly>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Sisa Permintaan</label>
+                                    <input class="form-control" type="text" placeholder="Sisa Permintaan"
+                                        name="sisa_permintaan"
+                                        value="<?= $permintaan['jumlah']-$permintaan['tim_muat']?>" readonly>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Satuan</label>
+                                    <input class="form-control" type="text" placeholder="Satuan" name="satuan"
+                                        value="<?= $permintaan['satuan'] ?>" readonly>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Timbangan Muat</label>
+                                    <input class="form-control" type="text" placeholder="Tim Muat" name="tim_muat"
+                                        oninput="formatCurrency(this)" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -78,28 +107,8 @@
                                     <input class="form-control" id="harga" type="text" placeholder="" name="harga"
                                         value="<?= $permintaan['harga'] ?>" oninput="formatCurrency(this)" required>
                                 </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Satuan</label>
-                                    <input class="form-control" type="text" placeholder="Satuan" name="satuan"
-                                        value="<?= $permintaan['satuan'] ?>" readonly>
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Timbangan Muat</label>
-                                    <input class="form-control" type="text" placeholder="Tim Muat" name="tim_muat"
-                                        oninput="formatCurrency(this)" required>
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Jumlah Permintaan</label>
-                                    <input class="form-control" type="text" placeholder="Jumlah Permintaan" name=""
-                                        oninput="formatCurrency(this)" value="<?= $permintaan['jumlah'] ?>" readonly>
-                                </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Sisa Permintaan</label>
-                                    <input class="form-control" type="text" placeholder="Sisa Permintaan"
-                                        name="sisa_permintaan" value="<?= $permintaan['jumlah']-$permintaan['tim_muat']?>" readonly>
-                                </div>
                                 <script>
                                 document.addEventListener('DOMContentLoaded', function() {
                                     // Mendapatkan elemen input tim_muat
@@ -107,7 +116,7 @@
                                     var sisaPermintaanInput = document.querySelector(
                                         'input[name="sisa_permintaan"]');
                                     var jumlahPermintaan =
-                                    <?= $permintaan['jumlah'] ?>; // Ambil jumlah permintaan dari PHP
+                                        <?= $permintaan['jumlah'] ?>; // Ambil jumlah permintaan dari PHP
 
                                     // Event listener untuk perubahan nilai pada input tim_muat
                                     timMuatInput.addEventListener('input', function() {
@@ -156,6 +165,11 @@
                                     <input class="form-control" type="date" placeholder="Tanggal Berangkat"
                                         name="tgl_berangkat" id="tgl_berangkat" required>
                                 </div>
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Jam Berangkat</label>
+                                    <input class="form-control" type="time" placeholder="Jam Berangkat"
+                                        name="jam_berangkat" id="jam_berangkat" required>
+                                </div>
                             </div>
                             <script>
                             document.addEventListener('DOMContentLoaded', function() {
@@ -191,11 +205,6 @@
                             });
                             </script>
                             <div class="form-group row">
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Jam Berangkat</label>
-                                    <input class="form-control" type="time" placeholder="Jam Berangkat"
-                                        name="jam_berangkat" id="jam_berangkat" required>
-                                </div>
                                 <script>
                                 // JavaScript to set the default date to today
                                 document.addEventListener('DOMContentLoaded', (event) => {
@@ -231,14 +240,9 @@
 
                                 </script>
                                 <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Uang Jalan Pokok</label>
-                                    <input class="form-control" type="text" placeholder="Uang Jalan Pokok"
+                                    <label for="" class="col-form-label">Uang Jalan</label>
+                                    <input class="form-control" type="text" placeholder="Uang Jalan"
                                         name="uang_JP" oninput="formatCurrency(this)" required>
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Uang Jalan Tambahan</label>
-                                    <input class="form-control" type="text" placeholder="Uang Jalan Tambahan"
-                                        name="uang_JT" oninput="formatCurrency(this)" required>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Keterangan</label>

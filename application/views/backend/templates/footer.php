@@ -1,7 +1,3 @@
-<footer class="footer">
-    © 2024 <span class="d-none d-sm-inline-block"></span>.
-</footer>
-
 <script>
 $(document).ready(function() {
     $('.data').DataTable();

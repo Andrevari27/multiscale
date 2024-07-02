@@ -176,9 +176,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                            <div class="col-sm-3">
+                                <div class="col-sm-3">
 
-</div>
+                                </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tagihan</label>
                                     <input class="form-control" type="text" placeholder="Tagihan" name="tagihan"
@@ -189,8 +189,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-9">
-                            <button name="simpan" type="submit" class="btn btn-info float-right ml-2">Approval</button>
-                            <a onclick="history.back()" class="btn btn-light float-right">Cancel</a>
+                            <a onclick="history.back()" class="btn btn-light float-right">Kembali</a>
                         </div>
                     </div>
                 </form>

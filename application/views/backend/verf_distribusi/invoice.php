@@ -120,9 +120,9 @@
                         <!-- <p style="font-size: 12pt;"><?= $distribusiA['no_pemesanan'] ?></p> -->
                         <!-- <p style="margin-top: -20px;font-size: 12pt;">KONSUMEN</p> -->
                         <p style="margin-top: -20px;font-size: 12pt;">Attn <span style="margin-left: 18px;">:</span>
-                            Inul</p>
+                            </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Telp <span style="margin-left: 19px;">:</span>
-                            0
+                            
                         </p>
                     </div>
                     <div class="col-4 float-right">

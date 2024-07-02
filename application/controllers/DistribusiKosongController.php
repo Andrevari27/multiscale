@@ -38,10 +38,10 @@ class DistribusiKosongController extends CI_Controller{
 			if (count($_POST)>0) {
             	$this->DistribusiKosong->create($data);
             	$this->session->set_flashdata('alert', 'success_post');
-            	redirect(site_url('distribusikosong'));
+            	redirect(site_url('verf_distribusi'));
         	}else{
             	$this->session->set_flashdata('alert', 'fail_post');
-            	redirect(site_url('distribusikosong'));
+            	redirect(site_url('verf_distribusi'));
             }
 		}else{
 			$data = array(
@@ -97,6 +97,16 @@ class DistribusiKosongController extends CI_Controller{
 			$this->load->view('backend/distribusikosong/update', $data);
 			$this->load->view('backend/templates/footer');
 		}
+	}
+
+	public function kwitansi($id){
+		$data = array(
+			'judul' => 'Kwitansi Distribusi Kosong',
+			'distribusikosong' => $this->DistribusiKosong->getDistribusiKosongById($id),
+		);
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/distribusikosong/kwitansi', $data);
+		$this->load->view('backend/templates/footer');
 	}
 
 	public function delete($id){

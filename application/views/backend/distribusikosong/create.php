@@ -100,7 +100,7 @@
                                 <div class="col-sm-4">
                                     <label for="" class="col-form-label">Tanggal Berangkat</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Berangkat"
-                                        name="tgl_berangkat" required>
+                                        name="tgl_berangkat" id="tgl_berangkat" required>
                                 </div>
                                 <script>
                                 document.addEventListener('DOMContentLoaded', function() {
@@ -140,7 +140,7 @@
                                 <div class="col-sm-4">
                                     <label for="" class="col-form-label">Jam Berangkat</label>
                                     <input class="form-control" type="time" placeholder="Jam Berangkat"
-                                        name="jam_berangkat" required>
+                                        name="jam_berangkat" id="jam_berangkat" required>
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="" class="col-form-label">Uang Jalan Pokok</label>
@@ -167,61 +167,88 @@
                                 // Contoh fungsi perhitungan (sesuaikan dengan aturan bisnis atau perhitungan Anda)
                                 function calculateUangJalanPokok(asal, tujuan) {
                                     // Contoh aturan bisnis: Jika Asal = Duri dan Tujuan = Arengka, maka Uang Jalan Pokok = 50000
-                                    if (asal === 'Duri' && tujuan === 'Arengka' || asal === 'Arengka' && tujuan === 'Duri' ) {
+                                    if (asal === 'Duri' && tujuan === 'Arengka' || asal === 'Arengka' && tujuan ===
+                                        'Duri') {
                                         return "300,000";
-                                    }else if(asal === 'Duri' && tujuan === 'Rimbo Panjang' || asal === 'Rimbo Panjang' && tujuan === 'Duri'){
+                                    } else if (asal === 'Duri' && tujuan === 'Rimbo Panjang' || asal ===
+                                        'Rimbo Panjang' && tujuan === 'Duri') {
                                         return "400,000";
-                                    } else if(asal === 'Duri' && tujuan === 'Kerinci' || asal === 'Kerinci' && tujuan === 'Duri'){
+                                    } else if (asal === 'Duri' && tujuan === 'Kerinci' || asal === 'Kerinci' &&
+                                        tujuan === 'Duri') {
                                         return "150,000";
-                                    }else if(asal === 'Duri' && tujuan === 'Muara Takus' || asal === 'Muara Takus' && tujuan === 'Duri'){
+                                    } else if (asal === 'Duri' && tujuan === 'Muara Takus' || asal === 'Muara Takus' &&
+                                        tujuan === 'Duri') {
                                         return "250,000";
-                                    }else if(asal === 'Duri' && tujuan === 'Jake' || asal === 'Jake' && tujuan === 'Duri'){
+                                    } else if (asal === 'Duri' && tujuan === 'Jake' || asal === 'Jake' && tujuan ===
+                                        'Duri') {
                                         return "350,000";
-                                    }else if(asal === 'Duri' && tujuan === 'Pangkalan' || asal === 'Pangkalan' && tujuan === 'Duri'){
+                                    } else if (asal === 'Duri' && tujuan === 'Pangkalan' || asal === 'Pangkalan' &&
+                                        tujuan === 'Duri') {
                                         return "650,000";
-                                    }else if(asal === 'Duri' && tujuan === 'Batu Bersurat' || asal === 'Batu Bersurat' && tujuan === 'Duri' ){
+                                    } else if (asal === 'Duri' && tujuan === 'Batu Bersurat' || asal ===
+                                        'Batu Bersurat' && tujuan === 'Duri') {
                                         return "550,000";
-                                    }else if(asal === 'Arengka' && tujuan === 'Rimbo Panjang' || asal === 'Rimbo Panjang' && tujuan === 'Arengka'){
+                                    } else if (asal === 'Arengka' && tujuan === 'Rimbo Panjang' || asal ===
+                                        'Rimbo Panjang' && tujuan === 'Arengka') {
                                         return "700,000";
-                                    }else if(asal === 'Arengka' && tujuan === 'Kerinci' || asal === 'Kerinci' && tujuan === 'Arengka'){
+                                    } else if (asal === 'Arengka' && tujuan === 'Kerinci' || asal === 'Kerinci' &&
+                                        tujuan === 'Arengka') {
                                         return "1,050,000";
-                                    }else if(asal === 'Arengka' && tujuan === 'Muara Takus' || asal === 'Muara Takus' && tujuan === 'Arengka'){
+                                    } else if (asal === 'Arengka' && tujuan === 'Muara Takus' || asal ===
+                                        'Muara Takus' && tujuan === 'Arengka') {
                                         return "550,000";
-                                    }else if(asal === 'Arengka' && tujuan === 'Jake' || asal === 'Jake' && tujuan === 'Arengka'){
+                                    } else if (asal === 'Arengka' && tujuan === 'Jake' || asal === 'Jake' && tujuan ===
+                                        'Arengka') {
                                         return "700,000";
-                                    }else if(asal === 'Arengka' && tujuan === 'Pangkalan' || asal === 'Pangkalan' && tujuan === 'Arengka'){
+                                    } else if (asal === 'Arengka' && tujuan === 'Pangkalan' || asal === 'Pangkalan' &&
+                                        tujuan === 'Arengka') {
                                         return "650,000";
-                                    }else if(asal === 'Arengka' && tujuan === 'Batu Bersurat' || asal === 'Batu Bersurat' && tujuan === 'Arengka'){
+                                    } else if (asal === 'Arengka' && tujuan === 'Batu Bersurat' || asal ===
+                                        'Batu Bersurat' && tujuan === 'Arengka') {
                                         return "1,050,000";
-                                    }else if(asal === 'Rimbo Panjang' && tujuan === 'Kerinci' || asal === 'Kerinci' && tujuan === 'Rimbo Panjang'){
+                                    } else if (asal === 'Rimbo Panjang' && tujuan === 'Kerinci' || asal === 'Kerinci' &&
+                                        tujuan === 'Rimbo Panjang') {
                                         return "150,000";
-                                    }else if(asal === 'Rimbo Panjang' && tujuan === 'Muara Takus' || asal === 'Muara Takus' && tujuan === 'Rimbo Panjang'){
+                                    } else if (asal === 'Rimbo Panjang' && tujuan === 'Muara Takus' || asal ===
+                                        'Muara Takus' && tujuan === 'Rimbo Panjang') {
                                         return "1,500,000";
-                                    }else if(asal === 'Rimbo Panjang' && tujuan === 'Jake' || asal === 'Jake' && tujuan === 'Rimbo Panjang'){
+                                    } else if (asal === 'Rimbo Panjang' && tujuan === 'Jake' || asal === 'Jake' &&
+                                        tujuan === 'Rimbo Panjang') {
                                         return "1,050,000";
-                                    }else if(asal === 'Rimbo Panjang' && tujuan === 'Pangkalan' || asal === 'Pangkalan' && tujuan === 'Rimbo Panjang'){
+                                    } else if (asal === 'Rimbo Panjang' && tujuan === 'Pangkalan' || asal ===
+                                        'Pangkalan' && tujuan === 'Rimbo Panjang') {
                                         return "350,000";
-                                    }else if(asal === 'Rimbo Panjang' && tujuan === 'Batu Bersurat' || asal === 'Batu Bersurat' && tujuan === 'Rimbo Panjang'){
+                                    } else if (asal === 'Rimbo Panjang' && tujuan === 'Batu Bersurat' || asal ===
+                                        'Batu Bersurat' && tujuan === 'Rimbo Panjang') {
                                         return "550,000";
-                                    }else if(asal === 'Kerinci' && tujuan === 'Muara Takus' || asal === 'Muara Takus' && tujuan === 'Kerinci'){
+                                    } else if (asal === 'Kerinci' && tujuan === 'Muara Takus' || asal ===
+                                        'Muara Takus' && tujuan === 'Kerinci') {
                                         return "650,000";
-                                    }else if(asal === 'Kerinci' && tujuan === 'Jake' || asal === 'Jake' && tujuan === 'Kerinci'){
+                                    } else if (asal === 'Kerinci' && tujuan === 'Jake' || asal === 'Jake' && tujuan ===
+                                        'Kerinci') {
                                         return "450,000";
-                                    }else if(asal === 'Kerinci' && tujuan === 'Pangkalan' || asal === 'Pangkalan' && tujuan === 'Kerinci'){
+                                    } else if (asal === 'Kerinci' && tujuan === 'Pangkalan' || asal === 'Pangkalan' &&
+                                        tujuan === 'Kerinci') {
                                         return "350,000";
-                                    }else if(asal === 'Kerinci' && tujuan === 'Batu Bersurat' || asal === 'Batu Bersurat' && tujuan === 'Kerinci'){
+                                    } else if (asal === 'Kerinci' && tujuan === 'Batu Bersurat' || asal ===
+                                        'Batu Bersurat' && tujuan === 'Kerinci') {
                                         return "850,000";
-                                    }else if(asal === 'Muara Takus' && tujuan === 'Jake' || asal === 'Jake' && tujuan === 'Muara Takus'){
+                                    } else if (asal === 'Muara Takus' && tujuan === 'Jake' || asal === 'Jake' &&
+                                        tujuan === 'Muara Takus') {
                                         return "950,000";
-                                    }else if(asal === 'Muara Takus' && tujuan === 'Pangkalan' || asal === 'Pangkalan' && tujuan === 'Muara Takus' ){
+                                    } else if (asal === 'Muara Takus' && tujuan === 'Pangkalan' || asal ===
+                                        'Pangkalan' && tujuan === 'Muara Takus') {
                                         return "550,000";
-                                    }else if(asal === 'Muara Takus' && tujuan === 'Batu Bersurat' || asal === 'Batu Bersurat' && tujuan === 'Muara Takus'){
+                                    } else if (asal === 'Muara Takus' && tujuan === 'Batu Bersurat' || asal ===
+                                        'Batu Bersurat' && tujuan === 'Muara Takus') {
                                         return "350,000";
-                                    }else if(asal === 'Jake' && tujuan === 'Pangkalan' || asal === 'Pangkalan' && tujuan === 'Jake'){
+                                    } else if (asal === 'Jake' && tujuan === 'Pangkalan' || asal === 'Pangkalan' &&
+                                        tujuan === 'Jake') {
                                         return "250,000";
-                                    }else if(asal === 'Jake' && tujuan === 'Batu Bersurat' || asal === 'Batu Bersurat' && tujuan === 'Jake'){
+                                    } else if (asal === 'Jake' && tujuan === 'Batu Bersurat' || asal ===
+                                        'Batu Bersurat' && tujuan === 'Jake') {
                                         return "650,000";
-                                    }else {
+                                    } else {
                                         return 0; // Default jika tidak ada aturan khusus
                                     }
                                 }
@@ -235,6 +262,34 @@
                                 function formatNumber(num) {
                                     return num.toLocaleString('en-US');
                                 }
+
+                                document.addEventListener('DOMContentLoaded', (event) => {
+                                    const today = new Date();
+                                    const year = today.getFullYear();
+                                    const month = String(today.getMonth() + 1).padStart(2,
+                                        '0'); // Add leading zero if needed
+                                    const day = String(today.getDate()).padStart(2,
+                                        '0'); // Add leading zero if needed
+                                    const dateString = `${year}-${month}-${day}`;
+
+                                    document.getElementById('tgl_berangkat').value = dateString;
+                                });
+
+                                var jamBerangkatInput = document.getElementById('jam_berangkat');
+
+                                // Fungsi untuk mendapatkan waktu saat ini dalam format HH:mm
+                                function setJamSekarang() {
+                                    var now = new Date();
+                                    var hours = now.getHours().toString().padStart(2,
+                                        '0'); // Ambil jam dengan format 2 digit
+                                    var minutes = now.getMinutes().toString().padStart(2,
+                                        '0'); // Ambil menit dengan format 2 digit
+                                    var currentTime = hours + ':' + minutes;
+
+                                    // Set nilai input time dengan waktu saat ini
+                                    jamBerangkatInput.value = currentTime;
+                                }
+                                setJamSekarang();
                                 </script>
                             </div>
                         </div>
