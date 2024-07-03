@@ -76,6 +76,28 @@ public function getPphByNoPemesanan($no_pemesanan) {
     $query = $this->db->get();
     return $query->row()->pph; // Mengembalikan nilai PPN
 }
+
+public function getFilteredDistribusi($filters) {
+    $this->db->select('*');
+    $this->db->from('distribusi');
+    if (!empty($filters['no_pemesanan'])) {
+        $this->db->where('no_pemesanan', $filters['no_pemesanan']);
+    }
+    if (!empty($filters['konsumen'])) {
+        $this->db->where('konsumen', $filters['konsumen']);
+    }
+    if (!empty($filters['tanggal_dari'])) {
+        $this->db->where('tanggal_distribusi', $filters['tanggal_dari']);
+    }
+    if (!empty($filters['tanggal_sampai'])) {
+        $this->db->where('tanggal_distribusi', $filters['tanggal_sampai']);
+    }
+    if (!empty($filters['no_kendaraan'])) {
+        $this->db->where('no_kendaraan', $filters['no_kendaraan']);
+    }
+    return $this->db->get()->result_array();
+}
+
     function create($data)
     {
         return $this->db->insert('distribusi',$data);

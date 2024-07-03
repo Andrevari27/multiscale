@@ -26,21 +26,16 @@
                             <tr class="text-center">
                                 <?php if ($this->session->userdata('session_level') == 'superadmin'): ?>
                                 <th>No</th>
-                                <th>NIK</th>
                                 <th>NIP</th>
                                 <th>Nama Pegawai</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Jabatan</th>
                                 <th>Departemen</th>
-                                <th>NPWP</th>
-                                <th>Pendidikan</th>
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Alamat</th>
                                 <th>Kota</th>
                                 <th>Mulai Kerja</th>
                                 <th>Rekening</th>
-                                <th>Photo</th>
                                 <?php endif ?>
                                 <?php if ($this->session->userdata('session_level') != 'superadmin'): ?>
                                 <th>No</th>
@@ -59,21 +54,16 @@
                             <tr class="text-center">
                                 <?php if ($this->session->userdata('session_level') == 'superadmin'): ?>
                                 <td><?= $no ?></td>
-                                <td><?=$val['nik']?></td>
                                 <td><?=$val['nip']?></td>
                                 <td><?=$val['nama']?></td>
                                 <td><?=$val['jk']?></td>
-                                <td><?=$val['jbtn']?></td>
                                 <td><?=$val['departemen']?></td>
-                                <td><?=$val['npwp']?></td>
-                                <td><?=$val['pendidikan']?></td>
                                 <td><?=$val['tmp_lahir']?></td>
                                 <td><?=$val['tgl_lahir']?></td>
                                 <td><?=$val['alamat']?></td>
                                 <td><?=$val['kota']?></td>
                                 <td><?=$val['mulai_kerja']?></td>
                                 <td><?=$val['rekening']?></td>
-                                <td><?=$val['photo']?></td>
                                 <?php endif ?>
                                 <?php if ($this->session->userdata('session_level') != 'superadmin'): ?>
                                 <td><?= $no ?></td>

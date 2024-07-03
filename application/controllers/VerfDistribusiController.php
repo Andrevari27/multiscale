@@ -32,6 +32,8 @@ class VerfDistribusiController extends CI_Controller{
                 'no_pemesanan' => $this->input->post('no_pemesanan'),
                 'dep_asal' => $this->input->post('dep_asal'),
                 'kode_brng' => $this->input->post('kode_brng'),
+                'asal_distribusi' => $this->input->post('asal_distribusi'),
+                'tujuan_distribusi' => $this->input->post('tujuan_distribusi'),
                 'nama_konsumen' => $this->input->post('kode_konsumen'),
                 'tim_muat' => str_replace(',', '', $this->input->post('tim_muat')),
                 'no_kendaraan' => $this->input->post('no_kendaraan'),

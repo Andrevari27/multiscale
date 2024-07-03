@@ -97,7 +97,7 @@
                 <div class="row">
                     <div class="col-12 text-center justify-content-between">
                         <div>
-                            <h4>PT RIAU MAS BERSAUDARA</h4>
+                            <!-- <h4>PT RIAU MAS BERSAUDARA</h4>
                             <p style="margin-top: -10px;font-size: 12pt;">
                                 Jalan : Soekarno Hatta No. 11 A, Telp/Fax : (0761) 61128, Hp: 0811-765-089 PEKANBARU -
                                 RIAU,
@@ -107,7 +107,8 @@
                             </p>
                             <p style="margin-top: -20px;font-size: 12pt;">
                                 E-mail : rmb@gmail.com
-                            </p>
+                            </p> -->
+                            <img src="<?= base_url('assets/images/kop.jpg') ?>" alt="" style="width: 100%;">
                         </div>
                         <hr style="z-index: 999; margin-top: 0;border:2px solid black;background-color: black; ">
                     </div>
@@ -117,8 +118,8 @@
                         <h4>INVOICE</h4>
                     </div>
                     <div class="col-8 float-left">
-                        <!-- <p style="font-size: 12pt;"><?= $distribusiA['no_pemesanan'] ?></p> -->
-                        <!-- <p style="margin-top: -20px;font-size: 12pt;">KONSUMEN</p> -->
+                        <p style="font-size: 12pt;"></p>
+                        <p style="margin-top: -20px;font-size: 12pt;"></p>
                         <p style="margin-top: -20px;font-size: 12pt;">Attn <span style="margin-left: 18px;">:</span>
                             </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Telp <span style="margin-left: 19px;">:</span>
@@ -202,13 +203,13 @@
                         <p>Total Timbangan Muat : <?= number_format($distribusiA['tim_muat']) ?>  *
                             <?= number_format($distribusiA['harga']) ?></p>
                         <p>Terbilang : <b><i><?= $total_tagihan_terbilang ?> Rupiah</i></b></p>
-                    </div>
+                    </div> 
                     <div class="col-3 float-right text-right">
                         <b>
                             <p>Total : Rp. <?= number_format($total) ?></p>
                             <p style="margin-top: -20px;font-size: 12pt;">PPN 11% : Rp. <?= number_format($total_ppn) ?>
                             </p>
-                            <p style="margin-top: -20px;font-size: 12pt;">PPH <?=$pph?>% : Rp. <?= number_format($total_pph) ?>
+                            <p style="margin-top: -20px;font-size: 12pt;">PPH <?=$distribusiPph?>% : Rp. <?= number_format($total_pph) ?>
                             </p>
                             <p style="margin-top: -10px;font-size: 12pt;">
                                 <hr style="border:2px solid black;background-color: black;position: right; ">
@@ -217,6 +218,12 @@
                                 <?= number_format($total_tagihan) ?></p>
                         </b>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-9 float-left">
+                        <p>Transfer : </p>
+                        <p>Terbilang : <b><i><?= $total_tagihan_terbilang ?> Rupiah</i></b></p>
+                    </div> 
                 </div>
                 <div class="row">
                     <div class="col-6 text-center float-left">

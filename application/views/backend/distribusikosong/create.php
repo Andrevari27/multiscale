@@ -24,6 +24,12 @@
 
     window.onload = loadFormattedValue;
     </script>
+    <script>
+    $(document).ready(function() {
+        $('#no_kendaraan').select2();
+    });
+    </script>
+
     <!-- Start content -->
     <div class="content">
         <div class="container-fluid">
@@ -54,7 +60,7 @@
                                     <select name="no_kendaraan" id="no_kendaraan" class="form-control" required>
                                         <option>Pilih Kendaraan</option>
                                         <?php foreach ($distribusiK as $a): ?>
-                                        <option value="<?= $a['no_kendaraan'] ?>"><?= $a['no_kendaraan'] ?></option>
+                                        <option value="<?= $a['no_kendaraan'] ?>"><?= $a['no_kendaraan'].' - '.$a['jenis'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>

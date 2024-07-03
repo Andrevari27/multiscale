@@ -69,6 +69,9 @@ $route['kendaraan/view/(:any)'] = 'KendaraanController/view/$1';
 $route['kendaraan/delete/(:any)'] = 'KendaraanController/delete/$1';
 $route['kendaraan/getSupirByKendaraan'] = 'KendaraanController/getSupirByKendaraan';
 
+//laporan
+$route['laporan'] = 'LaporanController/index';
+
 $route['login'] = 'AuthController/index';
 $route['auth/login'] = 'AuthController/login';
 $route['auth/logout'] = 'AuthController/logout';

@@ -44,7 +44,8 @@
         </div>
         <div class="container-fluid">
             <div class="page-title-box">
-                <form action="<?= base_url() ?>verf_distribusi/distribusiKosong/<?= $distribusikosong['no_distribusi'] ?>"
+                <form
+                    action="<?= base_url() ?>verf_distribusi/distribusiKosong/<?= $distribusikosong['no_distribusi'] ?>"
                     method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-12">
@@ -57,7 +58,9 @@
                                     <select name="no_pemesanan" id="no_pemesanan" class="form-control" required>
                                         <option value="">Pilih Pemesanan</option>
                                         <?php foreach ($pilihPemesanan as $a): ?>
-                                        <option value="<?= $a['no_pemesanan'] ?>"><?= $a['no_pemesanan']." - ".$a['nama_brng']." - ".$a['jumlah']." ".$a['satuan'] ?></option>
+                                        <option value="<?= $a['no_pemesanan'] ?>">
+                                            <?= $a['no_pemesanan']." - ".$a['nama_brng']." - ".$a['jumlah']." ".$a['satuan'] ?>
+                                        </option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -70,9 +73,8 @@
                                         name="nip_penginputan" value="<?= $this->session->userdata('session_nama') ?>"
                                         readonly>
                                 </div>
-                                    <input class="form-control" type="hidden" 
-                                        name="no_distribusi" value="<?= $distribusikosong['no_distribusi'] ?>"
-                                        readonly>
+                                <input class="form-control" type="hidden" name="no_distribusi"
+                                    value="<?= $distribusikosong['no_distribusi'] ?>" readonly>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Departemen</label>
                                     <input class="form-control" type="text" placeholder="" name="dep_asal"
@@ -109,8 +111,9 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Jumlah Permintaan</label>
-                                    <input class="form-control" type="text" placeholder="Jumlah Permintaan" name="jumlah"
-                                        oninput="formatCurrency(this)" value="<?= $permintaan['jumlah'] ?>" readonly>
+                                    <input class="form-control" type="text" placeholder="Jumlah Permintaan"
+                                        name="jumlah" oninput="formatCurrency(this)"
+                                        value="<?= $permintaan['jumlah'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -124,12 +127,15 @@
                                     <input type="text" name="supir" class="form-control"
                                         value="<?= $distribusikosong['supir'] ?>" required>
                                 </div>
-
                                 <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Tanggal Berangkat</label>
-                                    <input class="form-control" type="date" placeholder="Tanggal Berangkat"
-                                        name="tgl_berangkat" id="tgl_berangkat"
-                                        value="<?= $distribusikosong['tgl_berangkat'] ?>" required>
+                                    <label for="" class="col-form-label">Asal</label>
+                                    <input type="text" name="asal_distribusi" class="form-control"
+                                        value="<?= $distribusikosong['dep_asal'] ?>" required>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Tujuan</label>
+                                    <input type="text" name="tujuan_distribusi" class="form-control"
+                                        value="<?= $distribusikosong['dep_tujuan'] ?>" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -138,6 +144,12 @@
                                     <input class="form-control" type="time" placeholder="Jam Berangkat"
                                         name="jam_berangkat" id="jam_berangkat"
                                         value="<?= $distribusikosong['jam_berangkat'] ?>" required>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Tanggal Berangkat</label>
+                                    <input class="form-control" type="date" placeholder="Tanggal Berangkat"
+                                        name="tgl_berangkat" id="tgl_berangkat"
+                                        value="<?= $distribusikosong['tgl_berangkat'] ?>" required>
                                 </div>
                                 <script>
                                 // JavaScript to set the default date to today
@@ -174,16 +186,19 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Uang Jalan Pokok</label>
                                     <input class="form-control" type="text" placeholder="Uang Jalan Pokok"
-                                        name="uang_JP" value="<?= $distribusikosong['uang_JP'] ?>" oninput="formatCurrency(this)" readonly>
+                                        name="uang_JP" value="<?= $distribusikosong['uang_JP'] ?>"
+                                        oninput="formatCurrency(this)" readonly>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Uang Jalan Tambahan</label>
                                     <input class="form-control" type="text" placeholder="Uang Jalan Tambahan"
                                         name="uang_JT" oninput="formatCurrency(this)" required>
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Keterangan</label>
-                                    <input class="form-control" type="text" placeholder="Keterangan" name="Keterangan">
+                                    <textarea class="form-control" type="text" placeholder="Keterangan" name="Keterangan"></textarea>
                                 </div>
                             </div>
                         </div> <!-- end col -->
@@ -222,7 +237,8 @@ function getDataByNoPemesanan() {
             var formattedJumlah = new Intl.NumberFormat('en-US').format(jumlah);
             // Isi nilai inputan dengan data yang diterima
             document.getElementsByName('kode_brng')[0].value = response.nama_brng;
-            document.getElementsByName('kode_konsumen')[0].value = response.nama_konsumen + ' - ' + response.lokasi_bongkar;
+            document.getElementsByName('kode_konsumen')[0].value = response.nama_konsumen + ' - ' + response
+                .lokasi_bongkar;
             document.getElementsByName('harga')[0].value = formattedHarga;
             document.getElementsByName('satuan')[0].value = response.satuan;
             document.getElementsByName('jumlah')[0].value = formattedJumlah;

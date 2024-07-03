@@ -106,7 +106,8 @@
                 <div class="row">
                     <div class="col-12 text-center justify-content-between">
                         <div>
-                            <h4>PT RIAU MAS BERSAUDARA</h4>
+                        <img src="<?= base_url('assets/images/kop.jpg') ?>" alt="" style="width: 100%;">
+                            <!-- <h4>PT RIAU MAS BERSAUDARA</h4>
                             <p style="margin-top: -10px;font-size: 12pt;">
                                 Jalan : Soekarno Hatta No. 11 A, Telp/Fax : (0761) 61128, Hp: 0811-765-089 PEKANBARU -
                                 RIAU,
@@ -116,7 +117,7 @@
                             </p>
                             <p style="margin-top: -20px;font-size: 12pt;">
                                 E-mail : rmb@gmail.com
-                            </p>
+                            </p> -->
                         </div>
                         <hr style="z-index: 999; margin-top: 0;border:2px solid black;background-color: black; ">
                     </div>

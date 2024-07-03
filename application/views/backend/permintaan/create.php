@@ -24,6 +24,19 @@
 
     window.onload = loadFormattedValue;
     </script>
+
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" /> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
+    <script>
+    $(document).ready(function() {
+        $('#kode_konsumen').select2();
+    });
+
+    $(document).ready(function() {
+        $('#kode_brng').select2();
+    });
+    </script>
     <!-- Start content -->
     <div class="content">
         <div class="container-fluid">
@@ -59,7 +72,7 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Deadline</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Deadline"
-                                        name="tgl_deadline"  >
+                                        name="tgl_deadline">
                                 </div>
                                 <script>
                                 // JavaScript to set the default date to today
@@ -93,7 +106,7 @@
 								?>
                                 <div class="col-sm-3">
                                     <label for="kode_konsumen" class="col-form-label">Konsumen</label>
-                                    <select name="kode_konsumen" id="kode_konsumen" class="form-control select2"
+                                    <select name="kode_konsumen" id="kode_konsumen" class="form-control"
                                         required>
                                         <?php foreach ($permintaan as $a): ?>
                                         <option value="<?= $a['kode_konsumen'] ?>"><?= $a['nama_konsumen'] ?> -
@@ -135,7 +148,7 @@
                                         <option value="Ls">Ls</option>
                                     </select>
                                 </div>
-                              
+
                                 <!-- <script>
                                 document.addEventListener('DOMContentLoaded', function() {
                                     document.getElementById('kode_brng').addEventListener('change',
@@ -171,7 +184,7 @@
                                 </script> -->
                             </div>
                             <div class="form-group row">
-                            <div class="col-sm-3">
+                                <div class="col-sm-3">
                                     <label for="" class="col-form-label">Harga Satuan</label>
                                     <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
                                         oninput="formatCurrency(this)" required>
@@ -184,7 +197,8 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Potongan</label>
-                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan" oninput="formatCurrency(this)">
+                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan"
+                                        oninput="formatCurrency(this)">
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Pph (%)</label>
