@@ -86,63 +86,101 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-
                             </div>
-                            <div class="form-group row" id="dynamic-form">
-                                <?php
-								$permintaan_b = $this->Barang->getBarang();
-								?>
-                                <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Barang</label>
-                                    <select name="kode_brng" id="kode_brng" class="form-control" required>
-                                        <option value="">Pilih Barang</option>
-                                        <?php foreach ($permintaan_b as $a): ?>
-                                        <option value="<?= $a['kode_brng'] ?>"><?= $a['nama_brng'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-1">
-                                    <label for="" class="col-form-label">Volume</label>
-                                    <input class="form-control" type="text" placeholder="Volume" name="jumlah"
-                                        oninput="formatCurrency(this)" required>
-                                </div>
+                            <div id="repeater">
+                                <div class="repeater-item">
+                                    <div class="form-group row">
+                                        <?php
+                                            $permintaan_b = $this->Barang->getBarang();
+                                            ?>
+                                        <div class="col-sm-2">
+                                            <label for="" class="col-form-label">Barang</label>
+                                            <select name="kode_brng[]" class="form-control kode-brng" required>
+                                                <option value="">Pilih Barang</option>
+                                                <?php foreach ($permintaan_b as $a): ?>
+                                                <option value="<?= $a['kode_brng'] ?>"><?= $a['nama_brng'] ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label for="" class="col-form-label">Volume</label>
+                                            <input class="form-control" type="text" placeholder="Volume" name="jumlah[]"
+                                                oninput="formatCurrency(this)" required>
+                                        </div>
 
-                                <div class="col-sm-1">
-                                    <label for="" class="col-form-label">Satuan</label>
-                                    <select name="satuan" id="" class="form-control">
-                                        <option value="pcs">pcs</option>
-                                        <option value="m³">m³</option>
-                                        <option value="m²">m²</option>
-                                        <option value="m">m</option>
-                                        <option value="ton">ton</option>
-                                        <option value="kg">kg</option>
-                                        <option value="liter">liter</option>
-                                        <option value="Ls">Ls</option>
-                                    </select>
+                                        <div class="col-sm-1">
+                                            <label for="" class="col-form-label">Satuan</label>
+                                            <select name="satuan[]" id="" class="form-control">
+                                                <option value="pcs">pcs</option>
+                                                <option value="m³">m³</option>
+                                                <option value="m²">m²</option>
+                                                <option value="m">m</option>
+                                                <option value="ton">ton</option>
+                                                <option value="kg">kg</option>
+                                                <option value="liter">liter</option>
+                                                <option value="Ls">Ls</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="" class="col-form-label">Harga Satuan</label>
+                                            <input class="form-control" type="text" placeholder="Harga Satuan"
+                                                name="harga[]" oninput="formatCurrency(this)" required>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label for="" class="col-form-label">Ppn (%)</label>
+                                            <input class="form-control" type="text" placeholder="%" name="ppn[]">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label for="" class="col-form-label">Pph (%)</label>
+                                            <input class="form-control" type="text" placeholder="%" name="pph[]">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label for="" class="col-form-label">Diskon (Rp.)</label>
+                                            <input class="form-control" type="text" placeholder="Potongan"
+                                                name="potongan[]" oninput="formatCurrency(this)">
+                                        </div>
+                                        <div class="col-sm-2" style="margin-top: 37px;">
+                                            <button type="button" class="btn btn-primary btn-sm add-row"><i
+                                                    class="fa fa-plus"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm remove-row"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Harga Satuan</label>
-                                    <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
-                                        oninput="formatCurrency(this)" required>
-                                </div>
-                                <div class="col-sm-1">
-                                    <label for="" class="col-form-label">Ppn (%)</label>
-                                    <input class="form-control" type="text" placeholder="%" name="ppn">
-                                </div>
-                                <div class="col-sm-1">
-                                    <label for="" class="col-form-label">Pph (%)</label>
-                                    <input class="form-control" type="text" placeholder="%" name="pph">
-                                </div>
-                                <div class="col-sm-1">
-                                    <label for="" class="col-form-label">Diskon (Rp.)</label>
-                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan"
-                                        oninput="formatCurrency(this)">
-                                </div>
-                                <div class="col-sm-1" style="margin-top: 37px;">
-                                    <button type="button" class="btn btn-primary add-form">+</button>
-                                    <button type="button" class="btn btn-danger remove-form">-</button>
-                                </div> 
                             </div>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+                            </script>
+
+                            <script>
+
+                            $(document).ready(function() {
+                                // Add row
+                                $(".add-row").click(function() {
+                                    var html = $(".repeater-item").first().clone(); // Clone first item
+                                    html.find('input, select').val(''); // Clear input values
+                                    $("#repeater").append(html); // Append cloned item
+
+                                    // Initialize select2 for the newly added row
+                                    html.find('.kode-brng')
+                                .select2(); // Assuming you use select2 for select elements
+                                });
+
+                                // Remove row
+                                $("#repeater").on('click', '.remove-row', function() {
+                                    if ($("#repeater .repeater-item").length > 1) {
+                                        $(this).closest('.repeater-item')
+                                    .remove(); // Remove closest item
+                                    } else {
+                                        alert("You cannot remove the last row.");
+                                    }
+                                });
+
+                                // Initialize select2 for the initial row
+                                $('.kode-brng').select2();
+                            });
+                            </script>
+
+
                             <div class="form-group row">
                                 <div class="col-sm-9">
                                     <label for="" class="col-form-label">Upload Foto PO</label>

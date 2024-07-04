@@ -133,6 +133,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <div class="col-sm-6">
+
+                                </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tagihan</label>
                                     <input class="form-control" type="text" placeholder="Tagihan" name="tagihan"
@@ -142,7 +145,7 @@
                         </div> <!-- end col -->
                     </div>
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-8">
                             <a onclick="history.back()" class="btn btn-light float-right">Kembali</a>
                         </div>
                     </div>

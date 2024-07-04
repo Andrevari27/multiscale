@@ -62,8 +62,19 @@ class Permintaan extends CI_Model{
     
     function create($data)
     {
-        return $this->db->insert('pemesanan',$data);
+        foreach ($data['nama_barang'] as $key => $value) {
+            $insert_data = array(
+                'nama_barang' => $value,
+                'volume' => $data['volume'][$key],
+                'satuan' => $data['satuan'][$key],
+                'harga_satuan' => $data['harga_satuan'][$key],
+                'ppn' => $data['ppn'][$key],
+                'pph' => $data['pph'][$key],
+                'diskon' => $data['diskon'][$key],
+            );
+        return $this->db->insert('pemesanan',$insert_data);
     }
+}
 
     function update($id,$data){
         $this->db->where('no_pemesanan', $id);
