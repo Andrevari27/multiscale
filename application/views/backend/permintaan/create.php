@@ -25,9 +25,7 @@
     window.onload = loadFormattedValue;
     </script>
 
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" /> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
     $(document).ready(function() {
         $('#kode_konsumen').select2();
@@ -59,55 +57,29 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">No Pemesanan</label>
                                     <input class="form-control" type="text" placeholder="No Pemesanan"
                                         name="no_pemesanan" value="<?= generate_spm_number() ?>" readonly>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tanggal Pemesanan</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Pemesanan"
                                         name="tanggal" id="tanggalPemesanan" required>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tanggal Deadline</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Deadline"
                                         name="tgl_deadline">
                                 </div>
-                                <script>
-                                // JavaScript to set the default date to today
-                                document.addEventListener('DOMContentLoaded', (event) => {
-                                    const today = new Date();
-                                    const year = today.getFullYear();
-                                    const month = String(today.getMonth() + 1).padStart(2,
-                                        '0'); // Add leading zero if needed
-                                    const day = String(today.getDate()).padStart(2,
-                                        '0'); // Add leading zero if needed
-                                    const dateString = `${year}-${month}-${day}`;
-
-                                    document.getElementById('tanggalPemesanan').value = dateString;
-                                });
-                                document.addEventListener('DOMContentLoaded', (event) => {
-                                    const today = new Date();
-                                    const year = today.getFullYear();
-                                    const month = String(today.getMonth() + 1).padStart(2,
-                                        '0'); // Add leading zero if needed
-                                    const day = String(today.getDate()).padStart(2,
-                                        '0'); // Add leading zero if needed
-                                    const dateString = `${year}-${month}-${day}`;
-
-                                    document.getElementById('tanggalDeadline').value = dateString;
-                                });
-                                </script>
                             </div>
                             <div class="form-group row">
                                 <?php
 								$permintaan = $this->Konsumen->getKonsumen();
 								?>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="kode_konsumen" class="col-form-label">Konsumen</label>
-                                    <select name="kode_konsumen" id="kode_konsumen" class="form-control"
-                                        required>
+                                    <select name="kode_konsumen" id="kode_konsumen" class="form-control" required>
                                         <?php foreach ($permintaan as $a): ?>
                                         <option value="<?= $a['kode_konsumen'] ?>"><?= $a['nama_konsumen'] ?> -
                                             <?= $a['lokasi_bongkar'] ?></option>
@@ -116,11 +88,11 @@
                                 </div>
 
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" id="dynamic-form">
                                 <?php
 								$permintaan_b = $this->Barang->getBarang();
 								?>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Barang</label>
                                     <select name="kode_brng" id="kode_brng" class="form-control" required>
                                         <option value="">Pilih Barang</option>
@@ -129,7 +101,7 @@
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <label for="" class="col-form-label">Volume</label>
                                     <input class="form-control" type="text" placeholder="Volume" name="jumlah"
                                         oninput="formatCurrency(this)" required>
@@ -148,65 +120,31 @@
                                         <option value="Ls">Ls</option>
                                     </select>
                                 </div>
-
-                                <!-- <script>
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    document.getElementById('kode_brng').addEventListener('change',
-                                        function() {
-                                            var kode_brng = this.value;
-                                            if (kode_brng) {
-                                                var xhr = new XMLHttpRequest();
-                                                var url =
-                                                    '<?= site_url('barang/getHargaByBarang?kode_brng=') ?>' +
-                                                    encodeURIComponent(kode_brng);
-                                                console.log(url); // Debug URL
-                                                xhr.open('GET', url, true);
-                                                xhr.onload = function() {
-                                                    if (xhr.status === 200) {
-                                                        console.log(xhr.responseText); // Debug response
-                                                        var harga = JSON.parse(xhr.responseText);
-                                                        document.getElementById('harga').value =
-                                                            harga.harga;
-                                                    } else {
-                                                        console.error('Request failed. Status: ' + xhr
-                                                            .status);
-                                                    }
-                                                };
-                                                xhr.onerror = function() {
-                                                    console.error('Request failed. Network error.');
-                                                };
-                                                xhr.send();
-                                            } else {
-                                                document.getElementById('harga').value = '';
-                                            }
-                                        });
-                                });
-                                </script> -->
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Harga Satuan</label>
                                     <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
                                         oninput="formatCurrency(this)" required>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <label for="" class="col-form-label">Ppn (%)</label>
                                     <input class="form-control" type="text" placeholder="%" name="ppn">
                                 </div>
-                                <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Potongan</label>
-                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan"
-                                        oninput="formatCurrency(this)">
-                                </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <label for="" class="col-form-label">Pph (%)</label>
                                     <input class="form-control" type="text" placeholder="%" name="pph">
                                 </div>
+                                <div class="col-sm-1">
+                                    <label for="" class="col-form-label">Diskon (Rp.)</label>
+                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan"
+                                        oninput="formatCurrency(this)">
+                                </div>
+                                <div class="col-sm-1" style="margin-top: 37px;">
+                                    <button type="button" class="btn btn-primary add-form">+</button>
+                                    <button type="button" class="btn btn-danger remove-form">-</button>
+                                </div> 
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-9">
                                     <label for="" class="col-form-label">Upload Foto PO</label>
                                     <input class="form-control" type="file" name="foto_po_konsumen">
                                 </div>
@@ -226,3 +164,29 @@
         </div>
     </div>
 </div>
+
+<script>
+// JavaScript to set the default date to today
+document.addEventListener('DOMContentLoaded', (event) => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2,
+        '0'); // Add leading zero if needed
+    const day = String(today.getDate()).padStart(2,
+        '0'); // Add leading zero if needed
+    const dateString = `${year}-${month}-${day}`;
+
+    document.getElementById('tanggalPemesanan').value = dateString;
+});
+document.addEventListener('DOMContentLoaded', (event) => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2,
+        '0'); // Add leading zero if needed
+    const day = String(today.getDate()).padStart(2,
+        '0'); // Add leading zero if needed
+    const dateString = `${year}-${month}-${day}`;
+
+    document.getElementById('tanggalDeadline').value = dateString;
+});
+</script>

@@ -103,6 +103,10 @@
                                 style="margin-left: 5px;">:</span>
                                 <?= $this->session->userdata('session_nama') ?>
                         </p>
+                        <p style="margin-top: -20px;font-size: 12pt;">Nomor Kendaraan <span
+                                style="margin-left: 4px;">:</span>
+                                 <?= $distribusikosong['no_kendaraan'] ?>
+                        </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Untuk Pembayaran <span
                                 style="margin-left: 0px;">:</span>
                              Uang Jalan
@@ -122,11 +126,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
-
+                    <div class="col-6 text-center">
+                        <p style="font-size: 12pt;overflow:hidden;">        </p>
+                    <p style="margin-top: -20px;font-size: 12pt;">Menyetujui,</p>
+                        <p style="margin-top: 100px;font-size: 12pt;"> <?= $distribusikosong['supir'] ?></p>
+                        <p style="margin-top: -30px;font-size: 12pt;">--------------------------------------</p>
+                        <p style="margin-top: -30px;font-size: 12pt;">Supir</p>
                     </div>
-                    <div class="col-4 text-center">
-                        <p id="tanggal" style="margin-top: 30px;font-size: 12pt;">Pekanbaru, <span id="tanggal-hari-ini"><?= date('d F Y') ?></span></p>
+                    <div class="col-6 text-center">
+                        <p id="tanggal" style="font-size: 12pt;margin-top:-24px">Pekanbaru, <span id="tanggal-hari-ini"><?= date('d F Y') ?></span></p>
                         <script>
                         var now = new Date();
                         var options = {
@@ -138,12 +146,15 @@
                             options);
                         </script>
                         <p style="margin-top: -20px;font-size: 12pt;">Mengetahui,</p>
-                        <p style="margin-top: 80px;font-size: 12pt;"><?= $this->session->userdata('session_nama') ?></p>
+                        <p style="margin-top: 10px;font-size: 12pt;"><img height="100px" src="<?= base_url('upload/'.$this->session->userdata('session_foto')) ?>" alt=""></p>
+                        <p style="margin-top: -40px;font-size: 12pt;"><?= $this->session->userdata('session_nama') ?></p>
                         <p style="margin-top: -30px;font-size: 12pt;">--------------------------------------</p>
                         <p style="margin-top: -30px;font-size: 12pt;">Kasir</p>
                     </div>
                 </div>
+                
             </div>
+            
         </div>
     </div>
 </div>

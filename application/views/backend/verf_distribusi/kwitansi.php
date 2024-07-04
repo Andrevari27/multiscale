@@ -76,17 +76,7 @@
         <div class="container-fluid">
             <div class="page-title-box">
                 <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb">
-                            <button onclick="printContent('print')" class="btn btn-info"><i class="fa fa-print"></i>
-                                Cetak
-                                dengan Kop</button>
-                            <button style="margin-left: 10px;" onclick="printContent('print')" class="btn btn-info"><i
-                                    class="fa fa-print"></i>
-                                Cetak
-                                tanpa Kop</button>
-                        </ol>
-                    </div>
+
                     <div class="col-sm-6">
                     </div>
                 </div>
@@ -106,7 +96,7 @@
                 <div class="row">
                     <div class="col-12 text-center justify-content-between">
                         <div>
-                        <img src="<?= base_url('assets/images/kop.jpg') ?>" alt="" style="width: 100%;">
+                            <img src="<?= base_url('assets/images/kop.jpg') ?>" alt="" style="width: 100%;">
                             <!-- <h4>PT RIAU MAS BERSAUDARA</h4>
                             <p style="margin-top: -10px;font-size: 12pt;">
                                 Jalan : Soekarno Hatta No. 11 A, Telp/Fax : (0761) 61128, Hp: 0811-765-089 PEKANBARU -
@@ -165,7 +155,8 @@
 
                     </div>
                     <div class="col-4 text-center">
-                        <p id="tanggal" style="margin-top: 30px;font-size: 12pt;">Pekanbaru, <span id="tanggal-hari-ini"><?= date('d F Y') ?></span></p>
+                        <p id="tanggal" style="margin-top: 30px;font-size: 12pt;">Pekanbaru, <span
+                                id="tanggal-hari-ini"><?= date('d F Y') ?></span></p>
                         <script>
                         var now = new Date();
                         var options = {
@@ -182,6 +173,17 @@
                         <p style="margin-top: -30px;font-size: 12pt;">Manager Keuangan</p>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb">
+                    <button onclick="printContent('print')" class="btn btn-info"><i class="fa fa-print"></i>
+                        Cetak
+                        dengan Kop</button>
+                    <button style="margin-left: 10px;" onclick="printContent('print')" class="btn btn-info"><i
+                            class="fa fa-print"></i>
+                        Cetak
+                        tanpa Kop</button>
+                </ol>
             </div>
         </div>
     </div>

@@ -76,17 +76,7 @@
         <div class="container-fluid">
             <div class="page-title-box">
                 <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb">
-                            <button onclick="printContent('print')" class="btn btn-info"><i class="fa fa-print"></i>
-                                Cetak
-                                dengan Kop</button>
-                            <button style="margin-left: 10px;" onclick="printContent('print')" class="btn btn-info"><i
-                                    class="fa fa-print"></i>
-                                Cetak
-                                tanpa Kop</button>
-                        </ol>
-                    </div>
+
                     <div class="col-sm-6">
                     </div>
                 </div>
@@ -121,9 +111,9 @@
                         <p style="font-size: 12pt;"></p>
                         <p style="margin-top: -20px;font-size: 12pt;"></p>
                         <p style="margin-top: -20px;font-size: 12pt;">Attn <span style="margin-left: 18px;">:</span>
-                            </p>
+                        </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Telp <span style="margin-left: 19px;">:</span>
-                            
+
                         </p>
                     </div>
                     <div class="col-4 float-right">
@@ -200,16 +190,17 @@
                         ?>
                 <div class="row">
                     <div class="col-9 float-left">
-                        <p>Total Timbangan Muat : <?= number_format($distribusiA['tim_muat']) ?>  *
+                        <p>Total Timbangan Muat : <?= number_format($distribusiA['tim_muat']) ?> *
                             <?= number_format($distribusiA['harga']) ?></p>
                         <p>Terbilang : <b><i><?= $total_tagihan_terbilang ?> Rupiah</i></b></p>
-                    </div> 
+                    </div>
                     <div class="col-3 float-right text-right">
                         <b>
                             <p>Total : Rp. <?= number_format($total) ?></p>
                             <p style="margin-top: -20px;font-size: 12pt;">PPN 11% : Rp. <?= number_format($total_ppn) ?>
                             </p>
-                            <p style="margin-top: -20px;font-size: 12pt;">PPH <?=$distribusiPph?>% : Rp. <?= number_format($total_pph) ?>
+                            <p style="margin-top: -20px;font-size: 12pt;">PPH <?=$distribusiPph?>% : Rp.
+                                <?= number_format($total_pph) ?>
                             </p>
                             <p style="margin-top: -10px;font-size: 12pt;">
                                 <hr style="border:2px solid black;background-color: black;position: right; ">
@@ -223,7 +214,7 @@
                     <div class="col-9 float-left">
                         <p>Transfer : </p>
                         <p>Terbilang : <b><i><?= $total_tagihan_terbilang ?> Rupiah</i></b></p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-6 text-center float-left">
@@ -239,6 +230,17 @@
                         <p style="margin-top: -20px;font-size: 12pt;">Bagian Keuangan</p>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb">
+                    <button onclick="printContent('print')" class="btn btn-info"><i class="fa fa-print"></i>
+                        Cetak
+                        dengan Kop</button>
+                    <button style="margin-left: 10px;" onclick="printContent('print')" class="btn btn-info"><i
+                            class="fa fa-print"></i>
+                        Cetak
+                        tanpa Kop</button>
+                </ol>
             </div>
         </div>
     </div>

@@ -24,6 +24,7 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>No. Pemesanan</th>
+                                <th>Nama Pegawai</th>
                                 <th>Konsumen</th>
                                 <th>Tanggal Pemesanan</th>
                                 <th>Barang</th>
@@ -42,6 +43,7 @@
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
+                                <td><?= $val['nip'] ?></td>
                                 <td><?= $val['nama_konsumen']." - ".$val['lokasi_bongkar'] ?></td>
                                 <td><?= date_indo($val['tanggal']) ?></td>
                                 <td><?= $val['nama_brng'] ?></td>
@@ -49,11 +51,13 @@
                                 <td><?= $val['status'] ?></td>
                                 <?php if ($this->session->userdata('session_dep') == 'Arengka'): ?>
                                 <td>
-                                    <?php if ($val['status'] !== 'Approval'): ?>
+                                    <?php if ($val['status'] !== 'Disetujui'): ?>
                                     <a href="permintaan/approve/<?= $val['no_pemesanan'] ?>" class="btn btn-warning"><i
-                                            class="fa fa-check"></i> Approval</a>
+                                            class="fa fa-check"></i> Setujui</a>
+                                            <a href="permintaan/delete/<?= $val['no_pemesanan'] ?>" class="btn btn-danger"><i
+                                            class="fa fa-times"></i> Tolak</a>
                                     <?php else: ?>
-                                         Approved
+                                         Selesai
                                     <?php endif; ?>
                                 </td>
                                 <?php endif ?>

@@ -27,6 +27,33 @@
     <script>
     $(document).ready(function() {
         $('#no_kendaraan').select2();
+
+        // Menangani event change dari select2
+        $('#no_kendaraan').on('change', function() {
+            var no_kendaraan = $(this).val();
+            if (no_kendaraan) {
+                var xhr = new XMLHttpRequest();
+                var url = '<?= site_url('kendaraan/getSupirByKendaraan?no_kendaraan=') ?>' +
+                    encodeURIComponent(no_kendaraan);
+                console.log(url); // Debug URL
+                xhr.open('GET', url, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText); // Debug response
+                        var supir = JSON.parse(xhr.responseText);
+                        document.getElementById('nama_supir').value = supir.supir;
+                    } else {
+                        console.error('Request failed. Status: ' + xhr.status);
+                    }
+                };
+                xhr.onerror = function() {
+                    console.error('Request failed. Network error.');
+                };
+                xhr.send();
+            } else {
+                document.getElementById('nama_supir').value = '';
+            }
+        });
     });
     </script>
 
@@ -60,7 +87,8 @@
                                     <select name="no_kendaraan" id="no_kendaraan" class="form-control" required>
                                         <option>Pilih Kendaraan</option>
                                         <?php foreach ($distribusiK as $a): ?>
-                                        <option value="<?= $a['no_kendaraan'] ?>"><?= $a['no_kendaraan'].' - '.$a['jenis'] ?></option>
+                                        <option value="<?= $a['no_kendaraan'] ?>">
+                                            <?= $a['no_kendaraan'].' - '.$a['jenis'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -108,39 +136,6 @@
                                     <input class="form-control" type="date" placeholder="Tanggal Berangkat"
                                         name="tgl_berangkat" id="tgl_berangkat" required>
                                 </div>
-                                <script>
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    document.getElementById('no_kendaraan').addEventListener('change',
-                                        function() {
-                                            var no_kendaraan = this.value;
-                                            if (no_kendaraan) {
-                                                var xhr = new XMLHttpRequest();
-                                                var url =
-                                                    '<?= site_url('kendaraan/getSupirByKendaraan?no_kendaraan=') ?>' +
-                                                    encodeURIComponent(no_kendaraan);
-                                                console.log(url); // Debug URL
-                                                xhr.open('GET', url, true);
-                                                xhr.onload = function() {
-                                                    if (xhr.status === 200) {
-                                                        console.log(xhr.responseText); // Debug response
-                                                        var supir = JSON.parse(xhr.responseText);
-                                                        document.getElementById('nama_supir').value =
-                                                            supir.supir;
-                                                    } else {
-                                                        console.error('Request failed. Status: ' + xhr
-                                                            .status);
-                                                    }
-                                                };
-                                                xhr.onerror = function() {
-                                                    console.error('Request failed. Network error.');
-                                                };
-                                                xhr.send();
-                                            } else {
-                                                document.getElementById('nama_supir').value = '';
-                                            }
-                                        });
-                                });
-                                </script>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-4">

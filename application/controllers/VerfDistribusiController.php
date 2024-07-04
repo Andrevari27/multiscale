@@ -44,7 +44,6 @@ class VerfDistribusiController extends CI_Controller{
                 'Keterangan' => $this->input->post('Keterangan'),
                 'nip_penginputan' => $this->input->post('nip_penginputan'),
                 'satuan' => $this->input->post('satuan'),
-                'harga' => str_replace(',','', $this->input->post('harga')),
                 'jam_berangkat ' => $this->input->post('jam_berangkat'),
             );
 				if (count($_POST) > 0) {
@@ -86,7 +85,6 @@ class VerfDistribusiController extends CI_Controller{
                 'Keterangan' => $this->input->post('Keterangan'),
                 'nip_penginputan' => $this->input->post('nip_penginputan'),
                 'satuan' => $this->input->post('satuan'),
-                'harga' => str_replace(',','', $this->input->post('harga')),
                 'jam_berangkat ' => $this->input->post('jam_berangkat'),
             );
 				if (count($_POST) > 0) {
@@ -131,14 +129,14 @@ class VerfDistribusiController extends CI_Controller{
                 'uang_JP' => str_replace(',', '', $this->input->post('uang_JP')),
                 'uang_JT' => str_replace(',', '', $this->input->post('uang_JT')),
                 'Keterangan' => $this->input->post('Keterangan'),
+                'nama_konsumen' => $this->input->post('nama_konsumen'),
                 'satuan' => $this->input->post('satuan'),
-                'harga' => str_replace(',','', $this->input->post('harga')),
                 'jam_berangkat ' => $this->input->post('jam_berangkat'),
                 'tgl_sampai ' => $this->input->post('tgl_sampai'),
                 'tim_bongkar' => $tim_bongkar,
                 'volume ' => $volume,
                 'selisih_mb ' => $selisih_mb,
-                'total_harga ' => $this->input->post('total_harga'),
+                'total_harga ' => $this->input->post('total_harga'),    
                 'nip_closing ' => $this->input->post('nip_closing'),
                 'status ' => 'Sudah Datang',
                 'jam_sampai ' => $this->input->post('jam_sampai'),

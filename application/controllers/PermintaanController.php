@@ -15,7 +15,8 @@ class PermintaanController extends CI_Controller{
     public function index(){
         $data = array(
             'judul' => 'Data Permintaan',
-			'permintaan' => $this->Permintaan->getPermintaan()
+			'permintaan' => $this->Permintaan->getPermintaan(),
+			'permintaan_e' => $this->Permintaan->getPermintaanE(),
         );
         $this->load->view('backend/templates/header',$data);
         $this->load->view('backend/permintaan/index',$data);
@@ -115,7 +116,7 @@ class PermintaanController extends CI_Controller{
 					'tanggal' => $this->input->post('tanggal'),
 					'tgl_deadline' => $this->input->post('tgl_deadline'),
 					'cabang_permintaan' => $this->input->post('cabang_permintaan'),
-					'status' => 'Approval',
+					'status' => 'Disetujui',
 					'cabang_approval' => $this->input->post('cabang_approval'),
 					// 'satuan' => $this->input->post('satuan'),
 					'cabang_distribusi' => 'Rimbo Panjang',

@@ -38,10 +38,10 @@ class DistribusiKosongController extends CI_Controller{
 			if (count($_POST)>0) {
             	$this->DistribusiKosong->create($data);
             	$this->session->set_flashdata('alert', 'success_post');
-            	redirect(site_url('verf_distribusi'));
+            	redirect(site_url('distribusikosong'));
         	}else{
             	$this->session->set_flashdata('alert', 'fail_post');
-            	redirect(site_url('verf_distribusi'));
+            	redirect(site_url('distribusikosong'));
             }
 		}else{
 			$data = array(

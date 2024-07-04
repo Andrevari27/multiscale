@@ -51,54 +51,57 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">No Pemesanan</label>
                                     <input class="form-control" type="text" placeholder="No Pemesanan"
-                                        name="no_pemesanan" value="<?= $permintaan['no_pemesanan'] ?>">
+                                        name="no_pemesanan" value="<?= $permintaan['no_pemesanan'] ?>" readonly>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Nama Pegawai</label>
                                     <input class="form-control" type="text" placeholder="NIP" name="nip"
                                         value="<?= $this->session->userdata('session_nama') ?>" readonly>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Cabang Permintaan</label>
                                     <input class="form-control" type="text" placeholder="Cabang Permintaan"
                                         name="cabang_permintaan" value="<?= $permintaan['cabang_permintaan'] ?>"
                                         readonly>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <?php
-								$permintaan_e = $this->Konsumen->getKonsumen();
-								?>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Konsumen</label>
-                                    <select name="kode_konsumen" id="" class="form-control" required>
-                                        <?php foreach ($permintaan_e as $a): ?>
-                                        <option value="<?= $a['kode_konsumen'] ?>">
-                                            <?= $a['nama_konsumen']." - ".$a['lokasi_bongkar'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tanggal Pemesanan</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Pemesanan"
-                                        name="tanggal" value="<?= $permintaan['tanggal'] ?>" required>
+                                        name="tanggal" value="<?= $permintaan['tanggal'] ?>" readonly>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tanggal Deadline</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Deadline"
-                                        name="tgl_deadline" value="<?= $permintaan['tgl_deadline'] ?>" required>
+                                        name="tgl_deadline" value="<?= $permintaan['tgl_deadline'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Konsumen</label>
+                                    <input class="form-control" type="text" placeholder="Konsumen" name="nama_konsumen"
+                                        value="<?= $permintaan['nama_konsumen']." - ".$permintaan['lokasi_bongkar'] ?>" readonly>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Jenis Harga</label>
+                                    <input class="form-control" type="text" placeholder=" " name="jenis_harga"
+                                        value="<?= $permintaan['jenis_harga'] ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Barang</label>
                                     <input class="form-control" type="text" placeholder=" " name="kode_brng"
                                         value="<?= $permintaan['nama_brng'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Harga Satuan</label>
+                                    <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
+                                        value="<?= $permintaan['harga'] ?>" oninput="formatCurrency(this)" readonly>
+                                </div>
+                                <div class="col-sm-1">
                                     <label for="" class="col-form-label">Volume</label>
                                     <input class="form-control" type="text" placeholder=" " name="jumlah"
                                         value="<?= $permintaan['jumlah'] ?>" readonly>
@@ -108,87 +111,38 @@
                                     <input class="form-control" type="text" placeholder=" " name="satuan"
                                         value="<?= $permintaan['satuan'] ?>" readonly>
                                 </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Jenis Harga</label>
-                                    <select name="jenis_harga" id="" class="form-control" required>
-                                        <option value="<?= $permintaan['jenis_harga'] ?>">
-                                            <?= $permintaan['jenis_harga'] ?></option>
-                                        <option value="T Muat">T Muat</option>
-                                        <option value="T Bongkar">T Bongkar</option>
-                                        <option value="T Muat + Bongkar">T Muat + Bongkar</option>
-                                        <option value="-">-</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Harga Satuan</label>
-                                    <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
-                                        value="<?= $permintaan['harga'] ?>" oninput="formatCurrency(this)">
-                                </div>
-
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Total</label>
                                     <input class="form-control" type="text" placeholder="Total" name="total"
-                                        value="<?= $permintaan['total'] ?>" oninput="formatCurrency(this)">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Potongan</label>
-                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan"
-                                        value="<?= $permintaan['potongan'] ?>" oninput="formatCurrency(this)">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-
+                                        value="<?= $permintaan['total'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Ppn (%)</label>
                                     <input class="form-control" type="text" placeholder="Ppn" name="ppn"
-                                        value="<?= $permintaan['ppn'] ?>" oninput="formatCurrency(this)">
-                                </div>
-                                <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Total PPN</label>
-                                    <input class="form-control" type="text" placeholder="Ppn"
-                                        value="<?= number_format(($permintaan['ppn']/100)*$permintaan['total']) ?>"
-                                        oninput="formatCurrency(this)" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-
+                                        value="<?= $permintaan['ppn'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Pph (%)</label>
                                     <input class="form-control" type="text" placeholder="%" name="pph"
-                                        value="<?= $permintaan['pph'] ?>" oninput="formatCurrency(this)">
+                                        value="<?= $permintaan['pph'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
-                                <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Total PPH</label>
-                                    <input class="form-control" type="text" placeholder="%"
-                                        value="<?= number_format(($permintaan['pph']/100)*$permintaan['total']) ?>"
-                                        oninput="formatCurrency(this)" readonly>
+                                <div class="col-sm-1">
+                                    <label for="" class="col-form-label">Diskon (Rp.)</label>
+                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan"
+                                        value="<?= $permintaan['potongan'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-3">
-
-                                </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tagihan</label>
                                     <input class="form-control" type="text" placeholder="Tagihan" name="tagihan"
-                                        value="<?= $permintaan['tagihan'] ?>" oninput="formatCurrency(this)">
+                                        value="<?= $permintaan['tagihan'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
                             </div>
                         </div> <!-- end col -->
                     </div>
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-2">
                             <a onclick="history.back()" class="btn btn-light float-right">Kembali</a>
                         </div>
                     </div>

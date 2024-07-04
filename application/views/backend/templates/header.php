@@ -179,12 +179,13 @@
                                     class="ti-agenda"></i><span>Permintaan</span></a>
                         </li>
                         <li>
-                            <a href="<?= base_url() ?>distribusikosong" class="waves-effect"><i
-                                    class="ti-agenda"></i><span>Distribusi Kosong</span></a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url() ?>verf_distribusi" class="waves-effect"><i
-                                    class="ti-agenda"></i><span>Distribusi</span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i
+                                    class="ti-agenda"></i><span>Distribusi</span><span class="menu-arrow"></span></a>
+                            <ul class="submenu">
+                                <li><a href="<?= base_url() ?>verf_distribusi">Distribusi</a></li>
+                                <li><a href="<?= base_url() ?>distribusikosong">Distribusi Kosong</a></li>
+                                <li><a href="<?= base_url() ?>distribusilangsung">Distribusi Langsung</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="<?= base_url() ?>laporan" class="waves-effect"><i

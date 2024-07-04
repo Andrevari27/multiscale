@@ -50,6 +50,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Konsumen</label>
+                                    <input type="text" name="kode_konsumen" class="form-control"
+                                        value="<?= $permintaan['nama_konsumen'] ?>" readonly>
+                                </div>
                                 <?php
 								$pilihPemesanan = $this->Permintaan->getPermintaan();
 								?>
@@ -80,24 +85,12 @@
                                     <input class="form-control" type="text" placeholder="" name="dep_asal"
                                         value="<?= $this->session->userdata('session_dep') ?>" readonly>
                                 </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Barang</label>
                                     <input type="text" name="kode_brng" class="form-control"
                                         value="<?= $permintaan['nama_brng'] ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Konsumen</label>
-                                    <input type="text" name="kode_konsumen" class="form-control"
-                                        value="<?= $permintaan['nama_konsumen'] ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Harga</label>
-                                    <input class="form-control" type="text" name="harga"
-                                        value="<?= $permintaan['harga'] ?>" oninput="formatCurrency(this)" required>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Satuan</label>
@@ -130,7 +123,7 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Asal</label>
                                     <input type="text" name="asal_distribusi" class="form-control"
-                                        value="<?= $distribusikosong['dep_asal'] ?>" required>
+                                        value="<?= $distribusikosong['dep_asal'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tujuan</label>
@@ -198,7 +191,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Keterangan</label>
-                                    <textarea class="form-control" type="text" placeholder="Keterangan" name="Keterangan"></textarea>
+                                    <textarea class="form-control" type="text" placeholder="Keterangan"
+                                        name="Keterangan"></textarea>
                                 </div>
                             </div>
                         </div> <!-- end col -->
@@ -231,15 +225,12 @@ function getDataByNoPemesanan() {
         },
         success: function(response) {
 
-            var harga = response.harga;
             var jumlah = response.jumlah;
-            var formattedHarga = new Intl.NumberFormat('en-US').format(harga);
             var formattedJumlah = new Intl.NumberFormat('en-US').format(jumlah);
             // Isi nilai inputan dengan data yang diterima
             document.getElementsByName('kode_brng')[0].value = response.nama_brng;
             document.getElementsByName('kode_konsumen')[0].value = response.nama_konsumen + ' - ' + response
                 .lokasi_bongkar;
-            document.getElementsByName('harga')[0].value = formattedHarga;
             document.getElementsByName('satuan')[0].value = response.satuan;
             document.getElementsByName('jumlah')[0].value = formattedJumlah;
         },

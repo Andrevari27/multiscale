@@ -105,7 +105,7 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="" class="col-sm-1 col-form-label">Photo</label>
+								<label for="" class="col-sm-1 col-form-label">Photo TTD</label>
 								<div class="col-sm-5">
 									<input class="form-control" type="file" placeholder="Foto"
 										   name="photo">

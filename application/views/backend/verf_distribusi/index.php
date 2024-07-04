@@ -34,7 +34,7 @@
                             <?php
 						$no = 1;
 						foreach ($permintaan as $val): ?>
-                            <?php if ($val['status'] == 'Approval'): ?>
+                            <?php if ($val['status'] == 'Disetujui'): ?>
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
@@ -71,13 +71,13 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Pegawai</th>
-                                <th>Asal</th>
-                                <th>Tujuan</th>
-                                <th>No Kendaraan</th>
-                                <th>Supir</th>
                                 <th>Tanggal Berangkat</th>
                                 <th>Jam Berangkat</th>
+                                <th>No Kendaraan</th>
+                                <th>Supir</th>
                                 <th>Uang Jalan Pokok</th>
+                                <th>Asal</th>
+                                <th>Tujuan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -88,13 +88,13 @@
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['nip_penginputan'] ?></td>
-                                <td><?= $val['dep_asal'] ?></td>
-                                <td><?= $val['dep_tujuan'] ?></td>
-                                <td><?= $val['no_kendaraan'] ?></td>
-                                <td><?= $val['supir'] ?></td>
                                 <td><?= date_indo($val['tgl_berangkat']) ?></td>
                                 <td><?= $val['jam_berangkat'] ?></td>
+                                <td><?= $val['no_kendaraan'] ?></td>
+                                <td><?= $val['supir'] ?></td>
                                 <td><?= number_format($val['uang_JP']) ?></td>
+                                <td><?= $val['dep_asal'] ?></td>
+                                <td><?= $val['dep_tujuan'] ?></td>
                                 <td>
                                     <a href="verf_distribusi/distribusiKosong/<?= $val['no_distribusi'] ?>"
                                         class="btn btn-warning">Distribusikan</a>
@@ -121,15 +121,16 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>No. Pemesanan</th>
+                                <th>Tanggal</th>
+                                <th>No Kendaraan</th>
+                                <th>Supir</th>
+                                <th>Uang Jalan Pokok</th>
+                                <th>Uang Jalan Tambahan</th>
                                 <th>Asal</th>
                                 <th>Transit</th>
                                 <th>Tujuan</th>
                                 <th>Nama Barang</th>
                                 <th>Timbangan Muat</th>
-                                <th>No Kendaraan</th>
-                                <th>Supir</th>
-                                <th>Uang Jalan Pokok</th>
-                                <th>Uang Jalan Tambahan</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -140,15 +141,17 @@
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
+                                <td><?= date_indo($val['tgl_berangkat']) ?></td>
+                                <td><?= $val['no_kendaraan'] ?></td>
+                                <td><?= $val['supir'] ?></td>
+                                <td><?= number_format($val['uang_JP']) ?></td>
+                                <td><?= number_format($val['uang_JT']) ?></td>
                                 <td><?= $val['asal_distribusi'] ?></td>
                                 <td><?= $val['tujuan_distribusi'] ?></td>
                                 <td><?= $val['nama_konsumen'] ?></td>
                                 <td><?= $val['kode_brng'] ?></td>
                                 <td><?= number_format($val['tim_muat'])." ".$val['satuan']  ?></td>
-                                <td><?= $val['no_kendaraan'] ?></td>
-                                <td><?= $val['supir'] ?></td>
-                                <td><?= number_format($val['uang_JP']) ?></td>
-                                <td><?= number_format($val['uang_JT']) ?></td>
+
                                 <td>
                                     <?php if ($val['status'] != 'Sudah Datang'){?>
                                     <a href="verf_distribusi/verifikasi/<?= $val['no_kendaraan'] ?>"

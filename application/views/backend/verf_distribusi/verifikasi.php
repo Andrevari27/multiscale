@@ -13,7 +13,8 @@
 
     function loadFormattedValue() {
         let inputs = document.querySelectorAll(
-            'input[name="harga"],input[name="tim_muat"],input[name="uang_JP"],input[name="tim_bongkar"],input[name="uang_JT"]');
+            'input[name="harga"],input[name="tim_muat"],input[name="uang_JP"],input[name="tim_bongkar"],input[name="uang_JT"]'
+            );
         inputs.forEach(input => {
             let value = input.value.replace(/,/g, '');
             if (!isNaN(value) && value !== '') {
@@ -66,37 +67,39 @@
                                         value="<?= $distribusi['dep_asal'] ?>" name="dep_asal" readonly>
                                 </div>
                                 <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Barang</label>
+                                    <label for="" class="col-form-label">Konsumen</label>
                                     <input class="form-control" type="text" placeholder=""
-                                        value="<?= $distribusi['kode_brng'] ?>" name="kode_brng" readonly>
+                                        value="<?= $distribusi['nama_konsumen'] ?>" name="nama_konsumen" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Harga</label>
+
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Barang</label>
                                     <input class="form-control" type="text" placeholder=""
-                                        value="<?= $distribusi['harga'] ?>" name="harga" oninput="formatCurrency(this)" required>
+                                        value="<?= $distribusi['kode_brng'] ?>" name="kode_brng" readonly>
                                 </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Satuan</label>
                                     <input class="form-control" type="text" placeholder=""
                                         value="<?= $distribusi['satuan'] ?>" name="satuan"
-                                        oninput="formatCurrency(this)" required>
+                                        oninput="formatCurrency(this)" readonly>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Timbangan Muat</label>
                                     <input class="form-control" type="text" placeholder="Tim Muat" name="tim_muat"
                                         oninput="formatCurrency(this)" value="<?= $distribusi['tim_muat'] ?>" required>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Timbangan Bongkar</label>
                                     <input class="form-control" type="text" placeholder="Tim Bongkar" name="tim_bongkar"
-                                        oninput="formatCurrency(this)" value="<?= $distribusi['tim_bongkar'] ?>" required>
+                                        oninput="formatCurrency(this)" value="<?= $distribusi['tim_bongkar'] ?>"
+                                        required>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <label for="" class="col-form-label">Keterangan</label>
-                                    <input class="form-control" type="text" placeholder="Keterangan" name="Keterangan"
-                                        value="<?= $distribusi['Keterangan'] ?>">
+                                    <textarea class="form-control" type="text" placeholder="Keterangan" name="Keterangan"
+                                        value="<?= $distribusi['Keterangan'] ?>"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -114,18 +117,6 @@
                                         value="<?= $distribusi['supir'] ?>" required>
                                 </div>
                                 <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Tanggal Berangkat</label>
-                                    <input class="form-control" type="date" placeholder="Tanggal Berangkat"
-                                        name="tgl_berangkat" value="<?= $distribusi['tgl_berangkat'] ?>" required>
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="col-form-label">Jam Berangkat</label>
-                                    <input class="form-control" type="time" placeholder="Jam Berangkat"
-                                        name="jam_berangkat" value="<?= $distribusi['jam_berangkat'] ?>" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3">
                                     <label for="" class="col-form-label">Uang Jalan Pokok</label>
                                     <input class="form-control" type="text" placeholder="Uang Jalan Pokok"
                                         name="uang_JP" oninput="formatCurrency(this)"
@@ -137,15 +128,28 @@
                                         name="uang_JT" oninput="formatCurrency(this)"
                                         value="<?= $distribusi['uang_JT'] ?>" required>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Tanggal Berangkat</label>
+                                    <input class="form-control" type="date" placeholder="Tanggal Berangkat"
+                                        name="tgl_berangkat" value="<?= $distribusi['tgl_berangkat'] ?>" required>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="" class="col-form-label">Jam Berangkat</label>
+                                    <input class="form-control" type="time" placeholder="Jam Berangkat"
+                                        name="jam_berangkat" value="<?= $distribusi['jam_berangkat'] ?>" required>
+                                </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Tanggal Sampai</label>
                                     <input class="form-control" type="date" placeholder="Tanggal Sampai"
-                                        name="tgl_sampai" id="tgl_sampai" value="<?= $distribusi['tgl_sampai'] ?>" required>
+                                        name="tgl_sampai" id="tgl_sampai" value="<?= $distribusi['tgl_sampai'] ?>"
+                                        required>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Jam Sampai</label>
-                                    <input class="form-control" type="time" placeholder="Jam Sampai" id="jam_sampai" name="jam_sampai"
-                                        value="<?= $distribusi['jam_sampai'] ?>" required>
+                                    <input class="form-control" type="time" placeholder="Jam Sampai" id="jam_sampai"
+                                        name="jam_sampai" value="<?= $distribusi['jam_sampai'] ?>" required>
                                 </div>
                                 <script>
                                 // JavaScript to set the default date to today
@@ -179,6 +183,13 @@
                                 // Panggil fungsi setJamSekarang untuk mengatur waktu saat halaman dimuat
                                 setJamSekarang();
                                 </script>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label for="" class="col-form-label">Upload Bon Timbangan Bongkar</label>
+                                    <input class="form-control" type="file" placeholder="" name="photo_bon"
+                                        >
+                                </div>
                             </div>
                         </div> <!-- end col -->
                     </div>
