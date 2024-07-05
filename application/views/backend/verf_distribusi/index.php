@@ -42,8 +42,6 @@
                                 <td><?= date_indo($val['tanggal']) ?></td>
                                 <td><?= $val['cabang_permintaan'] ?></td>
                                 <td>
-                                    <a href="verf_distribusi/distribusi/<?= $val['no_pemesanan'] ?>"
-                                        class="btn btn-info">Distribusi</a>
                                     <a href="verf_distribusi/invoice/<?= $val['no_pemesanan'] ?>"
                                         class="btn btn-success">Invoice</a>
                                     <a href="verf_distribusi/kwitansi/<?= $val['no_pemesanan'] ?>"
@@ -85,6 +83,7 @@
                             <?php
 						$no = 1;
 						foreach ($distribusikosong as $val): ?>
+                            <?php if ($val['status'] == '-'): ?>
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['nip_penginputan'] ?></td>
@@ -102,7 +101,7 @@
                             </tr>
                             <?php
 							$no++;
-						 endforeach ?>
+                            endif; endforeach ?>
                         </tbody>
                     </table>
                 </div>

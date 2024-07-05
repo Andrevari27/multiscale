@@ -116,6 +116,10 @@
                                     <input class="form-control" type="text" placeholder="Total" name="total"
                                         value="<?= $permintaan['total'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-2">
+                                </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Ppn (%)</label>
                                     <input class="form-control" type="text" placeholder="Ppn" name="ppn"
@@ -126,15 +130,10 @@
                                     <input class="form-control" type="text" placeholder="%" name="pph"
                                         value="<?= $permintaan['pph'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Diskon (Rp.)</label>
                                     <input class="form-control" type="text" placeholder="Potongan" name="potongan"
                                         value="<?= $permintaan['potongan'] ?>" oninput="formatCurrency(this)" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tagihan</label>

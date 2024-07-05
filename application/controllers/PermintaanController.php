@@ -16,7 +16,6 @@ class PermintaanController extends CI_Controller{
         $data = array(
             'judul' => 'Data Permintaan',
 			'permintaan' => $this->Permintaan->getPermintaan(),
-			'permintaan_e' => $this->Permintaan->getPermintaanE(),
         );
         $this->load->view('backend/templates/header',$data);
         $this->load->view('backend/permintaan/index',$data);
@@ -25,86 +24,81 @@ class PermintaanController extends CI_Controller{
 
     public function create() {
 		if (isset($_POST['simpan'])) {
-			
-			$jumlah = str_replace(',', '', $this->input->post('jumlah'));
-        	$harga = str_replace(',', '', $this->input->post('harga'));
-			$total = $jumlah*$harga;
-			$subtotal = $jumlah*$harga;
-            $potongan = $this->input->post('potongan');
-			$ppn_persen = $this->input->post('ppn');
-			$pph_persen = $this->input->post('pph');
-            $ppn = ($ppn_persen/100)*$total;
-            $pph = ($pph_persen/100)*$total;
-			$tagihan = $subtotal+$ppn-$pph; 
+			// Generate nomor pemesanan
 			$no_p = generate_spm_number();
-
-
+			// Ambil data barang yang di-inputkan
+			$kode_barangs = $this->input->post('kode_brng');
+			$jumlahs = str_replace(',', '', $this->input->post('jumlah'));
+			$satuans = $this->input->post('kode_satuan');
+			$hargas = str_replace(',', '', $this->input->post('harga'));
+			
+			// Inisialisasi total
+			$total = 0;
+	
+			// Ambil semua data dari form
 			$data = array(
 				'no_pemesanan' => $no_p,
 				'tanggal' => $this->input->post('tanggal'),
 				'tgl_deadline' => $this->input->post('tgl_deadline'),
 				'kode_konsumen' => $this->input->post('kode_konsumen'),
-				'kode_brng' => $this->input->post('kode_brng'),
 				'nip' => $this->input->post('nip'),
 				'cabang_permintaan' => $this->input->post('cabang_permintaan'),
-				'satuan' => $this->input->post('satuan'),
-				'jumlah' => $jumlah,
-				// 'subtotal' => $jumlah*$harga,
-				'total' => $total,
-				'harga' => $harga,
-				'potongan' => $potongan,
-				'ppn' => $ppn_persen,
-				'pph' => $pph_persen,
-				'tagihan' => $tagihan,
+				'ppn' => $this->input->post('ppn'),
+				'pph' => $this->input->post('pph'),
+				'potongan' => $this->input->post('potongan'),
+				// Tambahkan data lain yang diperlukan
 			);
 	
-			// // Simpan data permintaan
-			// $no_pemesanan = $this->Permintaan->create($data);
+			// Lakukan validasi atau operasi lainnya sesuai kebutuhan aplikasi
 	
-			// // Data untuk detail permintaan
-			// $data_detail_permintaan = array(
-			// 	'no_pemesanan' => $this->input->post('no_pemesanan'),
-			// 	'kode_brng' => $this->input->post('kode_brng'),
-			// 	'kode_sat' => 'Ton',
-			// 	'jumlah' => $jumlah,
-			// 	'harga' => $harga,
-			// 	'subtotal' => $total,
-
-			// );
+			// Simpan data permintaan
+			$this->Permintaan->create($data);
 	
-			// Lakukan pemeriksaan untuk memastikan tidak ada duplikasi
-			// Misalnya, cek apakah kombinasi id_permintaan dan kode_brng sudah ada sebelumnya
-			// if ($this->PermintaanDetail->isDuplicate($no_pemesanan, $data_detail_permintaan['kode_brng'])) {
-			// 	// Jika duplikat ditemukan, berikan pesan kesalahan
-			// 	$this->session->set_flashdata('alert', 'duplicate_entry');
-			// 	redirect(site_url('permintaan/create'));
-			// } else {
-			// 	// Simpan data detail permintaan
-			// 	$this->PermintaanDetail->create($data_detail_permintaan);
+			// Lakukan iterasi untuk menyimpan detail permintaan
+			for ($i = 0; $i < count($kode_barangs); $i++) {
+				$detail_data = array(
+					'no_pemesanan' => $no_p,
+					'kode_brng' => $kode_barangs[$i],
+					'jumlah' => $jumlahs[$i],
+					'kode_sat' => $satuans[$i],
+					'harga' => $hargas[$i],
+					'subtotal' => $jumlahs[$i] * $hargas[$i],
+					// Tambahkan data lain yang diperlukan
+				);
 	
-			// 	// Berikan pesan sukses dan redirect
-			// 	$this->session->set_flashdata('alert', 'success_post');
-			// 	redirect(site_url('permintaan'));
-			// }
-			if (count($_POST)>0) {
-            	$this->Permintaan->create($data);
-            	$this->session->set_flashdata('alert', 'success_post');
-            	redirect(site_url('permintaan'));
-        	}else{
-            	$this->session->set_flashdata('alert', 'fail_post');
-            	redirect(site_url('permintaan'));
-            }
+				// Tambahkan subtotal ke total
+				$total += $detail_data['subtotal'];
+	
+				// Simpan detail permintaan
+				$this->PermintaanDetail->create($detail_data);
+			}
+	
+			// Set total ke dalam data pemesanan
+			$data['total'] = $total;
+	
+			// Update total di tabel pemesanan
+			$this->Permintaan->updateTotal($no_p, $total); // Adjust this according to your model method
+	
+			// Set flashdata untuk alert
+			$this->session->set_flashdata('alert', 'success_post');
+	
+			// Redirect ke halaman permintaan atau halaman lain sesuai kebutuhan
+			redirect(site_url('permintaan'));
 		} else {
 			// Tampilkan halaman form tambah data permintaan
 			$data = array(
 				'judul' => 'Tambah Data Permintaan',
-				'permintaan' => $this->Permintaan->getPermintaan()
+				'permintaan' => $this->Permintaan->getPermintaan(),
+				'konsumen' => $this->Konsumen->getKonsumen(),
+				'barang' => $this->Barang->getBarang()
 			);
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/permintaan/create', $data);
 			$this->load->view('backend/templates/footer');
 		}
 	}
+	
+	
 	
 	public function approve($id){
 		if (isset($_POST['simpan'])) {
@@ -118,9 +112,7 @@ class PermintaanController extends CI_Controller{
 					'cabang_permintaan' => $this->input->post('cabang_permintaan'),
 					'status' => 'Disetujui',
 					'cabang_approval' => $this->input->post('cabang_approval'),
-					// 'satuan' => $this->input->post('satuan'),
 					'cabang_distribusi' => 'Rimbo Panjang',
-					// 'subtotal' => str_replace(',', '', $this->input->post('subtotal')),
 					'potongan' => str_replace(',', '', $this->input->post('potongan')),
 					'total' => str_replace(',', '', $this->input->post('total')),
 					'ppn' => str_replace(',', '', $this->input->post('ppn')),
@@ -139,7 +131,7 @@ class PermintaanController extends CI_Controller{
 		} else {
 			$data = array(
 				'judul' => 'Approve Data Permintaan',
-				'permintaan' => $this->Permintaan->getPermintaanByAId($id),
+				'permintaan' => $this->Permintaan->getPermintaanById($id),
 			);
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/permintaan/approve', $data);
@@ -150,7 +142,7 @@ class PermintaanController extends CI_Controller{
 	public function view($id){
 		$data = array(
 			'judul' => 'Lihat Data Permintaan',
-			'permintaan' => $this->Permintaan->getPermintaanByAId($id),
+			'permintaan' => $this->Permintaan->getPermintaanById($id),
 		);
 		$this->load->view('backend/templates/header', $data);
 		$this->load->view('backend/permintaan/view', $data);

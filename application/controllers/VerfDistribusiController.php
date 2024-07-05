@@ -25,7 +25,7 @@ class VerfDistribusiController extends CI_Controller{
     }
 
 
-    public function distribusiKosong($id){
+    public function distribusiKosong($id) {
         if (isset($_POST['simpan'])) {
             $data = array(
                 'no_distribusi' => $this->input->post('no_distribusi'),
@@ -44,31 +44,46 @@ class VerfDistribusiController extends CI_Controller{
                 'Keterangan' => $this->input->post('Keterangan'),
                 'nip_penginputan' => $this->input->post('nip_penginputan'),
                 'satuan' => $this->input->post('satuan'),
-                'jam_berangkat ' => $this->input->post('jam_berangkat'),
+                'jam_berangkat' => $this->input->post('jam_berangkat'),
             );
-				if (count($_POST) > 0) {
-					$this->Distribusi->create($data);
-					$this->session->set_flashdata('alert', 'success_post');
-					redirect(site_url('verf_distribusi'));
-				} else {
-					$this->session->set_flashdata('alert', 'fail_post');
-					redirect(site_url('verf_distribusi'));
-				}
-		}else{
-            
-        $data = array(
-            'judul' => 'Distribusi Kosong',
-            'permintaan' => $this->Permintaan->getPermintaanById($id),
-            'distribusikosong' => $this->DistribusiKosong->getDistribusiKosongById($id),
-            'distribusi' => $this->Distribusi->getDistribusiAById($id),
-
-        );
-        $this->load->view('backend/templates/header', $data);
-        $this->load->view('backend/verf_distribusi/distribusiKosong', $data);
-        $this->load->view('backend/templates/footer');  
     
+            // Lakukan create di tabel Distribusi
+            if (count($_POST) > 0) {
+                $this->Distribusi->create($data);
+                $this->session->set_flashdata('alert', 'success_post');
+    
+                // Ambil id untuk melakukan update di tabel DistribusiKosong
+                $id_distribusikosong = $this->input->post('no_distribusi');
+    
+                // Data untuk update di tabel DistribusiKosong
+                $data_distribusikosong = array(
+                    // sesuaikan dengan kolom-kolom yang ada di tabel DistribusiKosong
+                    // contoh:
+                    'status' => 'Sudah Berangkat'  // misalnya ini adalah kolom yang ingin di-update
+                );
+    
+                // Lakukan update di tabel DistribusiKosong
+                $this->DistribusiKosong->update($id_distribusikosong, $data_distribusikosong);
+    
+                redirect(site_url('verf_distribusi'));
+            } else {
+                $this->session->set_flashdata('alert', 'fail_post');
+                redirect(site_url('verf_distribusi'));
+            }
+        } else {
+            $data = array(
+                'judul' => 'Distribusi Kosong',
+                'permintaan' => $this->Permintaan->getPermintaanById($id),
+                'distribusikosong' => $this->DistribusiKosong->getDistribusiKosongById($id),
+                'distribusi' => $this->Distribusi->getDistribusiAById($id),
+            );
+    
+            $this->load->view('backend/templates/header', $data);
+            $this->load->view('backend/verf_distribusi/distribusiKosong', $data);
+            $this->load->view('backend/templates/footer');
         }
     }
+    
 
 	public function distribusi($id){
 		if (isset($_POST['simpan'])) {

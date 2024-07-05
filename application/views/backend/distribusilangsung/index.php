@@ -11,7 +11,6 @@
                         </ol>
                     </div>
                     <div class="col-sm-6">
-                        <?php echo anchor('permintaan/create', '<i class="fa fa-plus"></i> Tambah Data', array('class' => 'btn btn-primary btn-sm float-right')) ?>
                     </div>
                 </div>
             </div>
@@ -24,45 +23,33 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>No. Pemesanan</th>
-                                <th>Nama Pegawai</th>
                                 <th>Konsumen</th>
                                 <th>Tanggal Pemesanan</th>
-                                <th>Status Pemesanan</th>
-                                <?php if ($this->session->userdata('session_dep') == 'Arengka'): ?>
-                                <th>Proses</th>
-                                <?php endif ?>
-                                <th>Lihat</th>
+                                <th>Cabang Permintaan</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 						$no = 1;
 						foreach ($permintaan as $val): ?>
+                            <?php if ($val['status'] == 'Disetujui'): ?>
                             <tr class="text-center">
                                 <td><?= $no ?></td>
                                 <td><?= $val['no_pemesanan'] ?></td>
-                                <td><?= $val['nip'] ?></td>
                                 <td><?= $val['nama_konsumen']." - ".$val['lokasi_bongkar'] ?></td>
                                 <td><?= date_indo($val['tanggal']) ?></td>
-                                <td><?= $val['status'] ?></td>
-                                <?php if ($this->session->userdata('session_dep') == 'Arengka'): ?>
+                                <td><?= $val['cabang_permintaan'] ?></td>
                                 <td>
-                                    <?php if ($val['status'] !== 'Disetujui'): ?>
-                                    <a href="permintaan/approve/<?= $val['no_pemesanan'] ?>" class="btn btn-warning"><i
-                                            class="fa fa-check"></i> Setujui</a>
-                                            <a href="permintaan/delete/<?= $val['no_pemesanan'] ?>" class="btn btn-danger"><i
-                                            class="fa fa-times"></i> Tolak</a>
-                                    <?php else: ?>
-                                         Selesai
-                                    <?php endif; ?>
+                                    <a href="verf_distribusi/distribusi/<?= $val['no_pemesanan'] ?>"
+                                        class="btn btn-info">Distribusi</a>
+                                    <a href="verf_distribusi/kwitansi/<?= $val['no_pemesanan'] ?>"
+                                        class="btn btn-primary">Kwitansi</a>
                                 </td>
-                                <?php endif ?>
-                                <td><a href="permintaan/view/<?= $val['no_pemesanan'] ?>" class="btn btn-info"><i
-                                            class="fa fa-eye"></i></a></td>
                             </tr>
                             <?php
 							$no++;
-						endforeach ?>
+							 endif; endforeach ?>
                         </tbody>
                     </table>
                 </div>

@@ -13,37 +13,15 @@ class Permintaan extends CI_Model{
         $this->db->select('*');
         $this->db->from('pemesanan');
         $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
-        $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
 		$this->db->order_by('no_pemesanan', 'asc');
         return $this->db->get()->result_array();
-    }
-
-    function getPermintaanE()
-    {
-        $this->db->select('*');
-        $this->db->from('pemesanan');
-        $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
-        $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
-		$this->db->order_by('no_pemesanan', 'asc');
-        return $this->db->get()->row_array();
     }
     
     function getPermintaanById($id)
     {
         $this->db->select('*');
         $this->db->from('pemesanan');
-        $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
         $this->db->join('distribusi', 'distribusi.no_pemesanan = pemesanan.no_pemesanan');
-        $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
-        $this->db->where('pemesanan.no_pemesanan', $id); // specify the table for no_pemesanan
-        return $this->db->get()->row_array();
-    }
-
-    function getPermintaanByAId($id)
-    {
-        $this->db->select('*');
-        $this->db->from('pemesanan');
-        $this->db->join('barang', 'barang.kode_brng = pemesanan.kode_brng');
         $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
         $this->db->where('pemesanan.no_pemesanan', $id); // specify the table for no_pemesanan
         return $this->db->get()->row_array();
@@ -62,23 +40,18 @@ class Permintaan extends CI_Model{
     
     function create($data)
     {
-        foreach ($data['nama_barang'] as $key => $value) {
-            $insert_data = array(
-                'nama_barang' => $value,
-                'volume' => $data['volume'][$key],
-                'satuan' => $data['satuan'][$key],
-                'harga_satuan' => $data['harga_satuan'][$key],
-                'ppn' => $data['ppn'][$key],
-                'pph' => $data['pph'][$key],
-                'diskon' => $data['diskon'][$key],
-            );
-        return $this->db->insert('pemesanan',$insert_data);
+        return $this->db->insert('pemesanan',$data);
     }
-}
+
 
     function update($id,$data){
         $this->db->where('no_pemesanan', $id);
         return $this->db->update('pemesanan', $data);
+    }
+
+    public function updateTotal($no_p, $total) {
+        $this->db->where('no_pemesanan', $no_p);
+        $this->db->update('pemesanan', array('total' => $total));
     }
 
     function delete($id){

@@ -30,10 +30,6 @@
     $(document).ready(function() {
         $('#kode_konsumen').select2();
     });
-
-    $(document).ready(function() {
-        $('#kode_brng').select2();
-    });
     </script>
     <!-- Start content -->
     <div class="content">
@@ -74,12 +70,23 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Nama Pegawai</label>
+                                    <input class="form-control" type="text" value="<?= $this->session->userdata('session_nama') ?>" placeholder="Nama Pegawai" name="nip" readonly>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Departemen</label>
+                                    <input class="form-control" type="text" value="<?= $this->session->userdata('session_dep') ?>" placeholder="Departemen" name="cabang_permintaan " readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <?php
 								$permintaan = $this->Konsumen->getKonsumen();
 								?>
                                 <div class="col-sm-2">
                                     <label for="kode_konsumen" class="col-form-label">Konsumen</label>
                                     <select name="kode_konsumen" id="kode_konsumen" class="form-control" required>
+                                        <option value="">Pilih Konsumen</option>
                                         <?php foreach ($permintaan as $a): ?>
                                         <option value="<?= $a['kode_konsumen'] ?>"><?= $a['nama_konsumen'] ?> -
                                             <?= $a['lokasi_bongkar'] ?></option>
@@ -104,13 +111,13 @@
                                         </div>
                                         <div class="col-sm-1">
                                             <label for="" class="col-form-label">Volume</label>
-                                            <input class="form-control" type="text" placeholder="Volume" name="jumlah[]"
-                                                oninput="formatCurrency(this)" required>
+                                            <input class="form-control" id="jumlah" type="text" placeholder="Volume"
+                                                name="jumlah[]" oninput="formatCurrency(this)" required>
                                         </div>
 
                                         <div class="col-sm-1">
                                             <label for="" class="col-form-label">Satuan</label>
-                                            <select name="satuan[]" id="" class="form-control">
+                                            <select name="kode_satuan[]" id="satuan" class="form-control" required>
                                                 <option value="pcs">pcs</option>
                                                 <option value="m³">m³</option>
                                                 <option value="m²">m²</option>
@@ -124,20 +131,7 @@
                                         <div class="col-sm-2">
                                             <label for="" class="col-form-label">Harga Satuan</label>
                                             <input class="form-control" type="text" placeholder="Harga Satuan"
-                                                name="harga[]" oninput="formatCurrency(this)" required>
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <label for="" class="col-form-label">Ppn (%)</label>
-                                            <input class="form-control" type="text" placeholder="%" name="ppn[]">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <label for="" class="col-form-label">Pph (%)</label>
-                                            <input class="form-control" type="text" placeholder="%" name="pph[]">
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <label for="" class="col-form-label">Diskon (Rp.)</label>
-                                            <input class="form-control" type="text" placeholder="Potongan"
-                                                name="potongan[]" oninput="formatCurrency(this)">
+                                                name="harga[]" id="harga" oninput="formatCurrency(this)" >
                                         </div>
                                         <div class="col-sm-2" style="margin-top: 37px;">
                                             <button type="button" class="btn btn-primary btn-sm add-row"><i
@@ -152,7 +146,6 @@
                             </script>
 
                             <script>
-
                             $(document).ready(function() {
                                 // Add row
                                 $(".add-row").click(function() {
@@ -162,14 +155,14 @@
 
                                     // Initialize select2 for the newly added row
                                     html.find('.kode-brng')
-                                .select2(); // Assuming you use select2 for select elements
+                                        .select2(); // Assuming you use select2 for select elements
                                 });
 
                                 // Remove row
                                 $("#repeater").on('click', '.remove-row', function() {
                                     if ($("#repeater .repeater-item").length > 1) {
                                         $(this).closest('.repeater-item')
-                                    .remove(); // Remove closest item
+                                            .remove(); // Remove closest item
                                     } else {
                                         alert("You cannot remove the last row.");
                                     }
@@ -179,10 +172,24 @@
                                 $('.kode-brng').select2();
                             });
                             </script>
-
+                            <div class="form-group row">
+                                <div class="col-sm-1">
+                                    <label for="" class="col-form-label">Ppn (%)</label>
+                                    <input class="form-control" type="text" placeholder="%" name="ppn">
+                                </div>
+                                <div class="col-sm-1">
+                                    <label for="" class="col-form-label">Pph (%)</label>
+                                    <input class="form-control" type="text" placeholder="%" name="pph">
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Diskon (Rp.)</label>
+                                    <input class="form-control" type="text" placeholder="Potongan" name="potongan"
+                                        oninput="formatCurrency(this)">
+                                </div>
+                            </div>
 
                             <div class="form-group row">
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <label for="" class="col-form-label">Upload Foto PO</label>
                                     <input class="form-control" type="file" name="foto_po_konsumen">
                                 </div>
@@ -192,7 +199,7 @@
                         </div> <!-- end col -->
                     </div>
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-6">
                             <button name="simpan" type="submit" class="btn btn-info float-right ml-2">Simpan</button>
                             <a onclick="history.back()" class="btn btn-light float-right">Cancel</a>
                         </div>

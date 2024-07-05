@@ -109,7 +109,7 @@
                         </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Untuk Pembayaran <span
                                 style="margin-left: 0px;">:</span>
-                             Uang Jalan
+                             Uang Jalan Pokok
                         </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Dari <span
                                 style="margin-left: 104px;">:</span>
