@@ -98,8 +98,6 @@ class PermintaanController extends CI_Controller{
 		}
 	}
 	
-	
-	
 	public function approve($id){
 		if (isset($_POST['simpan'])) {
 
@@ -111,8 +109,6 @@ class PermintaanController extends CI_Controller{
 					'tgl_deadline' => $this->input->post('tgl_deadline'),
 					'cabang_permintaan' => $this->input->post('cabang_permintaan'),
 					'status' => 'Disetujui',
-					'cabang_approval' => $this->input->post('cabang_approval'),
-					'cabang_distribusi' => 'Rimbo Panjang',
 					'potongan' => str_replace(',', '', $this->input->post('potongan')),
 					'total' => str_replace(',', '', $this->input->post('total')),
 					'ppn' => str_replace(',', '', $this->input->post('ppn')),

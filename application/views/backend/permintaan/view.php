@@ -82,7 +82,8 @@
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Konsumen</label>
                                     <input class="form-control" type="text" placeholder="Konsumen" name="nama_konsumen"
-                                        value="<?= $permintaan['nama_konsumen']." - ".$permintaan['lokasi_bongkar'] ?>" readonly>
+                                        value="<?= $permintaan['nama_konsumen']." - ".$permintaan['lokasi_bongkar'] ?>"
+                                        readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Jenis Harga</label>
@@ -112,29 +113,51 @@
                                         value="<?= $permintaan['satuan'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-2">
+                                    <label for="" class="col-form-label">Subtotal</label>
+                                    <input class="form-control" type="text" placeholder="Subtotal" name="subtotal"
+                                        value="<?= $permintaan['subtotal'] ?>" oninput="formatCurrency(this)" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6"></div>
+                                <div class="col-sm-2">
                                     <label for="" class="col-form-label">Total</label>
                                     <input class="form-control" type="text" placeholder="Total" name="total"
                                         value="<?= $permintaan['total'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2">
-                                </div>
+                                <div class="col-sm-3"></div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Ppn (%)</label>
                                     <input class="form-control" type="text" placeholder="Ppn" name="ppn"
                                         value="<?= $permintaan['ppn'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
                                 <div class="col-sm-1">
+                                    <label for="" class="col-form-label">Total PPN</label>
+                                    <input class="form-control" type="text" placeholder="Ppn"
+                                        value="<?= number_format(($permintaan['ppn']/100)*$permintaan['total']) ?>"
+                                        oninput="formatCurrency(this)" readonly>
+                                </div>
+                                <div class="col-sm-1">
                                     <label for="" class="col-form-label">Pph (%)</label>
                                     <input class="form-control" type="text" placeholder="%" name="pph"
                                         value="<?= $permintaan['pph'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
-                                <div class="col-sm-2">
-                                    <label for="" class="col-form-label">Diskon (Rp.)</label>
+                                <div class="col-sm-1">
+                                    <label for="" class="col-form-label">Total PPH</label>
+                                    <input class="form-control" type="text" placeholder="%"
+                                        value="<?= number_format(($permintaan['pph']/100)*$permintaan['total']) ?>"
+                                        oninput="formatCurrency(this)" readonly>
+                                </div>
+                                <div class="col-sm-1">
+                                    <label for="" class="col-form-label">Potongan</label>
                                     <input class="form-control" type="text" placeholder="Potongan" name="potongan"
                                         value="<?= $permintaan['potongan'] ?>" oninput="formatCurrency(this)" readonly>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6"></div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Tagihan</label>
                                     <input class="form-control" type="text" placeholder="Tagihan" name="tagihan"
