@@ -50,10 +50,19 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
+                                <?php 
+                                $pilihKonsumen = $this->Konsumen->getKonsumen();
+                                ?>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Konsumen</label>
-                                    <input type="text" name="kode_konsumen" class="form-control"
-                                        value="<?= $permintaan['nama_konsumen'] ?>" readonly>
+                                    <select name="kode_konsumen" id="kode_konsumen" class="form-control" >
+                                        <option value="">Pilih Konsumen</option>
+                                        <?php foreach ($pilihKonsumen as $a): ?>
+                                        <option value="<?= $a['kode_konsumen'] ?>">
+                                            <?= $a['nama_konsumen']." - ".$a['lokasi_bongkar'] ?>
+                                        </option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
                                 <?php
 								$pilihPemesanan = $this->Permintaan->getPermintaan();
@@ -64,7 +73,7 @@
                                         <option value="">Pilih Pemesanan</option>
                                         <?php foreach ($pilihPemesanan as $a): ?>
                                         <option value="<?= $a['no_pemesanan'] ?>">
-                                            <?= $a['no_pemesanan']." - ".$a['nama_brng']." - ".$a['jumlah']." ".$a['satuan'] ?>
+                                            <?= $a['no_pemesanan']." - ".$a['no_pemesanan']." - ".$a['no_pemesanan']." ".$a['no_pemesanan'] ?>
                                         </option>
                                         <?php endforeach ?>
                                     </select>

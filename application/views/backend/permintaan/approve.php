@@ -13,7 +13,7 @@
 
     function loadFormattedValue() {
         let inputs = document.querySelectorAll(
-            'input[name="subtotal"],input[name="total"],input[name="ppn"],input[name="pph"],input[name="tagihan"],input[name="harga"]'
+            'input[name="subtotal"],input[name="total"],input[name="ppn"],input[name="pph"],input[name="tagihan"],input[name="harga"],input[name="jumlah"]'
         );
         inputs.forEach(input => {
             let value = input.value.replace(/,/g, '');
@@ -84,7 +84,7 @@
                                     <input type="hidden" name="kode_konsumen"
                                         value="<?= htmlspecialchars($permintaan['kode_konsumen']) ?>">
                                     <input type="text" class="form-control" name="nama_konsumen"
-                                        value="<?= htmlspecialchars($permintaan['nama_konsumen'] . " - " . $permintaan['lokasi_bongkar']) ?>"
+                                        value="<?= htmlspecialchars($permintaan['kode_konsumen'] . " - " . $permintaan['kode_konsumen']) ?>"
                                         readonly>
                                 </div>
                                 <div class="col-sm-2">
@@ -93,33 +93,37 @@
                                         value="<?= $permintaan['jenis_harga'] ?>" readonly>
                                 </div>
                             </div>
+                            <?php
+                                    foreach ($permintaandetail as $detail):
+                                    ?>
                             <div class="form-group row">
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Barang</label>
-                                    <input class="form-control" type="text" placeholder=" " name="kode_brng"
-                                        value="<?= $permintaan['nama_brng'] ?>" readonly>
+                                    <input class="form-control" type="text" placeholder=" " name="kode_brng[]"
+                                        value="<?= $detail['kode_brng'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Volume</label>
-                                    <input class="form-control" type="text" placeholder=" " name="jumlah"
-                                        value="<?= $permintaan['jumlah'] ?>" readonly>
+                                    <input class="form-control" type="text" placeholder=" " name="jumlah[]"
+                                        value="<?= $detail['jumlah'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Satuan</label>
-                                    <input class="form-control" type="text" placeholder=" " name="satuan"
-                                        value="<?= $permintaan['satuan'] ?>" readonly>
+                                    <input class="form-control" type="text" placeholder=" " name="satuan[]"
+                                        value="<?= $detail['kode_sat'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Harga Satuan</label>
-                                    <input class="form-control" type="text" placeholder="Harga Satuan" name="harga"
-                                        value="<?= $permintaan['harga'] ?>" oninput="formatCurrency(this)">
+                                    <input class="form-control" type="text" placeholder="Harga Satuan" name="harga[]"
+                                        value="<?= $detail['harga'] ?>" oninput="formatCurrency(this)">
                                 </div>
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Subtotal</label>
-                                    <input class="form-control" type="text" placeholder="Subtotal" name="subtotal"
-                                        value="<?= $permintaan['subtotal'] ?>" oninput="formatCurrency(this)">
+                                    <input class="form-control" type="text" placeholder="Subtotal" name="subtotal[]"
+                                        value="<?= $detail['subtotal'] ?>" oninput="formatCurrency(this)">
                                 </div>
                             </div>
+                            <?php endforeach; ?>
                             <div class="form-group row">
                                 <div class="col-sm-6"></div>
                                 <div class="col-sm-2">
@@ -138,7 +142,7 @@
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Total PPN</label>
                                     <input class="form-control" type="text" placeholder="Ppn"
-                                        value="<?= number_format(($permintaan['ppn']/100)*$permintaan['total']) ?>"
+                                        value="<?= number_format(($permintaan['ppn']/100)*$permintaan['total'] )?>"
                                         oninput="formatCurrency(this)" readonly>
                                 </div>
                                 <div class="col-sm-1">
@@ -149,7 +153,7 @@
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Total PPH</label>
                                     <input class="form-control" type="text" placeholder="%"
-                                        value="<?= number_format(($permintaan['pph']/100)*$permintaan['total']) ?>"
+                                        value="<?= number_format(($permintaan['pph']/100)*$permintaan['total'] )?>"
                                         oninput="formatCurrency(this)" readonly>
                                 </div>
                                 <div class="col-sm-1">

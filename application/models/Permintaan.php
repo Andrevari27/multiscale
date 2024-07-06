@@ -13,6 +13,7 @@ class Permintaan extends CI_Model{
         $this->db->select('*');
         $this->db->from('pemesanan');
         $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
+        // $this->db->join('pemesanandetail', 'pemesanandetail.no_pemesanan = pemesanan.no_pemesanan');
 		$this->db->order_by('no_pemesanan', 'asc');
         return $this->db->get()->result_array();
     }
@@ -21,11 +22,10 @@ class Permintaan extends CI_Model{
     {
         $this->db->select('*');
         $this->db->from('pemesanan');
-        $this->db->join('distribusi', 'distribusi.no_pemesanan = pemesanan.no_pemesanan');
-        $this->db->join('konsumen', 'konsumen.kode_konsumen = pemesanan.kode_konsumen');
-        $this->db->where('pemesanan.no_pemesanan', $id); // specify the table for no_pemesanan
+        $this->db->where('pemesanan.no_pemesanan', $id); // pastikan kondisi ini sesuai dengan format data yang Anda kirimkan
         return $this->db->get()->row_array();
     }
+
 
     public function getDataByNoPemesanan($no_pemesanan)
     {
@@ -52,6 +52,11 @@ class Permintaan extends CI_Model{
     public function updateTotal($no_p, $total) {
         $this->db->where('no_pemesanan', $no_p);
         $this->db->update('pemesanan', array('total' => $total));
+    }
+
+    public function updateTagihan($no_p, $tagihan) {
+        $this->db->where('no_pemesanan', $no_p);
+        $this->db->update('pemesanan', $tagihan);
     }
 
     function delete($id){

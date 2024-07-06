@@ -72,7 +72,7 @@ class VerfDistribusiController extends CI_Controller{
             }
         } else {
             $data = array(
-                'judul' => 'Distribusi Kosong',
+                'judul' => 'Distribusi',
                 'permintaan' => $this->Permintaan->getPermintaanById($id),
                 'distribusikosong' => $this->DistribusiKosong->getDistribusiKosongById($id),
                 'distribusi' => $this->Distribusi->getDistribusiAById($id),

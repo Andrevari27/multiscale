@@ -31,7 +31,9 @@ class PermintaanController extends CI_Controller{
 			$jumlahs = str_replace(',', '', $this->input->post('jumlah'));
 			$satuans = $this->input->post('kode_satuan');
 			$hargas = str_replace(',', '', $this->input->post('harga'));
-			
+			$ppn = $this->input->post('ppn');
+			$pph = $this->input->post('pph');
+					
 			// Inisialisasi total
 			$total = 0;
 	
@@ -43,8 +45,8 @@ class PermintaanController extends CI_Controller{
 				'kode_konsumen' => $this->input->post('kode_konsumen'),
 				'nip' => $this->input->post('nip'),
 				'cabang_permintaan' => $this->input->post('cabang_permintaan'),
-				'ppn' => $this->input->post('ppn'),
-				'pph' => $this->input->post('pph'),
+				'ppn' => $ppn,
+				'pph' => $pph,
 				'potongan' => $this->input->post('potongan'),
 				// Tambahkan data lain yang diperlukan
 			);
@@ -72,12 +74,26 @@ class PermintaanController extends CI_Controller{
 				// Simpan detail permintaan
 				$this->PermintaanDetail->create($detail_data);
 			}
+						// Hitung total PPN
+			$total_ppn = ($ppn / 100) * $total;
+
+			// Hitung total PPH
+			$total_pph = ($pph / 100) * $total;
+
+			// Hitung tagihan
+			$tagihan = $total + $total_ppn - $total_pph;
 	
 			// Set total ke dalam data pemesanan
 			$data['total'] = $total;
 	
 			// Update total di tabel pemesanan
 			$this->Permintaan->updateTotal($no_p, $total); // Adjust this according to your model method
+
+			// Set tagihan ke dalam data pemesanan
+			$data['tagihan'] = $tagihan;
+
+			// Simpan data permintaan
+			$this->Permintaan->updateTagihan($no_p, $data);
 	
 			// Set flashdata untuk alert
 			$this->session->set_flashdata('alert', 'success_post');
@@ -128,6 +144,7 @@ class PermintaanController extends CI_Controller{
 			$data = array(
 				'judul' => 'Approve Data Permintaan',
 				'permintaan' => $this->Permintaan->getPermintaanById($id),
+				'permintaandetail' => $this->PermintaanDetail->getPermintaanDetailById($id),
 			);
 			$this->load->view('backend/templates/header', $data);
 			$this->load->view('backend/permintaan/approve', $data);
@@ -137,8 +154,9 @@ class PermintaanController extends CI_Controller{
 	
 	public function view($id){
 		$data = array(
-			'judul' => 'Lihat Data Permintaan',
+			'judul' => 'Approve Data Permintaan',
 			'permintaan' => $this->Permintaan->getPermintaanById($id),
+			'permintaandetail' => $this->PermintaanDetail->getPermintaanDetailById($id),
 		);
 		$this->load->view('backend/templates/header', $data);
 		$this->load->view('backend/permintaan/view', $data);

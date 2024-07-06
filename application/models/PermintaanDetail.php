@@ -8,11 +8,10 @@ class PermintaanDetail extends CI_Model{
         parent::__construct();
         $this->load->database();
     }
-    function getPermintaan()
+    function getPermintaanDetail()
     {
         $this->db->select('*');
-        $this->db->from('pemesanan');
-        // $this->db->join('jenisbarang', 'jenisbarang.kd_jenis = barang.jenis');
+        $this->db->from('pemesanandetail');
 		$this->db->order_by('no_pemesanan', 'asc');
         return $this->db->get()->result_array();
     }
@@ -20,15 +19,15 @@ class PermintaanDetail extends CI_Model{
     function getPermintaanDetailById($id)
     {
         $this->db->select('*');
+        $this->db->from('pemesanandetail');
         $this->db->where('no_pemesanan', $id);
-        $this->db->from('pemesanan');
-        return $this->db->get()->row_array();
+        return $this->db->get()->result_array();
     }
+
     public function isDuplicate($no_pemesanan, $kode_brng) {
         $this->db->where('id', $no_pemesanan);
         $this->db->where('kode_brng', $kode_brng);
         $query = $this->db->get('pemesanandetail'); // Ganti 'nama_tabel_detail_permintaan' dengan nama tabel yang sesuai
-    
         return $query->num_rows() > 0; // Mengembalikan true jika ada duplikasi, false jika tidak
     }
 
