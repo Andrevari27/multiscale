@@ -49,10 +49,12 @@ $route['distribusikosong/kwitansi/(:any)'] = 'DistribusiKosongController/kwitans
 
 //distribusilangsung
 $route['distribusilangsung'] = 'DistribusiLangsungController/index';
-$route['distribusilangsung/create'] = 'DistribusiLangsungController/create';
+$route['distribusilangsung/distribusi/(:any)'] = 'DistribusiLangsungController/distribusiLangsung/$1';
 $route['distribusilangsung/update/(:any)'] = 'DistribusiLangsungController/update/$1';
 $route['distribusilangsung/view/(:any)'] = 'DistribusiLangsungController/view/$1';
 $route['distribusilangsung/delete/(:any)'] = 'DistribusiLangsungController/delete/$1';
+$route['distribusilangsung/kwitansi/(:any)'] = 'DistribusiLangsungController/kwitansi/$1';
+
 
 //verf distribusi
 $route['verf_distribusi'] = 'VerfDistribusiController/index';

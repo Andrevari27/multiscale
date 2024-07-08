@@ -20,6 +20,7 @@ class PermintaanDetail extends CI_Model{
     {
         $this->db->select('*');
         $this->db->from('pemesanandetail');
+        $this->db->join('barang', 'barang.kode_brng = pemesanandetail.kode_brng');
         $this->db->where('no_pemesanan', $id);
         return $this->db->get()->result_array();
     }

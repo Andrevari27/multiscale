@@ -21,38 +21,57 @@ class DistribusiLangsungController extends CI_Controller{
         $this->load->view('backend/templates/footer');
     }
 
-    public function create(){
+    public function distribusiLangsung($id){
 		if (isset($_POST['simpan'])){
 
 				$data = array(
+					'no_pemesanan' => $this->input->post('no_pemesanan'),
 					'dep_asal' => $this->input->post('dep_asal'),
+					'asal_distribusi' => $this->input->post('dep_asal'),
+					'tujuan_distribusi' => $this->input->post('nama_konsumen'),
+					'nama_konsumen' => $this->input->post('nama_konsumen'),
+					'kode_brng' => $this->input->post('kode_brng'),
+					'tim_muat' => $this->input->post('tim_muat'),
 					'no_kendaraan' => $this->input->post('no_kendaraan'),
 					'supir' => $this->input->post('supir'),
 					'tgl_berangkat' => $this->input->post('tgl_berangkat'),
-					'uang_JP' => str_replace(',', '', $this->input->post('uang_JP')),
-					'nip_penginputan' => $this->input->post('nip_penginputan'),
-					'dep_tujuan' => $this->input->post('dep_tujuan'),
 					'jam_berangkat' => $this->input->post('jam_berangkat'),
+					'uang_JP' => str_replace(',', '', $this->input->post('uang_JP')),
+					'Keterangan' => $this->input->post('Keterangan'),
+					'satuan' => $this->input->post('satuan'),
+					'nip_penginputan' => $this->input->post('nip_penginputan'),
 				);
 
 			if (count($_POST)>0) {
             	$this->DistribusiLangsung->create($data);
             	$this->session->set_flashdata('alert', 'success_post');
-            	redirect(site_url('distribusilangsung'));
+            	redirect(site_url('verf_distribusi'));
         	}else{
             	$this->session->set_flashdata('alert', 'fail_post');
-            	redirect(site_url('distribusilangsung'));
+            	redirect(site_url('verf_distribusi'));
             }
 		}else{
 			$data = array(
             'judul' => 'Tambah Data Distribusi Langsung',
-            'distribusilangsung' => $this->DistribusiLangsung->getDistribusiLangsung()
+			'barang' => $this->DistribusiLangsung->getBarangByNoPemesanan($id),
+			'permintaan' => $this->DistribusiLangsung->getPermintaanById($id),
         	);
 			$this->load->view('backend/templates/header',$data);
-        	$this->load->view('backend/distribusilangsung/create',$data);
+        	$this->load->view('backend/distribusilangsung/distribusi',$data);
         	$this->load->view('backend/templates/footer');
         }
 	}
+
+	public function kwitansi($id){
+		$data = array(
+			'judul' => 'Kwitansi Distribusi Langsung',
+			'distribusi' => $this->DistribusiLangsung->getDistribusiById($id),
+		);
+		$this->load->view('backend/templates/header', $data);
+		$this->load->view('backend/distribusilangsung/kwitansi', $data);
+		$this->load->view('backend/templates/footer');
+	}
+
 	public function update($id){
 		if (isset($_POST['simpan'])) {
 
@@ -97,16 +116,6 @@ class DistribusiLangsungController extends CI_Controller{
 			$this->load->view('backend/distribusilangsung/update', $data);
 			$this->load->view('backend/templates/footer');
 		}
-	}
-
-	public function kwitansi($id){
-		$data = array(
-			'judul' => 'Kwitansi Distribusi Langsung',
-			'distribusilangsung' => $this->DistribusiLangsung->getDistribusiLangsungById($id),
-		);
-		$this->load->view('backend/templates/header', $data);
-		$this->load->view('backend/distribusilangsung/kwitansi', $data);
-		$this->load->view('backend/templates/footer');
 	}
 
 	public function delete($id){

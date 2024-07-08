@@ -41,9 +41,9 @@
                                 <td><?= date_indo($val['tanggal']) ?></td>
                                 <td><?= $val['cabang_permintaan'] ?></td>
                                 <td>
-                                    <a href="verf_distribusi/distribusi/<?= $val['no_pemesanan'] ?>"
+                                    <a href="distribusilangsung/distribusi/<?= $val['no_pemesanan'] ?>"
                                         class="btn btn-info">Distribusi</a>
-                                    <a href="verf_distribusi/kwitansi/<?= $val['no_pemesanan'] ?>"
+                                    <a href="distribusilangsung/kwitansi/<?= $val['no_pemesanan'] ?>"
                                         class="btn btn-primary">Kwitansi</a>
                                 </td>
                             </tr>

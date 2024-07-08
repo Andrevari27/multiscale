@@ -84,7 +84,7 @@
                                     <input type="hidden" name="kode_konsumen"
                                         value="<?= htmlspecialchars($permintaan['kode_konsumen']) ?>">
                                     <input type="text" class="form-control" name="nama_konsumen"
-                                        value="<?= htmlspecialchars($permintaan['kode_konsumen'] . " - " . $permintaan['kode_konsumen']) ?>"
+                                        value="<?= htmlspecialchars($permintaan['nama_konsumen'] . " - " . $permintaan['lokasi_bongkar']) ?>"
                                         readonly>
                                 </div>
                                 <div class="col-sm-2">
@@ -100,7 +100,7 @@
                                 <div class="col-sm-2">
                                     <label for="" class="col-form-label">Barang</label>
                                     <input class="form-control" type="text" placeholder=" " name="kode_brng[]"
-                                        value="<?= $detail['kode_brng'] ?>" readonly>
+                                        value="<?= $detail['nama_brng'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Volume</label>
