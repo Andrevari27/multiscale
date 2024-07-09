@@ -53,6 +53,8 @@ class DistribusiKosongController extends CI_Controller{
         	$this->load->view('backend/templates/footer');
         }
 	}
+
+	
 	public function update($id){
 		if (isset($_POST['simpan'])) {
 

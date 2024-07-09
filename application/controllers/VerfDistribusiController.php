@@ -77,52 +77,16 @@ class VerfDistribusiController extends CI_Controller{
                 'distribusikosong' => $this->DistribusiKosong->getDistribusiKosongById($id),
                 'distribusi' => $this->Distribusi->getDistribusiAById($id),
             );
+
+            $kode_konsumen = $this->input->post('kode_konsumen');
+		    $pemesanan = $this->Permintaan->getPermintaanByKonsumen($kode_konsumen);
+		    echo json_encode($pemesanan);
     
             $this->load->view('backend/templates/header', $data);
             $this->load->view('backend/verf_distribusi/distribusiKosong', $data);
             $this->load->view('backend/templates/footer');
         }
     }
-    
-
-	public function distribusi($id){
-		if (isset($_POST['simpan'])) {
-            $data = array(
-                'no_pemesanan' => $this->input->post('no_pemesanan'),
-                'dep_asal' => $this->input->post('dep_asal'),
-                'kode_brng' => $this->input->post('kode_brng'),
-                'kode_konsumen' => $this->input->post('kode_konsumen'),
-                'tim_muat' => str_replace(',', '', $this->input->post('tim_muat')),
-                'no_kendaraan' => $this->input->post('no_kendaraan'),
-                'supir' => $this->input->post('supir'),
-                'tgl_berangkat' => $this->input->post('tgl_berangkat'),
-                'uang_JP' => str_replace(',', '', $this->input->post('uang_JP')),
-                'Keterangan' => $this->input->post('Keterangan'),
-                'nip_penginputan' => $this->input->post('nip_penginputan'),
-                'satuan' => $this->input->post('satuan'),
-                'jam_berangkat ' => $this->input->post('jam_berangkat'),
-            );
-				if (count($_POST) > 0) {
-					$this->Distribusi->create($data);
-					$this->session->set_flashdata('alert', 'success_post');
-					redirect(site_url('verf_distribusi'));
-				} else {
-					$this->session->set_flashdata('alert', 'fail_post');
-					redirect(site_url('verf_distribusi'));
-				}
-		} else {
-            // $id = $this->input->post('no_pemesanan'); // Sesuaikan dengan cara Anda mendapatkan ID
-			$data = array(
-				'judul' => 'Distribusi Data Permintaan',
-				'permintaan' => $this->Permintaan->getPermintaanById($id),
-                'distribusi' => $this->Distribusi->getDistribusiAById($id),
-                
-			);
-			$this->load->view('backend/templates/header', $data);
-			$this->load->view('backend/verf_distribusi/distribusi', $data);
-			$this->load->view('backend/templates/footer');
-		}
-	}
 
     public function verifikasi($id){
 		if (isset($_POST['simpan'])) {
@@ -189,19 +153,6 @@ class VerfDistribusiController extends CI_Controller{
     echo json_encode($data);
 }   
 
-    public function invoice($id){
-        $data = array(
-            'judul' => 'Invoice',
-            'distribusi' => $this->Distribusi->getDistribusiByPemesananId($id), // Perubahan di sini
-            'distribusiPpn' => $this->Distribusi->getPpnByNoPemesanan($id), // Perubahan di sini
-            'distribusiPph' => $this->Distribusi->getPphByNoPemesanan($id), // Perubahan di sini
-            'distribusiA' => $this->Distribusi->getDistribusiAById($id), // Perubahan di sini
-            'distribusiJumlah' => $this->Distribusi->getDistribusiJumlah($id), // Perubahan di sini
-        );
-        $this->load->view('backend/templates/header', $data);
-        $this->load->view('backend/verf_distribusi/invoice', $data);
-        $this->load->view('backend/templates/footer');
-    }
     public function kwitansi($id){
         $data = array(
             'judul' => 'Kwitansi',

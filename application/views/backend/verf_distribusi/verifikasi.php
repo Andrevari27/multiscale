@@ -77,7 +77,7 @@
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Barang</label>
                                     <input class="form-control" type="text" placeholder=""
-                                        value="<?= $distribusi['kode_brng'] ?>" name="kode_brng" readonly>
+                                        value="<?= $distribusi['nama_brng'] ?>" name="kode_brng" readonly>
                                 </div>
                                 <div class="col-sm-1">
                                     <label for="" class="col-form-label">Satuan</label>
@@ -120,13 +120,13 @@
                                     <label for="" class="col-form-label">Uang Jalan Pokok</label>
                                     <input class="form-control" type="text" placeholder="Uang Jalan Pokok"
                                         name="uang_JP" oninput="formatCurrency(this)"
-                                        value="<?= $distribusi['uang_JP'] ?>" required>
+                                        value="<?= $distribusi['uang_JP'] ?>" readonly>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="" class="col-form-label">Uang Jalan Tambahan</label>
                                     <input class="form-control" type="text" placeholder="Uang Jalan Tambahan"
                                         name="uang_JT" oninput="formatCurrency(this)"
-                                        value="<?= $distribusi['uang_JT'] ?>" required>
+                                        value="<?= $distribusi['uang_JT'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">

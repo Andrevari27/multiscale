@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <label for="" class="col-form-label">Konsumen</label>
                                     <input type="text" name="nama_konsumen" class="form-control"
                                         value="<?= $permintaan['nama_konsumen']." - ".$permintaan['lokasi_bongkar'] ?>"

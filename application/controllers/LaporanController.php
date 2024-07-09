@@ -49,6 +49,17 @@ class LaporanController extends CI_Controller{
         $this->load->view('backend/laporan/index',$data);
         $this->load->view('backend/templates/footer');
     }
+
+    public function invoice(){
+        $data = array(
+            'judul' => 'Invoice',
+        );
+        $data['tanggal_hari_ini'] = date('Y-m-d'); 
+
+        $this->load->view('backend/templates/header', $data);
+        $this->load->view('backend/laporan/invoice', $data);
+        $this->load->view('backend/templates/footer');
+    }
 }
 
 

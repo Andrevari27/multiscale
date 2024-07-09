@@ -27,6 +27,12 @@ class Permintaan extends CI_Model{
         return $this->db->get()->row_array();
     }
 
+    public function getPermintaanByKonsumen($kode_konsumen) {
+        $this->db->where('kode_konsumen', $kode_konsumen);
+        $query = $this->db->get('pemesanan');
+        return $query->result_array();
+    }   
+
 
     public function getDataByNoPemesanan($no_pemesanan)
     {

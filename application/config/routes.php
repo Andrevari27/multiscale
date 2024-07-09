@@ -62,13 +62,10 @@ $route['verf_distribusi/create'] = 'VerfDistribusiController/create';
 $route['verf_distribusi/distribusi'] = 'VerfDistribusiController/distribusi';
 $route['verf_distribusi/distribusi/(:any)'] = 'VerfDistribusiController/distribusi/$1';
 $route['verf_distribusi/verifikasi/(:any)'] = 'VerfDistribusiController/verifikasi/$1';
-$route['verf_distribusi/invoice/(:any)'] = 'VerfDistribusiController/invoice/$1';
-$route['verf_distribusi/kwitansi/(:any)'] = 'VerfDistribusiController/kwitansi/$1';
 $route['verf_distribusi/view/(:any)'] = 'VerfDistribusiController/view/$1';
 $route['verf_distribusi/delete/(:any)'] = 'VerfDistribusiController/delete/$1';
 $route['verf_distribusi/distribusiKosong/(:any)'] = 'VerfDistribusiController/distribusiKosong/$1';
 $route['verf_distribusi/getDataByNoPemesanan'] = 'VerfDistribusiController/getDataByNoPemesanan';
-
 
 //Kendaraan
 $route['kendaraan'] = 'KendaraanController/index';
@@ -78,7 +75,8 @@ $route['kendaraan/view/(:any)'] = 'KendaraanController/view/$1';
 $route['kendaraan/delete/(:any)'] = 'KendaraanController/delete/$1';
 $route['kendaraan/getSupirByKendaraan'] = 'KendaraanController/getSupirByKendaraan';
 
-//laporan
+//dokumen
+$route['invoice'] = 'LaporanController/invoice';
 $route['laporan'] = 'LaporanController/index';
 
 $route['login'] = 'AuthController/index';

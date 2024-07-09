@@ -154,7 +154,7 @@ class PermintaanController extends CI_Controller{
 	
 	public function view($id){
 		$data = array(
-			'judul' => 'Approve Data Permintaan',
+			'judul' => 'Lihat Data Permintaan',
 			'permintaan' => $this->Permintaan->getPermintaanById($id),
 			'permintaandetail' => $this->PermintaanDetail->getPermintaanDetailById($id),
 		);

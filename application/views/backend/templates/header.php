@@ -188,8 +188,12 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="<?= base_url() ?>laporan" class="waves-effect"><i
-                                    class="ti-file"></i><span>Laporan</span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i
+                                    class="ti-file"></i><span>Dokumen</span><span class="menu-arrow"></span></a>
+                            <ul class="submenu">
+                                <li><a href="<?= base_url() ?>invoice">Invoice dan Kwitansi</a></li>
+                                <li><a href="<?= base_url() ?>laporan">Laporan</a></li>
+                            </ul>
                         </li>
                     </ul>
 

@@ -31,6 +31,14 @@ class Barang extends CI_Model{
         return $this->db->get()->row_array();
     }
 
+    public function getBarangByNoPemesanan($no_pemesanan) {
+        $this->db->select('kode_brng, nama_brng');
+        $this->db->from('barang');
+        $this->db->where('no_pemesanan', $no_pemesanan);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     function create($data)
     {
         return $this->db->insert('barang',$data);

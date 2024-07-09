@@ -13,7 +13,7 @@
 
     function loadFormattedValue() {
         let inputs = document.querySelectorAll(
-            'input[name="subtotal"],input[name="total"],input[name="ppn"],input[name="pph"],input[name="tagihan"],input[name="harga"],input[name="jumlah"]'
+            'input[name="subtotal[]"],input[name="total"],input[name="ppn"],input[name="pph"],input[name="tagihan"],input[name="harga[]"],input[name="jumlah[]"]'
         );
         inputs.forEach(input => {
             let value = input.value.replace(/,/g, '');
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-2">
+                                <div class="col-sm-4">
                                     <label for="" class="col-form-label">Konsumen</label>
                                     <input type="hidden" name="kode_konsumen"
                                         value="<?= htmlspecialchars($permintaan['kode_konsumen']) ?>">

@@ -76,28 +76,103 @@
         <div class="container-fluid">
             <div class="page-title-box">
                 <div class="row align-items-center">
-
                     <div class="col-sm-6">
                     </div>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
+            <div class="page-title-box">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group row">
+
+                            <?php
+                                $permintaan = $this->Permintaan->getPermintaan();
+                            ?>
+                            <div class="col-sm-2">
+                                <label for="">Nomor Pemesanan</label>
+                                <select name="no_pemesanan" id="no_pemesanan" class="form-control">
+                                    <option value="">Pilih Nomor Pemesanan</option>
+                                    <?php foreach ($permintaan as $a): ?>
+                                    <option value="<?= $a['no_pemesanan'] ?>"><?= $a['no_pemesanan'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                            <?php
+                            if (isset($_POST['no_pemesanan'])) {
+                                $no_pemesanan = $_POST['no_pemesanan'];
+                                // Ambil data barang berdasarkan no_pemesanan
+                                $barang = $this->Barang->getBarangByNoPemesanan($no_pemesanan);
+                                echo json_encode($barang);
+                            }
+                            ?>
+                            <div class="col-sm-2">
+                                <label for="">Barang</label>
+                                <select name="kode_brng" id="kode_brng" class="form-control">
+                                    <option value="">Pilih Barang</option>
+                                    <!-- Opsi akan diperbarui oleh AJAX -->
+                                </select>
+                            </div>
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                            $(document).ready(function() {
+                                $('#no_pemesanan').change(function() {
+                                    var noPemesanan = $(this).val();
+                                    if (noPemesanan) {
+                                        $.ajax({
+                                            url: 'invoice', // Ganti dengan path yang sesuai
+                                            type: 'POST',
+                                            data: {
+                                                no_pemesanan: noPemesanan
+                                            },
+                                            success: function(response) {
+                                                var data = JSON.parse(response);
+                                                var $barangSelect = $('#kode_brng');
+                                                $barangSelect.empty();
+                                                $barangSelect.append(
+                                                    '<option value="">Pilih Barang</option>'
+                                                    );
+                                                $.each(data, function(key, value) {
+                                                    $barangSelect.append(
+                                                        '<option value="' +
+                                                        value.kode_brng + '">' +
+                                                        value.nama_brng +
+                                                        '</option>');
+                                                });
+                                            }
+                                        });
+                                    } else {
+                                        $('#kode_brng').empty().append(
+                                            '<option value="">Pilih Barang</option>');
+                                    }
+                                });
+                            });
+                            </script>
+
+                            <div class="col-sm-2">
+                                <label for="">Dari</label>
+                                <input type="date" class="form-control" name="tgl_dari">
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="">Sampai</label>
+                                <input type="date" class="form-control" name="tgl_sampai">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-primary" style="margin-top: 32px;">Cari</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container-fluid">
             <div class="page-title-box" id="print" style="overflow:hidden;">
                 <div class="row">
                     <div class="col-12 text-center justify-content-between">
                         <div>
-                            <!-- <h4>PT RIAU MAS BERSAUDARA</h4>
-                            <p style="margin-top: -10px;font-size: 12pt;">
-                                Jalan : Soekarno Hatta No. 11 A, Telp/Fax : (0761) 61128, Hp: 0811-765-089 PEKANBARU -
-                                RIAU,
-                            </p>
-                            <p style="margin-top: -20px;font-size: 12pt;">
-                                Hp : 08562675039, 085296559963
-                            </p>
-                            <p style="margin-top: -20px;font-size: 12pt;">
-                                E-mail : rmb@gmail.com
-                            </p> -->
                             <img src="<?= base_url('assets/images/kop.jpg') ?>" alt="" style="width: 100%;">
                         </div>
                         <hr style="z-index: 999; margin-top: 0;border:2px solid black;background-color: black; ">
@@ -118,10 +193,10 @@
                     </div>
                     <div class="col-4 float-right">
                         <p style="font-size: 12pt;">Tanggal <span style="margin-left: 50px;">:</span>
-                            <?= date_indo($distribusiA['tgl_berangkat']) ?>
+                            <?= date_indo($tanggal_hari_ini) ?>
                         </p>
                         <p style="margin-top: -20px;font-size: 12pt;">No. Invoice <span
-                                style="margin-left: 25px;">:</span> <?= $distribusiA['no_pemesanan'] ?></p>
+                                style="margin-left: 25px;">:</span> </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Jatuh Tempo <span
                                 style="margin-left: 14px;">:</span> </p>
                         <p style="margin-top: -20px;font-size: 12pt;">Tempo Bayar <span
@@ -137,83 +212,48 @@
                                         <th>No.</th>
                                         <th>Tanggal</th>
                                         <th>Jam Berangkat</th>
-                                        <th>No. Polisi</th>
+                                        <th>Nomor Kendaraan</th>
                                         <th>Barang</th>
-                                        <th>Harga</th>
-                                        <th>Timb Muat</th>
-                                        <th>Timb Bongkar</th>
+                                        <th>Timbangan Muat</th>
+                                        <th>Timbangan Bongkar</th>
                                         <th>T. Muat + T. Bongkar</th>
                                         <th>Volume</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-						$no = 1;
-						foreach ($distribusi as $val): ?>
-                                    <tr class="text-center">
-                                        <td><?= $no ?></td>
-                                        <td><?= date_indo($val['tgl_berangkat']) ?></td>
-                                        <td><?= $val['jam_berangkat'] ?></td>
-                                        <td><?= $val['no_kendaraan'] ?></td>
-                                        <td><?= $val['kode_brng'] ?></td>
-                                        <td><?= number_format($val['harga']) ?></td>
-                                        <td><?= number_format($val['tim_muat'])." ".$val['satuan'] ?></td>
-                                        <td><?= number_format( $val['tim_bongkar'])." ".$val['satuan']  ?></td>
-                                        <td><?= number_format( $val['volume'])." ".$val['satuan']  ?></td>
-                                        <td><?= number_format( $val['volume'])." ".$val['satuan']  ?></td>
-                                    </tr>
-                                    <?php
-							$no++;
-							 endforeach ?>
-                                    <tr class="text-center">
-                                        <td colspan="6">Total</td>
-                                        <td><?= number_format($distribusiA['tim_muat'])." ".$val['satuan']  ?></td>
-                                        <td><?= number_format( $distribusiA['tim_bongkar'])." ".$val['satuan']  ?></td>
-                                        <td><?= number_format( $distribusiA['volume'])." ".$val['satuan']  ?></td>
-                                        <td><?= number_format( $distribusiA['volume'])." ".$val['satuan']  ?></td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <?php 
-                        $total = $distribusiA['tim_muat']*($distribusiA['harga']);
-                        $ppn = $distribusiPpn/100;
-                        $pph = $distribusiPph/100;
-                        $total_ppn = $ppn*$total; 
-                        $total_pph = $pph*$total; 
-                        $total_tagihan = ($total+$total_ppn)-$total_pph;
-                        $total_tagihan_terbilang = ucwords(terbilang($total_tagihan)); // Mengonversi angka menjadi teks dan mengubah huruf pertama menjadi kapital
-
-                        
-                        ?>
                 <div class="row">
                     <div class="col-9 float-left">
-                        <p>Total Timbangan Muat : <?= number_format($distribusiA['tim_muat']) ?> *
-                            <?= number_format($distribusiA['harga']) ?></p>
-                        <p>Terbilang : <b><i><?= $total_tagihan_terbilang ?> Rupiah</i></b></p>
+                        <p>Total Timbangan Muat : </p>
+                        <p>Terbilang : <b><i> Rupiah</i></b></p>
                     </div>
                     <div class="col-3 float-right text-right">
                         <b>
-                            <p>Total : Rp. <?= number_format($total) ?></p>
-                            <p style="margin-top: -20px;font-size: 12pt;">PPN 11% : Rp. <?= number_format($total_ppn) ?>
+                            <p>Total : Rp. </p>
+                            <p style="margin-top: -20px;font-size: 12pt;">PPN 11% : Rp.
                             </p>
-                            <p style="margin-top: -20px;font-size: 12pt;">PPH <?=$distribusiPph?>% : Rp.
-                                <?= number_format($total_pph) ?>
+                            <p style="margin-top: -20px;font-size: 12pt;">PPH % : Rp.
+
                             </p>
                             <p style="margin-top: -10px;font-size: 12pt;">
                                 <hr style="border:2px solid black;background-color: black;position: right; ">
                             </p>
                             <p style="margin-top: -10px;font-size: 12pt;">Total Tagihan : Rp.
-                                <?= number_format($total_tagihan) ?></p>
+
                         </b>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-9 float-left">
                         <p>Transfer : </p>
-                        <p>Terbilang : <b><i><?= $total_tagihan_terbilang ?> Rupiah</i></b></p>
+                        <p style="margin-top: -25px;font-size: 12pt;">MANDIRI</p>
+                        <p style="margin-top: -25px;font-size: 12pt;">PT. RIAU MAS BERSAUDARA</p>
+                        <p style="margin-top: -25px;font-size: 12pt;">No. Rek. 108 000 245454 5</p>
                     </div>
                 </div>
                 <div class="row">
@@ -224,8 +264,8 @@
                         <p style="margin-top: -20px;font-size: 12pt;">Bagian Penagihan</p>
                     </div>
                     <div class="col-6 text-center float-right">
-                        <p style="margin-top: 30px;font-size: 12pt;">Konsumen</p>
-                        <p style="margin-top: 80px;font-size: 12pt;"><?= $distribusiA['nama_konsumen'] ?></p>
+                        <p style="margin-top: 75px;font-size: 12pt;">Konsumen</p>
+                        <p style="margin-top: 80px;font-size: 12pt;"></p>
                         <p style="margin-top: -20px;font-size: 12pt;">---------------------------------------</p>
                         <p style="margin-top: -20px;font-size: 12pt;">Bagian Keuangan</p>
                     </div>

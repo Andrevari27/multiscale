@@ -20,7 +20,7 @@ class Distribusi extends CI_Model{
     {
         $this->db->select('*');
         $this->db->from('distribusi');
-        // $this->db->join('barang', 'barang.kode_brng = distribusi.kode_brng');		
+        $this->db->join('barang', 'barang.kode_brng = distribusi.kode_brng');		
         $this->db->order_by('no_pemesanan', 'asc');
         return $this->db->get()->result_array();
     }
@@ -41,8 +41,9 @@ class Distribusi extends CI_Model{
     function getDistribusiById($id)
     {
         $this->db->select('*');
-        $this->db->where('no_kendaraan', $id);
         $this->db->from('distribusi');
+        $this->db->join('barang','barang.kode_brng = distribusi.kode_brng');
+        $this->db->where('no_kendaraan', $id);
         return $this->db->get()->row_array();
     }
     function getDistribusiAById($id)
@@ -58,7 +59,7 @@ class Distribusi extends CI_Model{
     $this->db->where('distribusi.no_pemesanan', $id);
     $this->db->from('distribusi'); // Pastikan tabelnya benar
     // $this->db->join('pemesanan', 'pemesanan.no_pemesanan = distribusi.no_pemesanan');
-    // $this->db->join('barang', 'barang.kode_brng = distribusi.kode_brng');
+    $this->db->join('barang', 'barang.kode_brng = distribusi.kode_brng');
     return $this->db->get()->result_array(); // Menggunakan result_array untuk mendapatkan array
 }
 
