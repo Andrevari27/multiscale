@@ -53,12 +53,15 @@ class Permintaan extends CI_Model{
     }
 
     public function getDistribusi($no_pemesanan, $kode_brng) {
-        // $this->db->join('barang','barang.kode_brng = distribusi.kode_brng');
-        $this->db->where('no_pemesanan', $no_pemesanan);
-        $this->db->where('kode_brng', $kode_brng);
-        $query = $this->db->get('distribusi');
+        $this->db->select('distribusi.*, barang.nama_brng');
+        $this->db->from('distribusi');
+        $this->db->join('barang', 'distribusi.kode_brng = barang.kode_brng', 'left');
+        $this->db->where('distribusi.no_pemesanan', $no_pemesanan);
+        $this->db->where('distribusi.kode_brng', $kode_brng);
+        $query = $this->db->get();
         return $query->result_array();
     }
+    
     
     function create($data)
     {

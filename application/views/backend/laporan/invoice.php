@@ -254,7 +254,7 @@
                                                                 <td>${item.tgl_berangkat}</td>
                                                                 <td>${item.jam_berangkat}</td>
                                                                 <td>${item.no_kendaraan}</td>
-                                                                <td>${item.kode_brng}</td>
+                                                                <td>${item.nama_brng}</td>
                                                                 <td>${item.tim_muat} ${item.satuan}</td>
                                                                 <td>${item.tim_bongkar} ${item.satuan}</td>
                                                                 <td>${item.volume} ${item.satuan}</td>
