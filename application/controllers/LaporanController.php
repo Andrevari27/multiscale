@@ -60,6 +60,17 @@ class LaporanController extends CI_Controller{
         $this->load->view('backend/laporan/invoice', $data);
         $this->load->view('backend/templates/footer');
     }
+
+    public function getBarangByNoPemesanan($no_pemesanan) {
+        $barang = $this->Permintaan->getBarangByNoPemesanan($no_pemesanan);
+        echo json_encode($barang);
+    }
+
+    public function getDistribusiByPemesananBarang($no_pemesanan, $kode_brng) {
+        $data = $this->Permintaan->getDistribusi($no_pemesanan, $kode_brng);
+        echo json_encode($data);
+    }
+
 }
 
 

@@ -86,7 +86,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group row">
-
                             <?php
                                 $permintaan = $this->Permintaan->getPermintaan();
                             ?>
@@ -99,54 +98,50 @@
                                     <?php endforeach ?>
                                 </select>
                             </div>
-                            <?php
-                            if (isset($_POST['no_pemesanan'])) {
-                                $no_pemesanan = $_POST['no_pemesanan'];
-                                // Ambil data barang berdasarkan no_pemesanan
-                                $barang = $this->Barang->getBarangByNoPemesanan($no_pemesanan);
-                                echo json_encode($barang);
-                            }
-                            ?>
+
                             <div class="col-sm-2">
                                 <label for="">Barang</label>
                                 <select name="kode_brng" id="kode_brng" class="form-control">
                                     <option value="">Pilih Barang</option>
-                                    <!-- Opsi akan diperbarui oleh AJAX -->
                                 </select>
                             </div>
-                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
                             <script>
-                            $(document).ready(function() {
-                                $('#no_pemesanan').change(function() {
-                                    var noPemesanan = $(this).val();
-                                    if (noPemesanan) {
-                                        $.ajax({
-                                            url: 'invoice', // Ganti dengan path yang sesuai
-                                            type: 'POST',
-                                            data: {
-                                                no_pemesanan: noPemesanan
-                                            },
-                                            success: function(response) {
-                                                var data = JSON.parse(response);
-                                                var $barangSelect = $('#kode_brng');
-                                                $barangSelect.empty();
-                                                $barangSelect.append(
-                                                    '<option value="">Pilih Barang</option>'
-                                                    );
-                                                $.each(data, function(key, value) {
-                                                    $barangSelect.append(
-                                                        '<option value="' +
-                                                        value.kode_brng + '">' +
-                                                        value.nama_brng +
-                                                        '</option>');
-                                                });
+                            document.getElementById('no_pemesanan').addEventListener('change', function() {
+                                var no_pemesanan = this.value;
+                                if (no_pemesanan) {
+                                    fetch('<?= base_url('dokumen/getBarangByNoPemesanan') ?>/' +
+                                            no_pemesanan)
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error(
+                                                    'Network response was not ok. Status code: ' +
+                                                    response.status);
                                             }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            var barangSelect = document.getElementById('kode_brng');
+                                            barangSelect.innerHTML =
+                                                '<option value="">Pilih Barang</option>';
+                                            data.forEach(function(barang) {
+                                                var option = document.createElement('option');
+                                                option.value = barang.kode_brng;
+                                                option.text = barang.nama_brng;
+                                                barangSelect.appendChild(option);
+                                            });
+                                        })
+                                        .catch(error => {
+                                            console.error('There was a problem with the fetch operation:',
+                                                error);
+                                            alert(
+                                                'Terjadi kesalahan saat mengambil data barang. Silakan coba lagi.'
+                                            );
                                         });
-                                    } else {
-                                        $('#kode_brng').empty().append(
-                                            '<option value="">Pilih Barang</option>');
-                                    }
-                                });
+                                } else {
+                                    document.getElementById('kode_brng').innerHTML =
+                                        '<option value="">Pilih Barang</option>';
+                                }
                             });
                             </script>
 
@@ -221,7 +216,59 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <script>
+                                    document.querySelector('button[type="submit"]').addEventListener('click', function(
+                                        e) {
+                                        e.preventDefault(); // Prevent form submission
 
+                                        var no_pemesanan = document.getElementById('no_pemesanan').value;
+                                        var kode_brng = document.getElementById('kode_brng').value;
+
+                                        if (no_pemesanan && kode_brng) {
+                                            fetch('<?= base_url('dokumen/getDistribusiByPemesananBarang') ?>/' +
+                                                    no_pemesanan + '/' + kode_brng)
+                                                .then(response => {
+                                                    if (!response.ok) {
+                                                        throw new Error(
+                                                            'Network response was not ok. Status code: ' +
+                                                            response.status);
+                                                    }
+                                                    return response.json();
+                                                })
+                                                .then(data => {
+                                                    // Clear existing table rows
+                                                    var tbody = document.querySelector('#print tbody');
+                                                    tbody.innerHTML = '';
+
+                                                    // Append new rows
+                                                    data.forEach(function(item, index) {
+                                                        var row = document.createElement('tr');
+                                                        row.classList.add('text-center');
+                                                        row.innerHTML = `
+                                                    <td>${index + 1}</td>
+                                                    <td>${item.tanggal}</td>
+                                                    <td>${item.jam_berangkat}</td>
+                                                    <td>${item.no_kendaraan}</td>
+                                                    <td>${item.nama_barang}</td>
+                                                    <td>${item.timbangan_muat}</td>
+                                                    <td>${item.timbangan_bongkar}</td>
+                                                    <td>${item.timbangan_muat + item.timbangan_bongkar}</td>
+                                                    <td>${item.volume}</td>`;
+                                                        tbody.appendChild(row);
+                                                    });
+                                                })
+                                                .catch(error => {
+                                                    console.error(
+                                                        'There was a problem with the fetch operation:',
+                                                        error);
+                                                    alert(
+                                                        'Terjadi kesalahan saat mengambil data distribusi. Silakan coba lagi.');
+                                                });
+                                        } else {
+                                            alert('Silakan pilih nomor pemesanan dan barang terlebih dahulu.');
+                                        }
+                                    });
+                                    </script>
                                 </tbody>
                             </table>
                         </div>

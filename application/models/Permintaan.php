@@ -32,7 +32,14 @@ class Permintaan extends CI_Model{
         $query = $this->db->get('pemesanan');
         return $query->result_array();
     }   
-
+    function getBarangByNoPemesanan($no_pemesanan) {
+        $this->db->select('*');
+        $this->db->from('pemesanandetail');
+        $this->db->join('barang', 'barang.kode_brng = pemesanandetail.kode_brng');
+        $this->db->where('no_pemesanan', $no_pemesanan);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function getDataByNoPemesanan($no_pemesanan)
     {
@@ -43,6 +50,13 @@ class Permintaan extends CI_Model{
     $this->db->where('no_pemesanan', $no_pemesanan);
     $query = $this->db->get();
     return $query->row_array();
+    }
+
+    public function getDistribusi($no_pemesanan, $kode_brng) {
+        $this->db->where('no_pemesanan', $no_pemesanan);
+        $this->db->where('kode_brng', $kode_brng);
+        $query = $this->db->get('distribusi');
+        return $query->result_array();
     }
     
     function create($data)
