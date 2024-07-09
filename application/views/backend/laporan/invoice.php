@@ -215,7 +215,7 @@
                                         <th>Volume</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="print">
                                     <script>
                                     document.querySelector('button[type="submit"]').addEventListener('click', function(
                                         e) {
@@ -236,26 +236,32 @@
                                                     return response.json();
                                                 })
                                                 .then(data => {
-                                                    // Clear existing table rows
                                                     var tbody = document.querySelector('#print tbody');
                                                     tbody.innerHTML = '';
 
-                                                    // Append new rows
-                                                    data.forEach(function(item, index) {
+                                                    if (data.length === 0) {
                                                         var row = document.createElement('tr');
                                                         row.classList.add('text-center');
-                                                        row.innerHTML = `
-                                                    <td>${index + 1}</td>
-                                                    <td>${item.tanggal}</td>
-                                                    <td>${item.jam_berangkat}</td>
-                                                    <td>${item.no_kendaraan}</td>
-                                                    <td>${item.nama_barang}</td>
-                                                    <td>${item.timbangan_muat}</td>
-                                                    <td>${item.timbangan_bongkar}</td>
-                                                    <td>${item.timbangan_muat + item.timbangan_bongkar}</td>
-                                                    <td>${item.volume}</td>`;
+                                                        row.innerHTML =
+                                                            `<td colspan="9">Data tidak ditemukan</td>`;
                                                         tbody.appendChild(row);
-                                                    });
+                                                    } else {
+                                                        data.forEach(function(item, index) {
+                                                            var row = document.createElement('tr');
+                                                            row.classList.add('text-center');
+                                                            row.innerHTML = `
+                                                                <td>${index + 1}</td>
+                                                                <td>${item.tgl_berangkat}</td>
+                                                                <td>${item.jam_berangkat}</td>
+                                                                <td>${item.no_kendaraan}</td>
+                                                                <td>${item.kode_brng}</td>
+                                                                <td>${item.tim_muat} ${item.satuan}</td>
+                                                                <td>${item.tim_bongkar} ${item.satuan}</td>
+                                                                <td>${item.volume} ${item.satuan}</td>
+                                                                <td>${item.volume} ${item.satuan}</td>`;
+                                                            tbody.appendChild(row);
+                                                        });
+                                                    }
                                                 })
                                                 .catch(error => {
                                                     console.error(
@@ -269,6 +275,7 @@
                                         }
                                     });
                                     </script>
+
                                 </tbody>
                             </table>
                         </div>

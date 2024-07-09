@@ -79,7 +79,7 @@ $route['kendaraan/getSupirByKendaraan'] = 'KendaraanController/getSupirByKendara
 $route['invoice'] = 'LaporanController/invoice';
 $route['laporan'] = 'LaporanController/index';
 $route['dokumen/getBarangByNoPemesanan/(:any)'] = 'LaporanController/getbarangByNoPemesanan/$1';
-$route['dokumen/getDistribusiByPemesananBarang/(:any)'] = 'LaporanController/getDistribusiByPemesananBarang/$1';
+$route['dokumen/getDistribusiByPemesananBarang/(:any)/(:any)'] = 'LaporanController/getDistribusiByPemesananBarang/$1/$2';
 
 $route['login'] = 'AuthController/index';
 $route['auth/login'] = 'AuthController/login';
